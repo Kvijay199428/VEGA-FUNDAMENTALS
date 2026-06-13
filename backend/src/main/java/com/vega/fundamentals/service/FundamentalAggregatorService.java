@@ -58,7 +58,8 @@ public class FundamentalAggregatorService {
                 new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions");
 
         CompletableFuture<SectionResponse<List<CompetitorDto>>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
-                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors");
+                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors")
+                .thenApply(this::enrichCompetitors);
 
         CompletableFuture.allOf(
                 profileFuture, balanceSheetFuture, cashFlowFuture, incomeStatementFuture,
@@ -72,7 +73,7 @@ public class FundamentalAggregatorService {
 
         FundamentalSnapshot snapshot = FundamentalSnapshot.builder()
                 .schemaVersion("2.0")
-                .status("success") // Will refine based on section statuses if needed
+                .status("success")
                 .source("UPSTOX")
                 .isin(isin)
                 .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
@@ -91,7 +92,6 @@ public class FundamentalAggregatorService {
                 .competitors(competitorsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
                 .build();
 
-        // Refine overall status
         boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
                 snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
                 snapshot.getCorporateActions(), snapshot.getCompetitors())
@@ -122,6 +122,23 @@ public class FundamentalAggregatorService {
         }, executor);
     }
 
+    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
+        if (!"success".equals(sectionRes.getStatus()) || sectionRes.getData() == null) {
+            return sectionRes;
+        }
+
+        for (CompetitorDto competitor : sectionRes.getData()) {
+            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
+            if (info != null) {
+                competitor.setIsin(info.getIsin());
+                competitor.setSymbol(info.getSymbol());
+                competitor.setCompanyName(info.getName());
+                competitor.setExchange(info.getExchange());
+            }
+        }
+        return sectionRes;
+    }
+
     @SuppressWarnings("unchecked")
     private <T, C> SectionResponse<C> wrapContainer(SectionResponse<T> sectionRes, Class<C> containerClass) {
         if ("error".equals(sectionRes.getStatus())) {
@@ -131,7 +148,6 @@ public class FundamentalAggregatorService {
         try {
             C container = containerClass.getDeclaredConstructor().newInstance();
             if (sectionRes.getData() != null) {
-                // For now, mapping as consolidated by default as per current client behavior
                 containerClass.getMethod("setConsolidated", sectionRes.getData().getClass()).invoke(container, sectionRes.getData());
             }
             return SectionResponseFactory.success(container);

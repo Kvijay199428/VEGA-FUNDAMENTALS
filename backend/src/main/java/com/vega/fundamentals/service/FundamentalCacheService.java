@@ -72,11 +72,12 @@ public class FundamentalCacheService {
             builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
             builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
             builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
-            builder.competitors(readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {}));
+            
+            SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
+            builder.competitors(enrichCompetitors(competitorsRes));
 
             FundamentalSnapshot snapshot = builder.build();
             
-            // Refine status
             boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
                 snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
                 snapshot.getCorporateActions(), snapshot.getCompetitors())
@@ -91,6 +92,24 @@ public class FundamentalCacheService {
             log.error("Failed to read cache for ISIN: {}: {}", isin, e.getMessage());
         }
         return Optional.empty();
+    }
+
+    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
+        if (!"cached".equals(sectionRes.getStatus()) && !"success".equals(sectionRes.getStatus())) {
+            return sectionRes;
+        }
+        if (sectionRes.getData() == null) return sectionRes;
+
+        for (CompetitorDto competitor : sectionRes.getData()) {
+            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
+            if (info != null) {
+                competitor.setIsin(info.getIsin());
+                competitor.setSymbol(info.getSymbol());
+                competitor.setCompanyName(info.getName());
+                competitor.setExchange(info.getExchange());
+            }
+        }
+        return sectionRes;
     }
 
     public void put(String isin, FundamentalSnapshot snapshot) {
@@ -127,7 +146,7 @@ public class FundamentalCacheService {
             if ("success".equals(res.getStatus()) || "cached".equals(res.getStatus())) {
                 return SectionResponseFactory.cached(res.getData(), res.getFetchedTs());
             }
-            return res; // Preserve error status from cache
+            return res;
         }
         return SectionResponseFactory.error("CACHE_MISS", "Section missing in cache", null);
     }

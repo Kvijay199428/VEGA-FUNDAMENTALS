@@ -510,17 +510,27 @@ class MarketCapDto {
 package com.vega.fundamentals.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompetitorDto {
     @JsonProperty("instrument_key")
     private String instrumentKey;
+    
+    private String isin;
+    private String symbol;
+    @JsonProperty("company_name")
+    private String companyName;
+    private String exchange;
+    
     @JsonProperty("company_profile")
     private String companyProfile;
     private String sector;
+    
     @JsonProperty("sector_market_cap_inr")
     private MarketCapDto sectorMarketCapInr;
     @JsonProperty("sector_market_cap_usd")
@@ -835,7 +845,8 @@ public class FundamentalAggregatorService {
                 new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions");
 
         CompletableFuture<SectionResponse<List<CompetitorDto>>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
-                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors");
+                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors")
+                .thenApply(this::enrichCompetitors);
 
         CompletableFuture.allOf(
                 profileFuture, balanceSheetFuture, cashFlowFuture, incomeStatementFuture,
@@ -849,7 +860,7 @@ public class FundamentalAggregatorService {
 
         FundamentalSnapshot snapshot = FundamentalSnapshot.builder()
                 .schemaVersion("2.0")
-                .status("success") // Will refine based on section statuses if needed
+                .status("success")
                 .source("UPSTOX")
                 .isin(isin)
                 .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
@@ -868,7 +879,6 @@ public class FundamentalAggregatorService {
                 .competitors(competitorsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
                 .build();
 
-        // Refine overall status
         boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
                 snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
                 snapshot.getCorporateActions(), snapshot.getCompetitors())
@@ -899,6 +909,23 @@ public class FundamentalAggregatorService {
         }, executor);
     }
 
+    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
+        if (!"success".equals(sectionRes.getStatus()) || sectionRes.getData() == null) {
+            return sectionRes;
+        }
+
+        for (CompetitorDto competitor : sectionRes.getData()) {
+            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
+            if (info != null) {
+                competitor.setIsin(info.getIsin());
+                competitor.setSymbol(info.getSymbol());
+                competitor.setCompanyName(info.getName());
+                competitor.setExchange(info.getExchange());
+            }
+        }
+        return sectionRes;
+    }
+
     @SuppressWarnings("unchecked")
     private <T, C> SectionResponse<C> wrapContainer(SectionResponse<T> sectionRes, Class<C> containerClass) {
         if ("error".equals(sectionRes.getStatus())) {
@@ -908,7 +935,6 @@ public class FundamentalAggregatorService {
         try {
             C container = containerClass.getDeclaredConstructor().newInstance();
             if (sectionRes.getData() != null) {
-                // For now, mapping as consolidated by default as per current client behavior
                 containerClass.getMethod("setConsolidated", sectionRes.getData().getClass()).invoke(container, sectionRes.getData());
             }
             return SectionResponseFactory.success(container);
@@ -1029,11 +1055,12 @@ public class FundamentalCacheService {
             builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
             builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
             builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
-            builder.competitors(readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {}));
+            
+            SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
+            builder.competitors(enrichCompetitors(competitorsRes));
 
             FundamentalSnapshot snapshot = builder.build();
             
-            // Refine status
             boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
                 snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
                 snapshot.getCorporateActions(), snapshot.getCompetitors())
@@ -1048,6 +1075,24 @@ public class FundamentalCacheService {
             log.error("Failed to read cache for ISIN: {}: {}", isin, e.getMessage());
         }
         return Optional.empty();
+    }
+
+    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
+        if (!"cached".equals(sectionRes.getStatus()) && !"success".equals(sectionRes.getStatus())) {
+            return sectionRes;
+        }
+        if (sectionRes.getData() == null) return sectionRes;
+
+        for (CompetitorDto competitor : sectionRes.getData()) {
+            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
+            if (info != null) {
+                competitor.setIsin(info.getIsin());
+                competitor.setSymbol(info.getSymbol());
+                competitor.setCompanyName(info.getName());
+                competitor.setExchange(info.getExchange());
+            }
+        }
+        return sectionRes;
     }
 
     public void put(String isin, FundamentalSnapshot snapshot) {
@@ -1084,7 +1129,7 @@ public class FundamentalCacheService {
             if ("success".equals(res.getStatus()) || "cached".equals(res.getStatus())) {
                 return SectionResponseFactory.cached(res.getData(), res.getFetchedTs());
             }
-            return res; // Preserve error status from cache
+            return res;
         }
         return SectionResponseFactory.error("CACHE_MISS", "Section missing in cache", null);
     }
@@ -1126,6 +1171,7 @@ public class InstrumentService {
     private final String instrumentPath;
     private final ObjectMapper objectMapper;
     private final Map<String, InstrumentInfo> isinMap = new HashMap<>();
+    private final Map<String, InstrumentInfo> instrumentKeyMap = new HashMap<>();
 
     public InstrumentService(@Value("${upstox.instrument-path}") String instrumentPath, ObjectMapper objectMapper) {
         this.instrumentPath = instrumentPath;
@@ -1146,17 +1192,25 @@ public class InstrumentService {
             if (root.isArray()) {
                 for (JsonNode node : root) {
                     String isin = node.path("isin").asText(null);
+                    String instrumentKey = node.path("instrument_key").asText(null);
+                    
+                    InstrumentInfo info = new InstrumentInfo();
+                    info.setIsin(isin);
+                    info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
+                    info.setName(node.path("name").asText(null));
+                    info.setExchange(node.path("exchange").asText());
+                    info.setInstrumentKey(instrumentKey);
+
                     if (isin != null && !isin.isEmpty()) {
-                        InstrumentInfo info = new InstrumentInfo();
-                        info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
-                        info.setName(node.path("name").asText(null));
-                        info.setExchange(node.path("exchange").asText());
-                        info.setInstrumentKey(node.path("instrument_key").asText(null));
                         isinMap.put(isin, info);
+                    }
+                    if (instrumentKey != null && !instrumentKey.isEmpty()) {
+                        instrumentKeyMap.put(instrumentKey, info);
                     }
                 }
             }
-            log.info("Loaded {} instruments from {}", isinMap.size(), instrumentPath);
+            log.info("Loaded {} instruments (ISINs: {}, Keys: {}) from {}", 
+                    isinMap.size(), isinMap.size(), instrumentKeyMap.size(), instrumentPath);
         } catch (IOException e) {
             log.error("Failed to load instruments: {}", e.getMessage());
         }
@@ -1164,6 +1218,10 @@ public class InstrumentService {
 
     public InstrumentInfo getInstrument(String isin) {
         return isinMap.get(isin);
+    }
+
+    public InstrumentInfo getByInstrumentKey(String instrumentKey) {
+        return instrumentKeyMap.get(instrumentKey);
     }
 
     public String getCompetitorInstrumentKey(String isin) {
@@ -1179,6 +1237,7 @@ public class InstrumentService {
 
     @Data
     public static class InstrumentInfo {
+        private String isin;
         private String symbol;
         private String name;
         private String exchange;
