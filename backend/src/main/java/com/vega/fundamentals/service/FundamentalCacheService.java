@@ -25,24 +25,49 @@ public class FundamentalCacheService {
     private final ObjectMapper objectMapper;
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
+    private final FundamentalHistoryService historyService;
     private static final Duration TTL = Duration.ofHours(24);
 
     public FundamentalCacheService(@Value("${storage.cache.fundamentals-path}") String cachePath, 
                                  ObjectMapper objectMapper,
                                  InstrumentService instrumentService,
-                                 FundamentalAnalyzer analyzer) {
+                                 FundamentalAnalyzer analyzer,
+                                 FundamentalHistoryService historyService) {
         this.cachePath = cachePath;
         this.objectMapper = objectMapper;
         this.instrumentService = instrumentService;
         this.analyzer = analyzer;
+        this.historyService = historyService;
     }
 
     public Optional<FundamentalSnapshot> get(String isin) {
-        Path isinDir = Path.of(cachePath, isin);
-        if (!Files.exists(isinDir)) {
-            return Optional.empty();
+        // 1. Try Primary JSON Cache
+        Optional<FundamentalSnapshot> cached = getFromPrimaryCache(isin);
+        if (cached.isPresent()) return cached;
+
+        // 2. Fallback to History Reconstruction (Stage 1.5)
+        log.info("Primary cache miss for ISIN: {}. Attempting history reconstruction...", isin);
+        Optional<FundamentalSnapshot> historical = historyService.reconstructSnapshot(isin);
+        if (historical.isPresent()) {
+            FundamentalSnapshot snapshot = historical.get();
+            if (isFresh(snapshot.getGeneratedTs())) {
+                log.info("History hit and fresh for ISIN: {}", isin);
+                snapshot.setAnalysis(analyzer.analyze(snapshot));
+                return Optional.of(snapshot);
+            } else {
+                log.info("History hit but expired for ISIN: {}", isin);
+            }
         }
 
+        return Optional.empty();
+    }
+
+    private Optional<FundamentalSnapshot> getFromPrimaryCache(String isin) {
+        Path isinDir = Path.of(cachePath, isin);
+        if (!Files.exists(isinDir) || !Files.exists(isinDir.resolve("profile.json"))) {
+            return Optional.empty();
+        }
+    ...
         try {
             SectionResponse<CompanyProfileDto> profileRes = readSection(isinDir, "profile.json", new TypeReference<SectionResponse<CompanyProfileDto>>() {});
             if (profileRes == null || !isFresh(profileRes.getFetchedTs())) {

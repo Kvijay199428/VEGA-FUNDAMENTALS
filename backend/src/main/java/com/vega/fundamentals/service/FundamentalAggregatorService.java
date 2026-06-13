@@ -104,6 +104,9 @@ public class FundamentalAggregatorService {
 
         snapshot.setAnalysis(analyzer.analyze(snapshot));
 
+        // Archive changes to JSONL history
+        historyService.archiveSnapshot(snapshot);
+
         return snapshot;
     }
 
@@ -112,7 +115,6 @@ public class FundamentalAggregatorService {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
-                    historyService.archiveIfChanged(isin, name, result);
                     return SectionResponseFactory.success(result);
                 } else {
                     return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
