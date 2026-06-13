@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,4 +23,7 @@ public class IsinMetadata {
     private String exchange;
     private Instant createdTs;
     private Instant lastUpdatedTs;
+
+    @Builder.Default
+    private Map<String, Long> endpointVersions = new HashMap<>();
 }

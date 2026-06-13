@@ -24,3 +24,5 @@ upstox:
 storage:
   cache:
     fundamentals-path: /root/fundamentals/storage/cache/fundamentals/
+  history:
+    fundamentals-path: /root/fundamentals/storage/history/fundamentals/

@@ -39,8 +39,8 @@ public class FundamentalHistoryService {
     private final ObjectMapper objectMapper;
     private final ConcurrentHashMap<String, ReentrantLock> locks = new ConcurrentHashMap<>();
 
-    public FundamentalHistoryService(@Value("${storage.cache.fundamentals-path}") String cachePath, ObjectMapper objectMapper) {
-        this.historyPath = cachePath + "/history";
+    public FundamentalHistoryService(@Value("${storage.history.fundamentals-path}") String historyPath, ObjectMapper objectMapper) {
+        this.historyPath = historyPath;
         this.objectMapper = objectMapper.copy();
         this.objectMapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
     }
@@ -55,16 +55,18 @@ public class FundamentalHistoryService {
         ReentrantLock lock = locks.computeIfAbsent(isin, k -> new ReentrantLock());
         lock.lock();
         try {
-            ensureIsinMetadata(snapshot);
+            Path isinHistoryDir = Path.of(historyPath, isin);
+            Files.createDirectories(isinHistoryDir);
+            
+            rebuildIndexIfMissing(isin);
+            IsinMetadata metadata = updateIsinMetadata(snapshot);
 
-            archiveIfChanged(isin, FundamentalEndpoint.PROFILE, snapshot.getProfile());
-            archiveIfChanged(isin, FundamentalEndpoint.BALANCE_SHEET, snapshot.getBalanceSheet());
-            archiveIfChanged(isin, FundamentalEndpoint.CASH_FLOW, snapshot.getCashFlow());
-            archiveIfChanged(isin, FundamentalEndpoint.INCOME_STATEMENT, snapshot.getIncomeStatement());
-            archiveIfChanged(isin, FundamentalEndpoint.SHARE_HOLDINGS, snapshot.getShareHoldings());
-            archiveIfChanged(isin, FundamentalEndpoint.KEY_RATIOS, snapshot.getKeyRatios());
-            archiveIfChanged(isin, FundamentalEndpoint.CORPORATE_ACTIONS, snapshot.getCorporateActions());
-            archiveIfChanged(isin, FundamentalEndpoint.COMPETITORS, snapshot.getCompetitors());
+            for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+                SectionResponse<?> section = getSection(snapshot, endpoint);
+                archiveIfChanged(isin, endpoint, section, metadata);
+            }
+            
+            saveIsinMetadata(isin, metadata);
 
         } catch (Exception e) {
             log.error("Failed to archive snapshot for ISIN {}: {}", isin, e.getMessage());
@@ -73,7 +75,20 @@ public class FundamentalHistoryService {
         }
     }
 
-    private void archiveIfChanged(String isin, FundamentalEndpoint endpoint, SectionResponse<?> section) {
+    private SectionResponse<?> getSection(FundamentalSnapshot snapshot, FundamentalEndpoint endpoint) {
+        return switch (endpoint) {
+            case PROFILE -> snapshot.getProfile();
+            case BALANCE_SHEET -> snapshot.getBalanceSheet();
+            case CASH_FLOW -> snapshot.getCashFlow();
+            case INCOME_STATEMENT -> snapshot.getIncomeStatement();
+            case SHARE_HOLDINGS -> snapshot.getShareHoldings();
+            case KEY_RATIOS -> snapshot.getKeyRatios();
+            case CORPORATE_ACTIONS -> snapshot.getCorporateActions();
+            case COMPETITORS -> snapshot.getCompetitors();
+        };
+    }
+
+    private void archiveIfChanged(String isin, FundamentalEndpoint endpoint, SectionResponse<?> section, IsinMetadata metadata) {
         if (section == null || !"success".equals(section.getStatus()) || section.getData() == null) {
             return;
         }
@@ -83,10 +98,7 @@ public class FundamentalHistoryService {
             JsonNode normalizedNode = normalize(dataNode);
             String currentHash = generateHash(normalizedNode);
 
-            Path isinHistoryDir = Path.of(historyPath, isin);
-            Files.createDirectories(isinHistoryDir);
-
-            File indexFile = isinHistoryDir.resolve("latest-index.json").toFile();
+            File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
             Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
 
             HistoryIndexEntry lastEntry = index.get(endpoint.getKey());
@@ -105,11 +117,14 @@ public class FundamentalHistoryService {
                     .data(dataNode)
                     .build();
 
-            appendHistory(isinHistoryDir, endpoint, record);
+            appendHistory(Path.of(historyPath, isin), endpoint, record);
 
-            // Update index
+            // Update index and metadata
             index.put(endpoint.getKey(), new HistoryIndexEntry(currentHash, nextVersion, record.getTs()));
             saveIndex(indexFile, index);
+            
+            metadata.getEndpointVersions().put(endpoint.getKey(), nextVersion);
+            metadata.setLastUpdatedTs(record.getTs());
 
             log.info("Archived v{} of {} for ISIN: {}", nextVersion, endpoint.getKey(), isin);
 
@@ -118,16 +133,13 @@ public class FundamentalHistoryService {
         }
     }
 
-    private void ensureIsinMetadata(FundamentalSnapshot snapshot) throws IOException {
+    private IsinMetadata updateIsinMetadata(FundamentalSnapshot snapshot) throws IOException {
         Path isinDir = Path.of(historyPath, snapshot.getIsin());
-        Files.createDirectories(isinDir);
         File metadataFile = isinDir.resolve("metadata.json").toFile();
 
         IsinMetadata metadata;
         if (metadataFile.exists()) {
             metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
-            metadata.setLastUpdatedTs(Instant.now());
-            // Update other fields if they changed
             metadata.setSymbol(snapshot.getSymbol());
             metadata.setCompanyName(snapshot.getCompanyName());
             metadata.setExchange(snapshot.getExchange());
@@ -141,19 +153,69 @@ public class FundamentalHistoryService {
                     .lastUpdatedTs(Instant.now())
                     .build();
         }
+        return metadata;
+    }
+
+    private void saveIsinMetadata(String isin, IsinMetadata metadata) throws IOException {
+        File metadataFile = Path.of(historyPath, isin, "metadata.json").toFile();
         objectMapper.writeValue(metadataFile, metadata);
     }
 
+    private void rebuildIndexIfMissing(String isin) {
+        Path isinDir = Path.of(historyPath, isin);
+        File indexFile = isinDir.resolve("latest-index.json").toFile();
+        if (indexFile.exists()) return;
+
+        log.info("latest-index.json missing for ISIN: {}. Rebuilding from history...", isin);
+        Map<String, HistoryIndexEntry> index = new HashMap<>();
+        
+        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+            HistoryRecord latest = readLatestRecord(isin, endpoint);
+            if (latest != null) {
+                index.put(endpoint.getKey(), new HistoryIndexEntry(latest.getHash(), latest.getVersion(), latest.getTs()));
+            }
+        }
+
+        if (!index.isEmpty()) {
+            try {
+                saveIndex(indexFile, index);
+                log.info("Successfully rebuilt index for ISIN: {} with {} entries.", isin, index.size());
+            } catch (IOException e) {
+                log.error("Failed to save rebuilt index for ISIN {}: {}", isin, e.getMessage());
+            }
+        }
+    }
+
     private JsonNode normalize(JsonNode node) {
-        if (node == null || !node.isObject()) return node;
+        if (node == null) return null;
+        if (node.isArray()) {
+            // Handle lists of objects (like shareholdings, competitors)
+            com.fasterxml.jackson.databind.node.ArrayNode normalizedArray = objectMapper.createArrayNode();
+            for (JsonNode item : node) {
+                normalizedArray.add(normalize(item));
+            }
+            return normalizedArray;
+        }
+        if (!node.isObject()) return node;
+        
         ObjectNode normalized = node.deepCopy();
-        // Remove common volatile fields if they leaked into business data
+        // Remove common volatile fields
         normalized.remove("fetchedTs");
         normalized.remove("generatedTs");
         normalized.remove("cacheHit");
         normalized.remove("ageMinutes");
         normalized.remove("requestDurationMs");
         normalized.remove("status");
+        normalized.remove("message");
+        normalized.remove("errorCode");
+        
+        // Recursively normalize children to catch leaked timestamps in nested objects
+        java.util.Iterator<Map.Entry<String, JsonNode>> fields = normalized.fields();
+        while (fields.hasNext()) {
+            Map.Entry<String, JsonNode> field = fields.next();
+            normalized.set(field.getKey(), normalize(field.getValue()));
+        }
+        
         return normalized;
     }
 

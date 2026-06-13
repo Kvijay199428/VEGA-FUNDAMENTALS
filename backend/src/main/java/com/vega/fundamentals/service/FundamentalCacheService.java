@@ -67,56 +67,64 @@ public class FundamentalCacheService {
         if (!Files.exists(isinDir) || !Files.exists(isinDir.resolve("profile.json"))) {
             return Optional.empty();
         }
-    ...
+
         try {
             SectionResponse<CompanyProfileDto> profileRes = readSection(isinDir, "profile.json", new TypeReference<SectionResponse<CompanyProfileDto>>() {});
             if (profileRes == null || !isFresh(profileRes.getFetchedTs())) {
-                log.info("Cache expired or missing for ISIN: {}", isin);
+                log.info("Primary cache expired or missing for ISIN: {}", isin);
                 return Optional.empty();
             }
 
             InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
-            String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
+            FundamentalSnapshot snapshot = buildSnapshotFromCache(isin, isinDir, profileRes, instrumentInfo);
 
-            FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
-                    .schemaVersion("2.0")
-                    .isin(isin)
-                    .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
-                    .companyName(companyName)
-                    .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
-                    .cacheHit(true)
-                    .status("success")
-                    .source("UPSTOX")
-                    .generatedTs(profileRes.getFetchedTs())
-                    .profile(SectionResponseFactory.cached(profileRes.getData(), profileRes.getFetchedTs()));
+            if (isPartialSuccess(snapshot)) {
+                snapshot.setStatus("partial_success");
+            }
 
-            builder.balanceSheet(readAndWrapCached(isinDir, "balanceSheet.json", new TypeReference<SectionResponse<BalanceSheetContainer>>() {}));
-            builder.cashFlow(readAndWrapCached(isinDir, "cashFlow.json", new TypeReference<SectionResponse<CashFlowContainer>>() {}));
-            builder.incomeStatement(readAndWrapCached(isinDir, "incomeStatement.json", new TypeReference<SectionResponse<IncomeStatementContainer>>() {}));
-            
-            builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
-            builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
-            builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
-            
-            SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
-            builder.competitors(enrichCompetitors(competitorsRes));
+            snapshot.setAnalysis(analyzer.analyze(snapshot));
+            log.info("Primary cache hit for ISIN: {}", isin);
+            return Optional.of(snapshot);
+        } catch (IOException e) {
+            log.error("Failed to read primary cache for ISIN: {}: {}", isin, e.getMessage());
+            return Optional.empty();
+        }
+    }
 
-            FundamentalSnapshot snapshot = builder.build();
-            
-            boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
+    private FundamentalSnapshot buildSnapshotFromCache(String isin, Path isinDir, SectionResponse<CompanyProfileDto> profileRes, InstrumentService.InstrumentInfo instrumentInfo) throws IOException {
+        String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
+
+        FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
+                .schemaVersion("2.0")
+                .isin(isin)
+                .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
+                .companyName(companyName)
+                .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
+                .cacheHit(true)
+                .status("success")
+                .source("UPSTOX")
+                .generatedTs(profileRes.getFetchedTs())
+                .profile(SectionResponseFactory.cached(profileRes.getData(), profileRes.getFetchedTs()));
+
+        builder.balanceSheet(readAndWrapCached(isinDir, "balanceSheet.json", new TypeReference<SectionResponse<BalanceSheetContainer>>() {}));
+        builder.cashFlow(readAndWrapCached(isinDir, "cashFlow.json", new TypeReference<SectionResponse<CashFlowContainer>>() {}));
+        builder.incomeStatement(readAndWrapCached(isinDir, "incomeStatement.json", new TypeReference<SectionResponse<IncomeStatementContainer>>() {}));
+        
+        builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
+        builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
+        builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
+        
+        SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
+        builder.competitors(enrichCompetitors(competitorsRes));
+
+        return builder.build();
+    }
+
+    private boolean isPartialSuccess(FundamentalSnapshot snapshot) {
+        return List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
                 snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
                 snapshot.getCorporateActions(), snapshot.getCompetitors())
                 .stream().anyMatch(res -> "error".equals(res.getStatus()));
-            if (anyError) snapshot.setStatus("partial_success");
-
-            snapshot.setAnalysis(analyzer.analyze(snapshot));
-
-            log.info("Cache hit for ISIN: {}", isin);
-            return Optional.of(snapshot);
-        } catch (IOException e) {
-            log.error("Failed to read cache for ISIN: {}: {}", isin, e.getMessage());
-        }
-        return Optional.empty();
     }
 
     private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
