@@ -43,6 +43,7 @@ public class InstrumentService {
                     if (isin != null && !isin.isEmpty()) {
                         InstrumentInfo info = new InstrumentInfo();
                         info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
+                        info.setName(node.path("name").asText(null));
                         info.setExchange(node.path("exchange").asText());
                         isinMap.put(isin, info);
                     }
@@ -61,6 +62,7 @@ public class InstrumentService {
     @Data
     public static class InstrumentInfo {
         private String symbol;
+        private String name;
         private String exchange;
     }
 }

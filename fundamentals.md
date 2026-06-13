@@ -313,6 +313,25 @@ public class FundamentalController {
 ```
 
 ```java
+// File: src/main/java/com/vega/fundamentals/dto/BalanceSheetContainer.java
+package com.vega.fundamentals.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class BalanceSheetContainer {
+    private BalanceSheetDto consolidated;
+    private BalanceSheetDto standalone;
+}
+```
+
+```java
 // File: src/main/java/com/vega/fundamentals/dto/BalanceSheetDto.java
 package com.vega.fundamentals.dto;
 
@@ -373,6 +392,25 @@ import lombok.Data;
 public class BaseResponseDto<T> {
     private String status;
     private T data;
+}
+```
+
+```java
+// File: src/main/java/com/vega/fundamentals/dto/CashFlowContainer.java
+package com.vega.fundamentals.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class CashFlowContainer {
+    private CashFlowDto consolidated;
+    private CashFlowDto standalone;
 }
 ```
 
@@ -508,7 +546,6 @@ package com.vega.fundamentals.dto;
 import lombok.Builder;
 import lombok.Data;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -516,37 +553,47 @@ import java.util.Map;
 @Data
 @Builder
 public class FundamentalSnapshot {
+    private String schemaVersion;
     private String status;
     private String source;
     private String isin;
     private String symbol;
+    private String companyName;
     private String exchange;
     private Instant generatedTs;
     private Long requestDurationMs;
     private boolean cacheHit;
 
-    @Builder.Default
-    private Map<String, Boolean> endpointStatus = new HashMap<>();
-
-    private CompanyProfileDto profile;
-    private BalanceSheetDto balanceSheet;
-    private CashFlowDto cashFlow;
-    private IncomeStatementDto incomeStatement;
-
-    @Builder.Default
-    private List<ShareHoldingDto> shareHoldings = new ArrayList<>();
-    @Builder.Default
-    private List<KeyRatioDto> keyRatios = new ArrayList<>();
-    @Builder.Default
-    private List<CorporateActionDto> corporateActions = new ArrayList<>();
-    @Builder.Default
-    private List<CompetitorDto> competitors = new ArrayList<>();
+    private SectionResponse<CompanyProfileDto> profile;
+    private SectionResponse<BalanceSheetContainer> balanceSheet;
+    private SectionResponse<CashFlowContainer> cashFlow;
+    private SectionResponse<IncomeStatementContainer> incomeStatement;
+    private SectionResponse<List<ShareHoldingDto>> shareHoldings;
+    private SectionResponse<List<KeyRatioDto>> keyRatios;
+    private SectionResponse<List<CorporateActionDto>> corporateActions;
+    private SectionResponse<List<CompetitorDto>> competitors;
 
     @Builder.Default
     private Map<String, Object> analysis = new HashMap<>();
+}
+```
 
-    @Builder.Default
-    private List<Map<String, String>> errors = new ArrayList<>();
+```java
+// File: src/main/java/com/vega/fundamentals/dto/IncomeStatementContainer.java
+package com.vega.fundamentals.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class IncomeStatementContainer {
+    private IncomeStatementDto consolidated;
+    private IncomeStatementDto standalone;
 }
 ```
 
@@ -609,6 +656,61 @@ public class KeyRatioDto {
 ```
 
 ```java
+// File: src/main/java/com/vega/fundamentals/dto/SectionResponse.java
+package com.vega.fundamentals.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.Instant;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SectionResponse<T> {
+    private String status;
+    private Instant fetchedTs;
+    private Long ageMinutes;
+    private Boolean cacheHit;
+    private String errorCode;
+    private String message;
+    private T data;
+
+    public static <T> SectionResponse<T> success(T data) {
+        return SectionResponse.<T>builder()
+                .status("success")
+                .fetchedTs(Instant.now())
+                .data(data)
+                .build();
+    }
+
+    public static <T> SectionResponse<T> error(String errorCode, String message, T data) {
+        return SectionResponse.<T>builder()
+                .status("error")
+                .errorCode(errorCode)
+                .message(message)
+                .fetchedTs(Instant.now())
+                .data(data)
+                .build();
+    }
+
+    public static <T> SectionResponse<T> cached(T data, Instant fetchedTs) {
+        return SectionResponse.<T>builder()
+                .status("cached")
+                .fetchedTs(fetchedTs)
+                .cacheHit(true)
+                .data(data)
+                .build();
+    }
+}
+```
+
+```java
 // File: src/main/java/com/vega/fundamentals/dto/ShareHoldingDto.java
 package com.vega.fundamentals.dto;
 
@@ -661,16 +763,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.vega.fundamentals.client.UpstoxFundamentalClient;
 import com.vega.fundamentals.dto.*;
 import com.vega.fundamentals.endpoint.Endpoints;
+import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -691,32 +791,33 @@ public class FundamentalAggregatorService {
         stopWatch.start();
 
         InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
-        Map<String, Boolean> endpointStatus = new HashMap<>();
-        List<Map<String, String>> errors = new ArrayList<>();
 
-        CompletableFuture<CompanyProfileDto> profileFuture = fetchAsync(isin, Endpoints.PROFILE, 
-                new TypeReference<BaseResponseDto<CompanyProfileDto>>() {}, "profile", endpointStatus, errors);
+        CompletableFuture<SectionResponse<CompanyProfileDto>> profileFuture = fetchAsync(isin, Endpoints.PROFILE, 
+                new TypeReference<BaseResponseDto<CompanyProfileDto>>() {}, "profile");
 
-        CompletableFuture<BalanceSheetDto> balanceSheetFuture = fetchAsync(isin, Endpoints.BALANCE_SHEET, 
-                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet", endpointStatus, errors);
+        CompletableFuture<SectionResponse<BalanceSheetContainer>> balanceSheetFuture = fetchAsync(isin, Endpoints.BALANCE_SHEET, 
+                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet")
+                .thenApply(res -> wrapContainer(res, BalanceSheetContainer.class));
 
-        CompletableFuture<CashFlowDto> cashFlowFuture = fetchAsync(isin, Endpoints.CASH_FLOW, 
-                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow", endpointStatus, errors);
+        CompletableFuture<SectionResponse<CashFlowContainer>> cashFlowFuture = fetchAsync(isin, Endpoints.CASH_FLOW, 
+                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow")
+                .thenApply(res -> wrapContainer(res, CashFlowContainer.class));
 
-        CompletableFuture<IncomeStatementDto> incomeStatementFuture = fetchAsync(isin, Endpoints.INCOME_STATEMENT, 
-                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement", endpointStatus, errors);
+        CompletableFuture<SectionResponse<IncomeStatementContainer>> incomeStatementFuture = fetchAsync(isin, Endpoints.INCOME_STATEMENT, 
+                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement")
+                .thenApply(res -> wrapContainer(res, IncomeStatementContainer.class));
 
-        CompletableFuture<List<ShareHoldingDto>> shareHoldingsFuture = fetchAsync(isin, Endpoints.SHARE_HOLDINGS, 
-                new TypeReference<BaseResponseDto<List<ShareHoldingDto>>>() {}, "shareHoldings", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<ShareHoldingDto>>> shareHoldingsFuture = fetchAsync(isin, Endpoints.SHARE_HOLDINGS, 
+                new TypeReference<BaseResponseDto<List<ShareHoldingDto>>>() {}, "shareHoldings");
 
-        CompletableFuture<List<KeyRatioDto>> keyRatiosFuture = fetchAsync(isin, Endpoints.KEY_RATIOS, 
-                new TypeReference<BaseResponseDto<List<KeyRatioDto>>>() {}, "keyRatios", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<KeyRatioDto>>> keyRatiosFuture = fetchAsync(isin, Endpoints.KEY_RATIOS, 
+                new TypeReference<BaseResponseDto<List<KeyRatioDto>>>() {}, "keyRatios");
 
-        CompletableFuture<List<CorporateActionDto>> corporateActionsFuture = fetchAsync(isin, Endpoints.CORPORATE_ACTIONS, 
-                new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<CorporateActionDto>>> corporateActionsFuture = fetchAsync(isin, Endpoints.CORPORATE_ACTIONS, 
+                new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions");
 
-        CompletableFuture<List<CompetitorDto>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
-                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<CompetitorDto>>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
+                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors");
 
         CompletableFuture.allOf(
                 profileFuture, balanceSheetFuture, cashFlowFuture, incomeStatementFuture,
@@ -725,80 +826,77 @@ public class FundamentalAggregatorService {
 
         stopWatch.stop();
 
-        boolean allSucceeded = endpointStatus.values().stream().allMatch(b -> b);
-        String status = allSucceeded ? "success" : (errors.isEmpty() ? "success" : "partial_success");
+        SectionResponse<CompanyProfileDto> profileRes = profileFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null));
+        String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
 
         FundamentalSnapshot snapshot = FundamentalSnapshot.builder()
-                .status(status)
+                .schemaVersion("2.0")
+                .status("success") // Will refine based on section statuses if needed
                 .source("UPSTOX")
                 .isin(isin)
                 .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
+                .companyName(companyName)
                 .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
                 .generatedTs(Instant.now())
                 .requestDurationMs(stopWatch.getTotalTimeMillis())
                 .cacheHit(false)
-                .endpointStatus(endpointStatus)
-                .profile(profileFuture.getNow(null))
-                .balanceSheet(balanceSheetFuture.getNow(null))
-                .cashFlow(cashFlowFuture.getNow(null))
-                .incomeStatement(incomeStatementFuture.getNow(null))
-                .shareHoldings(shareHoldingsFuture.getNow(List.of()))
-                .keyRatios(keyRatiosFuture.getNow(List.of()))
-                .corporateActions(corporateActionsFuture.getNow(List.of()))
-                .competitors(competitorsFuture.getNow(List.of()))
-                .errors(errors)
+                .profile(profileRes)
+                .balanceSheet(balanceSheetFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .cashFlow(cashFlowFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .incomeStatement(incomeStatementFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .shareHoldings(shareHoldingsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .keyRatios(keyRatiosFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .corporateActions(corporateActionsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .competitors(competitorsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
                 .build();
+
+        // Refine overall status
+        boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
+                snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
+                snapshot.getCorporateActions(), snapshot.getCompetitors())
+                .stream().anyMatch(res -> "error".equals(res.getStatus()));
+        
+        if (anyError) {
+            snapshot.setStatus("partial_success");
+        }
 
         snapshot.setAnalysis(analyzer.analyze(snapshot));
 
         return snapshot;
     }
 
-    private <T> CompletableFuture<T> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, 
-                                               String name, Map<String, Boolean> endpointStatus, List<Map<String, String>> errors) {
+    private <T> CompletableFuture<SectionResponse<T>> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, String name) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
-                    setFetchedTs(result);
-                    synchronized (endpointStatus) {
-                        endpointStatus.put(name, true);
-                    }
-                    return result;
+                    return SectionResponseFactory.success(result);
                 } else {
-                    synchronized (endpointStatus) {
-                        endpointStatus.put(name, false);
-                    }
-                    Map<String, String> error = new HashMap<>();
-                    error.put("endpoint", name);
-                    error.put("message", "Failed to fetch data");
-                    synchronized (errors) {
-                        errors.add(error);
-                    }
-                    return null;
+                    return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
                 }
             } catch (Exception e) {
-                synchronized (endpointStatus) {
-                    endpointStatus.put(name, false);
-                }
-                Map<String, String> error = new HashMap<>();
-                error.put("endpoint", name);
-                error.put("message", e.getMessage());
-                synchronized (errors) {
-                    errors.add(error);
-                }
-                return null;
+                log.error("Error fetching {} for ISIN: {}: {}", name, isin, e.getMessage());
+                return SectionResponseFactory.error("EXCEPTION", e.getMessage(), null);
             }
         }, executor);
     }
 
-    private void setFetchedTs(Object result) {
-        if (result == null) return;
-        Instant now = Instant.now();
-        if (result instanceof CompanyProfileDto) ((CompanyProfileDto) result).setFetchedTs(now);
-        else if (result instanceof BalanceSheetDto) ((BalanceSheetDto) result).setFetchedTs(now);
-        else if (result instanceof CashFlowDto) ((CashFlowDto) result).setFetchedTs(now);
-        else if (result instanceof IncomeStatementDto) ((IncomeStatementDto) result).setFetchedTs(now);
+    @SuppressWarnings("unchecked")
+    private <T, C> SectionResponse<C> wrapContainer(SectionResponse<T> sectionRes, Class<C> containerClass) {
+        if ("error".equals(sectionRes.getStatus())) {
+            return SectionResponseFactory.error(sectionRes.getErrorCode(), sectionRes.getMessage(), null);
+        }
+        
+        try {
+            C container = containerClass.getDeclaredConstructor().newInstance();
+            if (sectionRes.getData() != null) {
+                // For now, mapping as consolidated by default as per current client behavior
+                containerClass.getMethod("setConsolidated", sectionRes.getData().getClass()).invoke(container, sectionRes.getData());
+            }
+            return SectionResponseFactory.success(container);
+        } catch (Exception e) {
+            return SectionResponseFactory.error("CONTAINER_ERROR", e.getMessage(), null);
+        }
     }
 }
 ```
@@ -841,8 +939,10 @@ public class FundamentalAnalyzer {
 // File: src/main/java/com/vega/fundamentals/service/FundamentalCacheService.java
 package com.vega.fundamentals.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vega.fundamentals.dto.*;
+import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -853,7 +953,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -884,37 +983,45 @@ public class FundamentalCacheService {
         }
 
         try {
-            File profileFile = isinDir.resolve("profile.json").toFile();
-            if (!profileFile.exists()) return Optional.empty();
-            
-            CompanyProfileDto profile = objectMapper.readValue(profileFile, CompanyProfileDto.class);
-            if (!isFresh(profile.getFetchedTs())) {
-                log.info("Cache expired for ISIN: {}", isin);
+            SectionResponse<CompanyProfileDto> profileRes = readSection(isinDir, "profile.json", new TypeReference<SectionResponse<CompanyProfileDto>>() {});
+            if (profileRes == null || !isFresh(profileRes.getFetchedTs())) {
+                log.info("Cache expired or missing for ISIN: {}", isin);
                 return Optional.empty();
             }
 
             InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
+            String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
 
             FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
+                    .schemaVersion("2.0")
                     .isin(isin)
                     .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
+                    .companyName(companyName)
                     .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
                     .cacheHit(true)
                     .status("success")
                     .source("UPSTOX")
-                    .generatedTs(profile.getFetchedTs())
-                    .profile(profile);
+                    .generatedTs(profileRes.getFetchedTs())
+                    .profile(SectionResponseFactory.cached(profileRes.getData(), profileRes.getFetchedTs()));
 
-            readSection(isinDir, "balanceSheet.json", BalanceSheetDto.class).ifPresent(builder::balanceSheet);
-            readSection(isinDir, "cashFlow.json", CashFlowDto.class).ifPresent(builder::cashFlow);
-            readSection(isinDir, "incomeStatement.json", IncomeStatementDto.class).ifPresent(builder::incomeStatement);
+            builder.balanceSheet(readAndWrapCached(isinDir, "balanceSheet.json", new TypeReference<SectionResponse<BalanceSheetContainer>>() {}));
+            builder.cashFlow(readAndWrapCached(isinDir, "cashFlow.json", new TypeReference<SectionResponse<CashFlowContainer>>() {}));
+            builder.incomeStatement(readAndWrapCached(isinDir, "incomeStatement.json", new TypeReference<SectionResponse<IncomeStatementContainer>>() {}));
             
-            builder.shareHoldings(readListSection(isinDir, "shareHoldings.json", ShareHoldingDto.class));
-            builder.keyRatios(readListSection(isinDir, "keyRatios.json", KeyRatioDto.class));
-            builder.corporateActions(readListSection(isinDir, "corporateActions.json", CorporateActionDto.class));
-            builder.competitors(readListSection(isinDir, "competitors.json", CompetitorDto.class));
+            builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
+            builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
+            builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
+            builder.competitors(readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {}));
 
             FundamentalSnapshot snapshot = builder.build();
+            
+            // Refine status
+            boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
+                snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
+                snapshot.getCorporateActions(), snapshot.getCompetitors())
+                .stream().anyMatch(res -> "error".equals(res.getStatus()));
+            if (anyError) snapshot.setStatus("partial_success");
+
             snapshot.setAnalysis(analyzer.analyze(snapshot));
 
             log.info("Cache hit for ISIN: {}", isin);
@@ -930,11 +1037,10 @@ public class FundamentalCacheService {
         try {
             Files.createDirectories(isinDir);
             
-            if (snapshot.getProfile() != null) writeSection(isinDir, "profile.json", snapshot.getProfile());
-            if (snapshot.getBalanceSheet() != null) writeSection(isinDir, "balanceSheet.json", snapshot.getBalanceSheet());
-            if (snapshot.getCashFlow() != null) writeSection(isinDir, "cashFlow.json", snapshot.getCashFlow());
-            if (snapshot.getIncomeStatement() != null) writeSection(isinDir, "incomeStatement.json", snapshot.getIncomeStatement());
-            
+            writeSection(isinDir, "profile.json", snapshot.getProfile());
+            writeSection(isinDir, "balanceSheet.json", snapshot.getBalanceSheet());
+            writeSection(isinDir, "cashFlow.json", snapshot.getCashFlow());
+            writeSection(isinDir, "incomeStatement.json", snapshot.getIncomeStatement());
             writeSection(isinDir, "shareHoldings.json", snapshot.getShareHoldings());
             writeSection(isinDir, "keyRatios.json", snapshot.getKeyRatios());
             writeSection(isinDir, "corporateActions.json", snapshot.getCorporateActions());
@@ -946,24 +1052,29 @@ public class FundamentalCacheService {
         }
     }
 
-    private <T> Optional<T> readSection(Path dir, String filename, Class<T> clazz) throws IOException {
+    private <T> T readSection(Path dir, String filename, TypeReference<T> type) throws IOException {
         File file = dir.resolve(filename).toFile();
         if (file.exists()) {
-            return Optional.of(objectMapper.readValue(file, clazz));
+            return objectMapper.readValue(file, type);
         }
-        return Optional.empty();
+        return null;
     }
 
-    private <T> List<T> readListSection(Path dir, String filename, Class<T> clazz) throws IOException {
-        File file = dir.resolve(filename).toFile();
-        if (file.exists()) {
-            return objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+    private <T> SectionResponse<T> readAndWrapCached(Path dir, String filename, TypeReference<SectionResponse<T>> type) throws IOException {
+        SectionResponse<T> res = readSection(dir, filename, type);
+        if (res != null) {
+            if ("success".equals(res.getStatus()) || "cached".equals(res.getStatus())) {
+                return SectionResponseFactory.cached(res.getData(), res.getFetchedTs());
+            }
+            return res; // Preserve error status from cache
         }
-        return new ArrayList<>();
+        return SectionResponseFactory.error("CACHE_MISS", "Section missing in cache", null);
     }
 
     private void writeSection(Path dir, String filename, Object data) throws IOException {
-        objectMapper.writeValue(dir.resolve(filename).toFile(), data);
+        if (data != null) {
+            objectMapper.writeValue(dir.resolve(filename).toFile(), data);
+        }
     }
 
     private boolean isFresh(Instant ts) {
@@ -1020,6 +1131,7 @@ public class InstrumentService {
                     if (isin != null && !isin.isEmpty()) {
                         InstrumentInfo info = new InstrumentInfo();
                         info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
+                        info.setName(node.path("name").asText(null));
                         info.setExchange(node.path("exchange").asText());
                         isinMap.put(isin, info);
                     }
@@ -1038,6 +1150,7 @@ public class InstrumentService {
     @Data
     public static class InstrumentInfo {
         private String symbol;
+        private String name;
         private String exchange;
     }
 }
@@ -1087,10 +1200,58 @@ public class GlobalExceptionHandler {
 }
 ```
 
+```java
+// File: src/main/java/com/vega/fundamentals/util/SectionResponseFactory.java
+package com.vega.fundamentals.util;
+
+import com.vega.fundamentals.dto.SectionResponse;
+import java.time.Duration;
+import java.time.Instant;
+
+public class SectionResponseFactory {
+
+    public static <T> SectionResponse<T> success(T data) {
+        return SectionResponse.<T>builder()
+                .status("success")
+                .fetchedTs(Instant.now())
+                .data(data)
+                .build();
+    }
+
+    public static <T> SectionResponse<T> error(String errorCode, String message, T data) {
+        return SectionResponse.<T>builder()
+                .status("error")
+                .errorCode(errorCode)
+                .message(message)
+                .fetchedTs(Instant.now())
+                .data(data)
+                .build();
+    }
+
+    public static <T> SectionResponse<T> cached(T data, Instant fetchedTs) {
+        SectionResponse<T> response = SectionResponse.<T>builder()
+                .status("cached")
+                .fetchedTs(fetchedTs)
+                .cacheHit(true)
+                .data(data)
+                .build();
+        
+        if (fetchedTs != null) {
+            response.setAgeMinutes(Duration.between(fetchedTs, Instant.now()).toMinutes());
+        }
+        
+        return response;
+    }
+}
+```
+
 ```yaml
 // File: src/main/resources/application.yml
 server:
   port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json
 
 spring:
   application:
@@ -1108,12 +1269,6 @@ logging:
 upstox:
   env-path: /root/fundamentals/auth/upstox/auth.upstox.json
   instrument-path: /root/fundamentals/data/instruments/upstox/upstox.json
-
-server:
-  port: 8080
-  compression:
-    enabled: true
-    mime-types: application/json
 
 storage:
   cache:

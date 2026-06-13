@@ -4,16 +4,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.vega.fundamentals.client.UpstoxFundamentalClient;
 import com.vega.fundamentals.dto.*;
 import com.vega.fundamentals.endpoint.Endpoints;
+import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -34,32 +32,33 @@ public class FundamentalAggregatorService {
         stopWatch.start();
 
         InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
-        Map<String, Boolean> endpointStatus = new HashMap<>();
-        List<Map<String, String>> errors = new ArrayList<>();
 
-        CompletableFuture<CompanyProfileDto> profileFuture = fetchAsync(isin, Endpoints.PROFILE, 
-                new TypeReference<BaseResponseDto<CompanyProfileDto>>() {}, "profile", endpointStatus, errors);
+        CompletableFuture<SectionResponse<CompanyProfileDto>> profileFuture = fetchAsync(isin, Endpoints.PROFILE, 
+                new TypeReference<BaseResponseDto<CompanyProfileDto>>() {}, "profile");
 
-        CompletableFuture<BalanceSheetDto> balanceSheetFuture = fetchAsync(isin, Endpoints.BALANCE_SHEET, 
-                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet", endpointStatus, errors);
+        CompletableFuture<SectionResponse<BalanceSheetContainer>> balanceSheetFuture = fetchAsync(isin, Endpoints.BALANCE_SHEET, 
+                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet")
+                .thenApply(res -> wrapContainer(res, BalanceSheetContainer.class));
 
-        CompletableFuture<CashFlowDto> cashFlowFuture = fetchAsync(isin, Endpoints.CASH_FLOW, 
-                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow", endpointStatus, errors);
+        CompletableFuture<SectionResponse<CashFlowContainer>> cashFlowFuture = fetchAsync(isin, Endpoints.CASH_FLOW, 
+                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow")
+                .thenApply(res -> wrapContainer(res, CashFlowContainer.class));
 
-        CompletableFuture<IncomeStatementDto> incomeStatementFuture = fetchAsync(isin, Endpoints.INCOME_STATEMENT, 
-                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement", endpointStatus, errors);
+        CompletableFuture<SectionResponse<IncomeStatementContainer>> incomeStatementFuture = fetchAsync(isin, Endpoints.INCOME_STATEMENT, 
+                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement")
+                .thenApply(res -> wrapContainer(res, IncomeStatementContainer.class));
 
-        CompletableFuture<List<ShareHoldingDto>> shareHoldingsFuture = fetchAsync(isin, Endpoints.SHARE_HOLDINGS, 
-                new TypeReference<BaseResponseDto<List<ShareHoldingDto>>>() {}, "shareHoldings", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<ShareHoldingDto>>> shareHoldingsFuture = fetchAsync(isin, Endpoints.SHARE_HOLDINGS, 
+                new TypeReference<BaseResponseDto<List<ShareHoldingDto>>>() {}, "shareHoldings");
 
-        CompletableFuture<List<KeyRatioDto>> keyRatiosFuture = fetchAsync(isin, Endpoints.KEY_RATIOS, 
-                new TypeReference<BaseResponseDto<List<KeyRatioDto>>>() {}, "keyRatios", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<KeyRatioDto>>> keyRatiosFuture = fetchAsync(isin, Endpoints.KEY_RATIOS, 
+                new TypeReference<BaseResponseDto<List<KeyRatioDto>>>() {}, "keyRatios");
 
-        CompletableFuture<List<CorporateActionDto>> corporateActionsFuture = fetchAsync(isin, Endpoints.CORPORATE_ACTIONS, 
-                new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<CorporateActionDto>>> corporateActionsFuture = fetchAsync(isin, Endpoints.CORPORATE_ACTIONS, 
+                new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions");
 
-        CompletableFuture<List<CompetitorDto>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
-                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors", endpointStatus, errors);
+        CompletableFuture<SectionResponse<List<CompetitorDto>>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
+                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors");
 
         CompletableFuture.allOf(
                 profileFuture, balanceSheetFuture, cashFlowFuture, incomeStatementFuture,
@@ -68,79 +67,76 @@ public class FundamentalAggregatorService {
 
         stopWatch.stop();
 
-        boolean allSucceeded = endpointStatus.values().stream().allMatch(b -> b);
-        String status = allSucceeded ? "success" : (errors.isEmpty() ? "success" : "partial_success");
+        SectionResponse<CompanyProfileDto> profileRes = profileFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null));
+        String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
 
         FundamentalSnapshot snapshot = FundamentalSnapshot.builder()
-                .status(status)
+                .schemaVersion("2.0")
+                .status("success") // Will refine based on section statuses if needed
                 .source("UPSTOX")
                 .isin(isin)
                 .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
+                .companyName(companyName)
                 .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
                 .generatedTs(Instant.now())
                 .requestDurationMs(stopWatch.getTotalTimeMillis())
                 .cacheHit(false)
-                .endpointStatus(endpointStatus)
-                .profile(profileFuture.getNow(null))
-                .balanceSheet(balanceSheetFuture.getNow(null))
-                .cashFlow(cashFlowFuture.getNow(null))
-                .incomeStatement(incomeStatementFuture.getNow(null))
-                .shareHoldings(shareHoldingsFuture.getNow(List.of()))
-                .keyRatios(keyRatiosFuture.getNow(List.of()))
-                .corporateActions(corporateActionsFuture.getNow(List.of()))
-                .competitors(competitorsFuture.getNow(List.of()))
-                .errors(errors)
+                .profile(profileRes)
+                .balanceSheet(balanceSheetFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .cashFlow(cashFlowFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .incomeStatement(incomeStatementFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
+                .shareHoldings(shareHoldingsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .keyRatios(keyRatiosFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .corporateActions(corporateActionsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .competitors(competitorsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
                 .build();
+
+        // Refine overall status
+        boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
+                snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
+                snapshot.getCorporateActions(), snapshot.getCompetitors())
+                .stream().anyMatch(res -> "error".equals(res.getStatus()));
+        
+        if (anyError) {
+            snapshot.setStatus("partial_success");
+        }
 
         snapshot.setAnalysis(analyzer.analyze(snapshot));
 
         return snapshot;
     }
 
-    private <T> CompletableFuture<T> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, 
-                                               String name, Map<String, Boolean> endpointStatus, List<Map<String, String>> errors) {
+    private <T> CompletableFuture<SectionResponse<T>> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, String name) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
-                    setFetchedTs(result);
-                    synchronized (endpointStatus) {
-                        endpointStatus.put(name, true);
-                    }
-                    return result;
+                    return SectionResponseFactory.success(result);
                 } else {
-                    synchronized (endpointStatus) {
-                        endpointStatus.put(name, false);
-                    }
-                    Map<String, String> error = new HashMap<>();
-                    error.put("endpoint", name);
-                    error.put("message", "Failed to fetch data");
-                    synchronized (errors) {
-                        errors.add(error);
-                    }
-                    return null;
+                    return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
                 }
             } catch (Exception e) {
-                synchronized (endpointStatus) {
-                    endpointStatus.put(name, false);
-                }
-                Map<String, String> error = new HashMap<>();
-                error.put("endpoint", name);
-                error.put("message", e.getMessage());
-                synchronized (errors) {
-                    errors.add(error);
-                }
-                return null;
+                log.error("Error fetching {} for ISIN: {}: {}", name, isin, e.getMessage());
+                return SectionResponseFactory.error("EXCEPTION", e.getMessage(), null);
             }
         }, executor);
     }
 
-    private void setFetchedTs(Object result) {
-        if (result == null) return;
-        Instant now = Instant.now();
-        if (result instanceof CompanyProfileDto) ((CompanyProfileDto) result).setFetchedTs(now);
-        else if (result instanceof BalanceSheetDto) ((BalanceSheetDto) result).setFetchedTs(now);
-        else if (result instanceof CashFlowDto) ((CashFlowDto) result).setFetchedTs(now);
-        else if (result instanceof IncomeStatementDto) ((IncomeStatementDto) result).setFetchedTs(now);
+    @SuppressWarnings("unchecked")
+    private <T, C> SectionResponse<C> wrapContainer(SectionResponse<T> sectionRes, Class<C> containerClass) {
+        if ("error".equals(sectionRes.getStatus())) {
+            return SectionResponseFactory.error(sectionRes.getErrorCode(), sectionRes.getMessage(), null);
+        }
+        
+        try {
+            C container = containerClass.getDeclaredConstructor().newInstance();
+            if (sectionRes.getData() != null) {
+                // For now, mapping as consolidated by default as per current client behavior
+                containerClass.getMethod("setConsolidated", sectionRes.getData().getClass()).invoke(container, sectionRes.getData());
+            }
+            return SectionResponseFactory.success(container);
+        } catch (Exception e) {
+            return SectionResponseFactory.error("CONTAINER_ERROR", e.getMessage(), null);
+        }
     }
 }
