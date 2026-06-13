@@ -1,0 +1,24 @@
+# Maven
+target/
+*.class
+
+# Logs
+logs/
+*.log
+
+# Credentials and sensitive data
+auth/upstox/auth.upstox.json
+auth/upstox/upstox.env
+
+# Cache and temporary data
+storage/cache/
+*.json.bak
+
+# Large generated files
+fundamentals.md
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo

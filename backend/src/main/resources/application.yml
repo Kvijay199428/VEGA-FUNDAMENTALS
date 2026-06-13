@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vega.fundamentals
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  file:
+    name: logs/vega-fundamentals.log
+  level:
+    com.vega.fundamentals: INFO
+
+upstox:
+  env-path: /root/fundamentals/auth/upstox/auth.upstox.json
+  instrument-path: /root/fundamentals/data/instruments/upstox/upstox.json
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json
+
+storage:
+  cache:
+    fundamentals-path: /root/fundamentals/storage/cache/fundamentals/
