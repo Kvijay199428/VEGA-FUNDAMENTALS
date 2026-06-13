@@ -16,7 +16,7 @@ data/
 storage/
 
 # Large generated files
-fundamentals.md
+# fundamentals.md
 
 # IDE specific files
 .idea/
