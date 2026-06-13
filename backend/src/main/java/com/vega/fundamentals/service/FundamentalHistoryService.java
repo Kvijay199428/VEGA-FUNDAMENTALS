@@ -11,6 +11,7 @@ import com.vega.fundamentals.dto.HistoryRecord;
 import com.vega.fundamentals.dto.IsinMetadata;
 import com.vega.fundamentals.dto.SectionResponse;
 import com.vega.fundamentals.model.FundamentalEndpoint;
+import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,11 @@ import java.util.concurrent.locks.ReentrantLock;
 @Service
 @Slf4j
 public class FundamentalHistoryService {
+
+    private static final java.util.Set<String> VOLATILE_FIELDS = java.util.Set.of(
+            "fetchedTs", "generatedTs", "cacheHit", "ageMinutes",
+            "requestDurationMs", "status", "message", "errorCode"
+    );
 
     private final String historyPath;
     private final ObjectMapper objectMapper;
@@ -117,16 +123,16 @@ public class FundamentalHistoryService {
                     .data(dataNode)
                     .build();
 
-            appendHistory(Path.of(historyPath, isin), endpoint, record);
+            long offset = appendHistory(Path.of(historyPath, isin), endpoint, record);
 
             // Update index and metadata
-            index.put(endpoint.getKey(), new HistoryIndexEntry(currentHash, nextVersion, record.getTs()));
+            index.put(endpoint.getKey(), new HistoryIndexEntry(currentHash, nextVersion, record.getTs(), offset));
             saveIndex(indexFile, index);
             
             metadata.getEndpointVersions().put(endpoint.getKey(), nextVersion);
             metadata.setLastUpdatedTs(record.getTs());
 
-            log.info("Archived v{} of {} for ISIN: {}", nextVersion, endpoint.getKey(), isin);
+            log.info("Archived v{} of {} for ISIN: {} (offset: {})", nextVersion, endpoint.getKey(), isin, offset);
 
         } catch (Exception e) {
             log.error("Failed to archive {} for ISIN {}: {}", endpoint.getKey(), isin, e.getMessage());
@@ -170,9 +176,10 @@ public class FundamentalHistoryService {
         Map<String, HistoryIndexEntry> index = new HashMap<>();
         
         for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
-            HistoryRecord latest = readLatestRecord(isin, endpoint);
-            if (latest != null) {
-                index.put(endpoint.getKey(), new HistoryIndexEntry(latest.getHash(), latest.getVersion(), latest.getTs()));
+            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
+            if (latestInfo != null) {
+                HistoryRecord record = latestInfo.getRecord();
+                index.put(endpoint.getKey(), new HistoryIndexEntry(record.getHash(), record.getVersion(), record.getTs(), latestInfo.getOffset()));
             }
         }
 
@@ -189,7 +196,6 @@ public class FundamentalHistoryService {
     private JsonNode normalize(JsonNode node) {
         if (node == null) return null;
         if (node.isArray()) {
-            // Handle lists of objects (like shareholdings, competitors)
             com.fasterxml.jackson.databind.node.ArrayNode normalizedArray = objectMapper.createArrayNode();
             for (JsonNode item : node) {
                 normalizedArray.add(normalize(item));
@@ -199,17 +205,8 @@ public class FundamentalHistoryService {
         if (!node.isObject()) return node;
         
         ObjectNode normalized = node.deepCopy();
-        // Remove common volatile fields
-        normalized.remove("fetchedTs");
-        normalized.remove("generatedTs");
-        normalized.remove("cacheHit");
-        normalized.remove("ageMinutes");
-        normalized.remove("requestDurationMs");
-        normalized.remove("status");
-        normalized.remove("message");
-        normalized.remove("errorCode");
+        VOLATILE_FIELDS.forEach(normalized::remove);
         
-        // Recursively normalize children to catch leaked timestamps in nested objects
         java.util.Iterator<Map.Entry<String, JsonNode>> fields = normalized.fields();
         while (fields.hasNext()) {
             Map.Entry<String, JsonNode> field = fields.next();
@@ -246,12 +243,15 @@ public class FundamentalHistoryService {
         objectMapper.writeValue(indexFile, index);
     }
 
-    private void appendHistory(Path dir, FundamentalEndpoint endpoint, HistoryRecord record) throws IOException {
+    private long appendHistory(Path dir, FundamentalEndpoint endpoint, HistoryRecord record) throws IOException {
         File historyFile = dir.resolve(endpoint.getFilename()).toFile();
+        long offset = historyFile.exists() ? historyFile.length() : 0;
+        
         String line = objectMapper.writeValueAsString(record);
         try (FileWriter fw = new FileWriter(historyFile, true)) {
             fw.write(line + "\n");
         }
+        return offset;
     }
 
     public Optional<FundamentalSnapshot> reconstructSnapshot(String isin) {
@@ -295,7 +295,17 @@ public class FundamentalHistoryService {
 
     @SuppressWarnings("unchecked")
     private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint) {
-        HistoryRecord record = readLatestRecord(isin, endpoint);
+        File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
+        Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
+        HistoryIndexEntry indexEntry = index.get(endpoint.getKey());
+
+        HistoryRecord record;
+        if (indexEntry != null && indexEntry.getOffset() >= 0) {
+            record = readRecordAtOffset(isin, endpoint, indexEntry.getOffset());
+        } else {
+            record = readLatestRecord(isin, endpoint);
+        }
+
         if (record == null) {
             return (SectionResponse<T>) SectionResponse.builder()
                     .status("error")
@@ -306,7 +316,7 @@ public class FundamentalHistoryService {
 
         try {
             T data = (T) objectMapper.convertValue(record.getData(), endpoint.getDataType());
-            return SectionResponse.cached(data, record.getTs());
+            return SectionResponseFactory.cached(data, record.getTs());
         } catch (Exception e) {
             log.error("Failed to deserialize {} for ISIN {}: {}", endpoint.getKey(), isin, e.getMessage());
             return (SectionResponse<T>) SectionResponse.builder()
@@ -318,27 +328,45 @@ public class FundamentalHistoryService {
     }
 
     public HistoryRecord readLatestRecord(String isin, FundamentalEndpoint endpoint) {
+        LatestRecordInfo info = readLatestRecordDetailed(isin, endpoint);
+        return info != null ? info.getRecord() : null;
+    }
+
+    private HistoryRecord readRecordAtOffset(String isin, FundamentalEndpoint endpoint, long offset) {
+        Path historyFile = Path.of(historyPath, isin, endpoint.getFilename());
+        if (!Files.exists(historyFile)) return null;
+
+        try (RandomAccessFile raf = new RandomAccessFile(historyFile.toFile(), "r")) {
+            if (offset >= raf.length()) return null;
+            raf.seek(offset);
+            String line = raf.readLine();
+            if (line != null) {
+                return objectMapper.readValue(line, HistoryRecord.class);
+            }
+        } catch (IOException e) {
+            log.error("Failed to read record at offset {} for {} (ISIN: {}): {}", offset, endpoint.getKey(), isin, e.getMessage());
+        }
+        return null;
+    }
+
+    private LatestRecordInfo readLatestRecordDetailed(String isin, FundamentalEndpoint endpoint) {
         Path historyFile = Path.of(historyPath, isin, endpoint.getFilename());
         if (!Files.exists(historyFile)) return null;
 
         try {
-            String lastLine = readLastLine(historyFile.toFile());
-            if (lastLine != null) {
-                return objectMapper.readValue(lastLine, HistoryRecord.class);
-            }
+            return readLastLineDetailed(historyFile.toFile());
         } catch (IOException e) {
             log.error("Failed to read latest record for {} (ISIN: {}): {}", endpoint.getKey(), isin, e.getMessage());
         }
         return null;
     }
 
-    private String readLastLine(File file) throws IOException {
+    private LatestRecordInfo readLastLineDetailed(File file) throws IOException {
         try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
             long length = raf.length();
             if (length <= 0) return null;
 
             long pos = length - 1;
-            // Skip trailing newlines
             raf.seek(pos);
             while (pos > 0 && raf.readByte() == '\n') {
                 pos--;
@@ -348,13 +376,16 @@ public class FundamentalHistoryService {
             while (pos >= 0) {
                 raf.seek(pos);
                 if (pos == 0 || raf.readByte() == '\n') {
-                    if (pos > 0) raf.seek(pos + 1);
-                    else raf.seek(0);
+                    long offset = (pos == 0) ? 0 : pos + 1;
+                    raf.seek(offset);
 
-                    byte[] bytes = new byte[(int) (length - (pos == 0 ? 0 : pos + 1))];
+                    byte[] bytes = new byte[(int) (length - offset)];
                     raf.readFully(bytes);
                     String line = new String(bytes, StandardCharsets.UTF_8).trim();
-                    return line.isEmpty() ? null : line;
+                    if (line.isEmpty()) return null;
+
+                    HistoryRecord record = objectMapper.readValue(line, HistoryRecord.class);
+                    return new LatestRecordInfo(record, offset);
                 }
                 pos--;
             }
@@ -369,5 +400,13 @@ public class FundamentalHistoryService {
         private String hash;
         private long version;
         private Instant ts;
+        private long offset = -1;
+    }
+
+    @lombok.Data
+    @lombok.AllArgsConstructor
+    private static class LatestRecordInfo {
+        private HistoryRecord record;
+        private long offset;
     }
 }

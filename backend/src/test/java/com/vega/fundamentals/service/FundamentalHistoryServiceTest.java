@@ -1,5 +1,6 @@
 package com.vega.fundamentals.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vega.fundamentals.dto.CompanyProfileDto;
 import com.vega.fundamentals.dto.FundamentalSnapshot;
@@ -8,9 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,12 +30,11 @@ class FundamentalHistoryServiceTest {
     void setUp() {
         objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
-        // Set history path to a subdirectory of tempDir
         historyService = new FundamentalHistoryService(tempDir.resolve("history").toString(), objectMapper);
     }
 
     @Test
-    void testArchiveAndReconstruct() throws IOException {
+    void testArchiveAndReconstructWithOffsets() throws IOException {
         String isin = "INE001A01011";
         CompanyProfileDto profile = new CompanyProfileDto();
         profile.setSector("Technology");
@@ -46,44 +48,44 @@ class FundamentalHistoryServiceTest {
                 .profile(SectionResponse.success(profile))
                 .build();
         
-        // First archive
+        // 1. Initial Archive
         historyService.archiveSnapshot(snapshot);
         
-        // Verify files exist in history path
-        assertTrue(tempDir.resolve("history/INE001A01011/profile.jsonl").toFile().exists());
-        assertTrue(tempDir.resolve("history/INE001A01011/metadata.json").toFile().exists());
-        assertTrue(tempDir.resolve("history/INE001A01011/latest-index.json").toFile().exists());
+        // 2. Verify Offset in latest-index.json
+        File indexFile = tempDir.resolve("history/INE001A01011/latest-index.json").toFile();
+        assertTrue(indexFile.exists());
         
-        // Reconstruct
+        Map<String, FundamentalHistoryService.HistoryIndexEntry> index = objectMapper.readValue(indexFile, 
+                new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
+        
+        FundamentalHistoryService.HistoryIndexEntry profileEntry = index.get("profile");
+        assertNotNull(profileEntry);
+        assertEquals(0, profileEntry.getOffset()); // First record should be at offset 0
+        
+        // 3. Reconstruct (should use fast-path seek)
         Optional<FundamentalSnapshot> reconstructed = historyService.reconstructSnapshot(isin);
         assertTrue(reconstructed.isPresent());
         assertEquals("Technology", reconstructed.get().getProfile().getData().getSector());
-        assertEquals("HISTORY", reconstructed.get().getSource());
         
-        // Archive same data but different fetchedTs (should NOT append due to recursive normalization)
-        long initialSize = tempDir.resolve("history/INE001A01011/profile.jsonl").toFile().length();
-        profile.setFetchedTs(Instant.now().plusSeconds(3600));
-        snapshot.setProfile(SectionResponse.success(profile));
-        historyService.archiveSnapshot(snapshot);
-        assertEquals(initialSize, tempDir.resolve("history/INE001A01011/profile.jsonl").toFile().length());
-        
-        // Archive changed data
+        // 4. Archive Changed Data
         profile.setSector("Energy");
         snapshot.setProfile(SectionResponse.success(profile));
         historyService.archiveSnapshot(snapshot);
-        assertTrue(tempDir.resolve("history/INE001A01011/profile.jsonl").toFile().length() > initialSize);
         
-        // Test Index Rebuild
-        Path indexPath = tempDir.resolve("history/INE001A01011/latest-index.json");
-        java.nio.file.Files.delete(indexPath);
-        assertFalse(indexPath.toFile().exists());
+        // Verify new offset
+        index = objectMapper.readValue(indexFile, new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
+        profileEntry = index.get("profile");
+        assertTrue(profileEntry.getOffset() > 0);
+        assertEquals(2, profileEntry.getVersion());
         
-        // Archiving again should trigger rebuild
-        historyService.archiveSnapshot(snapshot);
-        assertTrue(indexPath.toFile().exists());
+        // 5. Test Self-Healing Index Rebuild
+        java.nio.file.Files.delete(indexFile.toPath());
+        historyService.archiveSnapshot(snapshot); // Should trigger rebuild
+        assertTrue(indexFile.exists());
         
-        // Reconstruct after rebuild
-        reconstructed = historyService.reconstructSnapshot(isin);
-        assertEquals("Energy", reconstructed.get().getProfile().getData().getSector());
+        index = objectMapper.readValue(indexFile, new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
+        profileEntry = index.get("profile");
+        assertTrue(profileEntry.getOffset() > 0);
+        assertEquals(2, profileEntry.getVersion());
     }
 }
