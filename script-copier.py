@@ -23,9 +23,7 @@ if sys.stdout.encoding.lower() != 'utf-8':
 # ── Configuration ──────────────────────────────────────────────────────────────
 # Updated to match the current Linux workspace (/root/fundamentals)
 SOURCE_DIR = [
-    Path("/root/fundamentals/backend/src/main/java"),
-    Path("/root/fundamentals/backend/src/main/resources"),
-    Path("/root/fundamentals/auth/upstox"),
+    Path("/root/fundamentals/backend"),
 ]
 
 # Directories to exclude from scanning

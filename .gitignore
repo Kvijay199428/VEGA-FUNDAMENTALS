@@ -1,4 +1,4 @@
-# Maven
+# Maven build artifacts
 target/
 *.class
 
@@ -6,18 +6,19 @@ target/
 logs/
 *.log
 
-# Credentials and sensitive data
-auth/upstox/auth.upstox.json
-auth/upstox/upstox.env
+# Sensitive credentials and local environment data
+auth/
 
-# Cache and temporary data
-storage/cache/
-*.json.bak
+# Large instrument data files
+data/
+
+# Local cache and temporary storage
+storage/
 
 # Large generated files
 fundamentals.md
 
-# IDEs
+# IDE specific files
 .idea/
 .vscode/
 *.swp
