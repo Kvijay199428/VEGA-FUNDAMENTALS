@@ -45,6 +45,7 @@ public class InstrumentService {
                         info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
                         info.setName(node.path("name").asText(null));
                         info.setExchange(node.path("exchange").asText());
+                        info.setInstrumentKey(node.path("instrument_key").asText(null));
                         isinMap.put(isin, info);
                     }
                 }
@@ -59,10 +60,22 @@ public class InstrumentService {
         return isinMap.get(isin);
     }
 
+    public String getCompetitorInstrumentKey(String isin) {
+        InstrumentInfo info = isinMap.get(isin);
+        if (info == null) {
+            return null;
+        }
+        if (info.getInstrumentKey() != null && !info.getInstrumentKey().isBlank()) {
+            return info.getInstrumentKey();
+        }
+        return info.getExchange() + "|" + isin;
+    }
+
     @Data
     public static class InstrumentInfo {
         private String symbol;
         private String name;
         private String exchange;
+        private String instrumentKey;
     }
 }

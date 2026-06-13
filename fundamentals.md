@@ -131,14 +131,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vega.fundamentals.config.UpstoxCredentialManager;
 import com.vega.fundamentals.dto.BaseResponseDto;
 import com.vega.fundamentals.endpoint.Endpoints;
+import com.vega.fundamentals.service.InstrumentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
 @Component
@@ -148,18 +151,33 @@ public class UpstoxFundamentalClient {
     private final HttpClient httpClient;
     private final UpstoxCredentialManager credentialManager;
     private final ObjectMapper objectMapper;
+    private final InstrumentService instrumentService;
 
-    public UpstoxFundamentalClient(UpstoxCredentialManager credentialManager, ObjectMapper objectMapper) {
+    public UpstoxFundamentalClient(UpstoxCredentialManager credentialManager, ObjectMapper objectMapper, InstrumentService instrumentService) {
         this.httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .connectTimeout(Duration.ofSeconds(10))
                 .build();
         this.credentialManager = credentialManager;
         this.objectMapper = objectMapper;
+        this.instrumentService = instrumentService;
     }
 
     public <T> T fetch(String isin, String resource, TypeReference<BaseResponseDto<T>> typeReference) {
-        String url = Endpoints.getUrl(isin, resource);
+        String identifier = isin;
+
+        if (Endpoints.COMPETITORS.equals(resource)) {
+            String instrumentKey = instrumentService.getCompetitorInstrumentKey(isin);
+            if (instrumentKey != null) {
+                identifier = instrumentKey;
+            } else {
+                // Fallback if not found in map
+                identifier = "NSE_EQ|" + isin;
+            }
+        }
+
+        String encodedIdentifier = URLEncoder.encode(identifier, StandardCharsets.UTF_8);
+        String url = Endpoints.getUrl(encodedIdentifier, resource);
         String token = credentialManager.getAccessToken();
 
         if (token == null) {
@@ -181,11 +199,11 @@ public class UpstoxFundamentalClient {
                 BaseResponseDto<T> baseResponse = objectMapper.readValue(response.body(), typeReference);
                 return baseResponse.getData();
             } else {
-                log.error("Failed to fetch {} for ISIN: {}. Status code: {}. Body: {}", 
-                        resource, isin, response.statusCode(), response.body());
+                log.error("Failed to fetch {} for identifier: {}. Status code: {}. Body: {}", 
+                        resource, identifier, response.statusCode(), response.body());
             }
         } catch (IOException | InterruptedException e) {
-            log.error("Error fetching {} for ISIN: {}: {}", resource, isin, e.getMessage());
+            log.error("Error fetching {} for identifier: {}: {}", resource, identifier, e.getMessage());
             if (e instanceof InterruptedException) {
                 Thread.currentThread().interrupt();
             }
@@ -749,8 +767,8 @@ public class Endpoints {
     public static final String CORPORATE_ACTIONS = "corporate-actions";
     public static final String COMPETITORS = "competitors";
 
-    public static String getUrl(String isin, String resource) {
-        return BASE_URL + isin + "/" + resource;
+    public static String getUrl(String identifier, String resource) {
+        return BASE_URL + identifier + "/" + resource;
     }
 }
 ```
@@ -1133,6 +1151,7 @@ public class InstrumentService {
                         info.setSymbol(node.path("trading_symbol").asText(node.path("asset_symbol").asText()));
                         info.setName(node.path("name").asText(null));
                         info.setExchange(node.path("exchange").asText());
+                        info.setInstrumentKey(node.path("instrument_key").asText(null));
                         isinMap.put(isin, info);
                     }
                 }
@@ -1147,11 +1166,23 @@ public class InstrumentService {
         return isinMap.get(isin);
     }
 
+    public String getCompetitorInstrumentKey(String isin) {
+        InstrumentInfo info = isinMap.get(isin);
+        if (info == null) {
+            return null;
+        }
+        if (info.getInstrumentKey() != null && !info.getInstrumentKey().isBlank()) {
+            return info.getInstrumentKey();
+        }
+        return info.getExchange() + "|" + isin;
+    }
+
     @Data
     public static class InstrumentInfo {
         private String symbol;
         private String name;
         private String exchange;
+        private String instrumentKey;
     }
 }
 ```

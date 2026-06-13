@@ -12,7 +12,7 @@ public class Endpoints {
     public static final String CORPORATE_ACTIONS = "corporate-actions";
     public static final String COMPETITORS = "competitors";
 
-    public static String getUrl(String isin, String resource) {
-        return BASE_URL + isin + "/" + resource;
+    public static String getUrl(String identifier, String resource) {
+        return BASE_URL + identifier + "/" + resource;
     }
 }
