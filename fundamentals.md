@@ -769,7 +769,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -788,7 +787,18 @@ public class IsinMetadata {
     private Instant lastUpdatedTs;
 
     @Builder.Default
-    private Map<String, Long> endpointVersions = new HashMap<>();
+    private Map<String, EndpointMetadata> endpoints = new HashMap<>();
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class EndpointMetadata {
+        private long version;
+        private String hash;
+        private Instant lastUpdatedTs;
+        private long offset;
+    }
 }
 ```
 
@@ -1199,12 +1209,8 @@ public class FundamentalCacheService {
     }
 
     public Optional<FundamentalSnapshot> get(String isin) {
-        // 1. Try Primary JSON Cache
-        Optional<FundamentalSnapshot> cached = getFromPrimaryCache(isin);
-        if (cached.isPresent()) return cached;
-
-        // 2. Fallback to History Reconstruction (Stage 1.5)
-        log.info("Primary cache miss for ISIN: {}. Attempting history reconstruction...", isin);
+        // 1. Try History Reconstruction (Stage 2: History is Primary)
+        log.info("Attempting history reconstruction for ISIN: {}...", isin);
         Optional<FundamentalSnapshot> historical = historyService.reconstructSnapshot(isin);
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
@@ -1215,6 +1221,13 @@ public class FundamentalCacheService {
             } else {
                 log.info("History hit but expired for ISIN: {}", isin);
             }
+        }
+
+        // 2. Fallback to Legacy JSON Cache (Migration Support)
+        Optional<FundamentalSnapshot> legacyCached = getFromPrimaryCache(isin);
+        if (legacyCached.isPresent()) {
+            log.info("Legacy primary cache hit for ISIN: {}", isin);
+            return legacyCached;
         }
 
         return Optional.empty();
