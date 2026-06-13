@@ -25,5 +25,16 @@ public class IsinMetadata {
     private Instant lastUpdatedTs;
 
     @Builder.Default
-    private Map<String, Long> endpointVersions = new HashMap<>();
+    private Map<String, EndpointMetadata> endpoints = new HashMap<>();
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class EndpointMetadata {
+        private long version;
+        private String hash;
+        private java.time.Instant lastUpdatedTs;
+        private long offset;
+    }
 }

@@ -41,12 +41,8 @@ public class FundamentalCacheService {
     }
 
     public Optional<FundamentalSnapshot> get(String isin) {
-        // 1. Try Primary JSON Cache
-        Optional<FundamentalSnapshot> cached = getFromPrimaryCache(isin);
-        if (cached.isPresent()) return cached;
-
-        // 2. Fallback to History Reconstruction (Stage 1.5)
-        log.info("Primary cache miss for ISIN: {}. Attempting history reconstruction...", isin);
+        // 1. Try History Reconstruction (Stage 2: History is Primary)
+        log.info("Attempting history reconstruction for ISIN: {}...", isin);
         Optional<FundamentalSnapshot> historical = historyService.reconstructSnapshot(isin);
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
@@ -57,6 +53,13 @@ public class FundamentalCacheService {
             } else {
                 log.info("History hit but expired for ISIN: {}", isin);
             }
+        }
+
+        // 2. Fallback to Legacy JSON Cache (Migration Support)
+        Optional<FundamentalSnapshot> legacyCached = getFromPrimaryCache(isin);
+        if (legacyCached.isPresent()) {
+            log.info("Legacy primary cache hit for ISIN: {}", isin);
+            return legacyCached;
         }
 
         return Optional.empty();

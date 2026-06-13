@@ -2,9 +2,7 @@ package com.vega.fundamentals.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vega.fundamentals.dto.CompanyProfileDto;
-import com.vega.fundamentals.dto.FundamentalSnapshot;
-import com.vega.fundamentals.dto.SectionResponse;
+import com.vega.fundamentals.dto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -34,7 +32,7 @@ class FundamentalHistoryServiceTest {
     }
 
     @Test
-    void testArchiveAndReconstructWithOffsets() throws IOException {
+    void testArchiveAndReconstructWithMetadataOffsets() throws IOException {
         String isin = "INE001A01011";
         CompanyProfileDto profile = new CompanyProfileDto();
         profile.setSector("Technology");
@@ -51,41 +49,48 @@ class FundamentalHistoryServiceTest {
         // 1. Initial Archive
         historyService.archiveSnapshot(snapshot);
         
-        // 2. Verify Offset in latest-index.json
-        File indexFile = tempDir.resolve("history/INE001A01011/latest-index.json").toFile();
-        assertTrue(indexFile.exists());
+        // 2. Verify Metadata in metadata.json
+        File metadataFile = tempDir.resolve("history/INE001A01011/metadata.json").toFile();
+        assertTrue(metadataFile.exists());
         
-        Map<String, FundamentalHistoryService.HistoryIndexEntry> index = objectMapper.readValue(indexFile, 
-                new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
+        IsinMetadata metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+        IsinMetadata.EndpointMetadata profileMeta = metadata.getEndpoints().get("profile");
+        assertNotNull(profileMeta);
+        assertEquals(0, profileMeta.getOffset()); 
+        assertEquals(1, profileMeta.getVersion());
         
-        FundamentalHistoryService.HistoryIndexEntry profileEntry = index.get("profile");
-        assertNotNull(profileEntry);
-        assertEquals(0, profileEntry.getOffset()); // First record should be at offset 0
-        
-        // 3. Reconstruct (should use fast-path seek)
+        // 3. Reconstruct (should use metadata offsets)
         Optional<FundamentalSnapshot> reconstructed = historyService.reconstructSnapshot(isin);
         assertTrue(reconstructed.isPresent());
         assertEquals("Technology", reconstructed.get().getProfile().getData().getSector());
+        assertEquals("HISTORY", reconstructed.get().getSource());
         
-        // 4. Archive Changed Data
+        // 4. Archive Identical Data (Deduplication Check)
+        profile.setFetchedTs(Instant.now().plusSeconds(60)); // Change timestamp only
+        snapshot.setProfile(SectionResponse.success(profile));
+        historyService.archiveSnapshot(snapshot);
+        
+        metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+        profileMeta = metadata.getEndpoints().get("profile");
+        assertEquals(1, profileMeta.getVersion()); // Version should NOT increment
+        
+        // 5. Archive Changed Data
         profile.setSector("Energy");
         snapshot.setProfile(SectionResponse.success(profile));
         historyService.archiveSnapshot(snapshot);
         
-        // Verify new offset
-        index = objectMapper.readValue(indexFile, new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
-        profileEntry = index.get("profile");
-        assertTrue(profileEntry.getOffset() > 0);
-        assertEquals(2, profileEntry.getVersion());
+        metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+        profileMeta = metadata.getEndpoints().get("profile");
+        assertEquals(2, profileMeta.getVersion());
+        assertTrue(profileMeta.getOffset() > 0);
         
-        // 5. Test Self-Healing Index Rebuild
-        java.nio.file.Files.delete(indexFile.toPath());
-        historyService.archiveSnapshot(snapshot); // Should trigger rebuild
-        assertTrue(indexFile.exists());
+        // 6. Test Metadata Rebuild
+        java.nio.file.Files.delete(metadataFile.toPath());
+        historyService.archiveSnapshot(snapshot); // Should trigger rebuild from JSONL
+        assertTrue(metadataFile.exists());
         
-        index = objectMapper.readValue(indexFile, new TypeReference<Map<String, FundamentalHistoryService.HistoryIndexEntry>>() {});
-        profileEntry = index.get("profile");
-        assertTrue(profileEntry.getOffset() > 0);
-        assertEquals(2, profileEntry.getVersion());
+        metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+        profileMeta = metadata.getEndpoints().get("profile");
+        assertEquals(2, profileMeta.getVersion());
     }
 }

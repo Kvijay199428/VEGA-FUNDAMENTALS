@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.vega.fundamentals.dto.FundamentalSnapshot;
-import com.vega.fundamentals.dto.HistoryRecord;
-import com.vega.fundamentals.dto.IsinMetadata;
-import com.vega.fundamentals.dto.SectionResponse;
+import com.vega.fundamentals.dto.*;
 import com.vega.fundamentals.model.FundamentalEndpoint;
 import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +24,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -64,8 +62,7 @@ public class FundamentalHistoryService {
             Path isinHistoryDir = Path.of(historyPath, isin);
             Files.createDirectories(isinHistoryDir);
             
-            rebuildIndexIfMissing(isin);
-            IsinMetadata metadata = updateIsinMetadata(snapshot);
+            IsinMetadata metadata = loadOrRebuildMetadata(snapshot);
 
             for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
                 SectionResponse<?> section = getSection(snapshot, endpoint);
@@ -104,10 +101,7 @@ public class FundamentalHistoryService {
             JsonNode normalizedNode = normalize(dataNode);
             String currentHash = generateHash(normalizedNode);
 
-            File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
-            Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
-
-            HistoryIndexEntry lastEntry = index.get(endpoint.getKey());
+            IsinMetadata.EndpointMetadata lastEntry = metadata.getEndpoints().get(endpoint.getKey());
 
             if (lastEntry != null && currentHash.equals(lastEntry.getHash())) {
                 log.debug("No change detected for {} (ISIN: {}). Skipping archive.", endpoint.getKey(), isin);
@@ -125,11 +119,14 @@ public class FundamentalHistoryService {
 
             long offset = appendHistory(Path.of(historyPath, isin), endpoint, record);
 
-            // Update index and metadata
-            index.put(endpoint.getKey(), new HistoryIndexEntry(currentHash, nextVersion, record.getTs(), offset));
-            saveIndex(indexFile, index);
+            // Update metadata
+            metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
+                    .hash(currentHash)
+                    .version(nextVersion)
+                    .lastUpdatedTs(record.getTs())
+                    .offset(offset)
+                    .build());
             
-            metadata.getEndpointVersions().put(endpoint.getKey(), nextVersion);
             metadata.setLastUpdatedTs(record.getTs());
 
             log.info("Archived v{} of {} for ISIN: {} (offset: {})", nextVersion, endpoint.getKey(), isin, offset);
@@ -139,8 +136,9 @@ public class FundamentalHistoryService {
         }
     }
 
-    private IsinMetadata updateIsinMetadata(FundamentalSnapshot snapshot) throws IOException {
-        Path isinDir = Path.of(historyPath, snapshot.getIsin());
+    private IsinMetadata loadOrRebuildMetadata(FundamentalSnapshot snapshot) throws IOException {
+        String isin = snapshot.getIsin();
+        Path isinDir = Path.of(historyPath, isin);
         File metadataFile = isinDir.resolve("metadata.json").toFile();
 
         IsinMetadata metadata;
@@ -150,47 +148,44 @@ public class FundamentalHistoryService {
             metadata.setCompanyName(snapshot.getCompanyName());
             metadata.setExchange(snapshot.getExchange());
         } else {
+            log.info("metadata.json missing or new ISIN: {}. Initializing...", isin);
             metadata = IsinMetadata.builder()
-                    .isin(snapshot.getIsin())
+                    .isin(isin)
                     .symbol(snapshot.getSymbol())
                     .companyName(snapshot.getCompanyName())
                     .exchange(snapshot.getExchange())
                     .createdTs(Instant.now())
                     .lastUpdatedTs(Instant.now())
                     .build();
+            
+            rebuildEndpointMetadata(isin, metadata);
         }
         return metadata;
+    }
+
+    private void rebuildEndpointMetadata(String isin, IsinMetadata metadata) {
+        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
+            if (latestInfo != null) {
+                HistoryRecord record = latestInfo.getRecord();
+                metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
+                        .hash(record.getHash())
+                        .version(record.getVersion())
+                        .lastUpdatedTs(record.getTs())
+                        .offset(latestInfo.getOffset())
+                        .build());
+            }
+        }
+        if (!metadata.getEndpoints().isEmpty()) {
+            log.info("Successfully rebuilt metadata endpoints for ISIN: {} with {} entries.", isin, metadata.getEndpoints().size());
+        }
     }
 
     private void saveIsinMetadata(String isin, IsinMetadata metadata) throws IOException {
         File metadataFile = Path.of(historyPath, isin, "metadata.json").toFile();
         objectMapper.writeValue(metadataFile, metadata);
-    }
-
-    private void rebuildIndexIfMissing(String isin) {
-        Path isinDir = Path.of(historyPath, isin);
-        File indexFile = isinDir.resolve("latest-index.json").toFile();
-        if (indexFile.exists()) return;
-
-        log.info("latest-index.json missing for ISIN: {}. Rebuilding from history...", isin);
-        Map<String, HistoryIndexEntry> index = new HashMap<>();
-        
-        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
-            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
-            if (latestInfo != null) {
-                HistoryRecord record = latestInfo.getRecord();
-                index.put(endpoint.getKey(), new HistoryIndexEntry(record.getHash(), record.getVersion(), record.getTs(), latestInfo.getOffset()));
-            }
-        }
-
-        if (!index.isEmpty()) {
-            try {
-                saveIndex(indexFile, index);
-                log.info("Successfully rebuilt index for ISIN: {} with {} entries.", isin, index.size());
-            } catch (IOException e) {
-                log.error("Failed to save rebuilt index for ISIN {}: {}", isin, e.getMessage());
-            }
-        }
+        // Clean up legacy index if it exists
+        Files.deleteIfExists(Path.of(historyPath, isin, "latest-index.json"));
     }
 
     private JsonNode normalize(JsonNode node) {
@@ -229,20 +224,6 @@ public class FundamentalHistoryService {
         return hexString.toString();
     }
 
-    private Map<String, HistoryIndexEntry> loadIndex(File indexFile) {
-        if (!indexFile.exists()) return new HashMap<>();
-        try {
-            return objectMapper.readValue(indexFile, new TypeReference<Map<String, HistoryIndexEntry>>() {});
-        } catch (IOException e) {
-            log.warn("Failed to load history index: {}", e.getMessage());
-            return new HashMap<>();
-        }
-    }
-
-    private void saveIndex(File indexFile, Map<String, HistoryIndexEntry> index) throws IOException {
-        objectMapper.writeValue(indexFile, index);
-    }
-
     private long appendHistory(Path dir, FundamentalEndpoint endpoint, HistoryRecord record) throws IOException {
         File historyFile = dir.resolve(endpoint.getFilename()).toFile();
         long offset = historyFile.exists() ? historyFile.length() : 0;
@@ -275,14 +256,9 @@ public class FundamentalHistoryService {
                     .generatedTs(metadata.getLastUpdatedTs())
                     .cacheHit(true);
 
-            builder.profile(reconstructSection(isin, FundamentalEndpoint.PROFILE));
-            builder.balanceSheet(reconstructSection(isin, FundamentalEndpoint.BALANCE_SHEET));
-            builder.cashFlow(reconstructSection(isin, FundamentalEndpoint.CASH_FLOW));
-            builder.incomeStatement(reconstructSection(isin, FundamentalEndpoint.INCOME_STATEMENT));
-            builder.shareHoldings(reconstructSection(isin, FundamentalEndpoint.SHARE_HOLDINGS));
-            builder.keyRatios(reconstructSection(isin, FundamentalEndpoint.KEY_RATIOS));
-            builder.corporateActions(reconstructSection(isin, FundamentalEndpoint.CORPORATE_ACTIONS));
-            builder.competitors(reconstructSection(isin, FundamentalEndpoint.COMPETITORS));
+            for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+                setReconstructedSection(builder, isin, endpoint, metadata);
+            }
 
             FundamentalSnapshot snapshot = builder.build();
             return Optional.of(snapshot);
@@ -294,14 +270,27 @@ public class FundamentalHistoryService {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint) {
-        File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
-        Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
-        HistoryIndexEntry indexEntry = index.get(endpoint.getKey());
+    private void setReconstructedSection(FundamentalSnapshot.FundamentalSnapshotBuilder builder, String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
+        SectionResponse<?> section = reconstructSection(isin, endpoint, metadata);
+        switch (endpoint) {
+            case PROFILE -> builder.profile((SectionResponse<CompanyProfileDto>) section);
+            case BALANCE_SHEET -> builder.balanceSheet((SectionResponse<BalanceSheetContainer>) section);
+            case CASH_FLOW -> builder.cashFlow((SectionResponse<CashFlowContainer>) section);
+            case INCOME_STATEMENT -> builder.incomeStatement((SectionResponse<IncomeStatementContainer>) section);
+            case SHARE_HOLDINGS -> builder.shareHoldings((SectionResponse<List<ShareHoldingDto>>) section);
+            case KEY_RATIOS -> builder.keyRatios((SectionResponse<List<KeyRatioDto>>) section);
+            case CORPORATE_ACTIONS -> builder.corporateActions((SectionResponse<List<CorporateActionDto>>) section);
+            case COMPETITORS -> builder.competitors((SectionResponse<List<CompetitorDto>>) section);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
+        IsinMetadata.EndpointMetadata endpointMeta = metadata.getEndpoints().get(endpoint.getKey());
 
         HistoryRecord record;
-        if (indexEntry != null && indexEntry.getOffset() >= 0) {
-            record = readRecordAtOffset(isin, endpoint, indexEntry.getOffset());
+        if (endpointMeta != null && endpointMeta.getOffset() >= 0) {
+            record = readRecordAtOffset(isin, endpoint, endpointMeta.getOffset());
         } else {
             record = readLatestRecord(isin, endpoint);
         }
@@ -391,16 +380,6 @@ public class FundamentalHistoryService {
             }
         }
         return null;
-    }
-
-    @lombok.Data
-    @lombok.AllArgsConstructor
-    @lombok.NoArgsConstructor
-    public static class HistoryIndexEntry {
-        private String hash;
-        private long version;
-        private Instant ts;
-        private long offset = -1;
     }
 
     @lombok.Data
