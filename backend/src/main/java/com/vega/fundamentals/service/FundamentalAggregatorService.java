@@ -24,6 +24,7 @@ public class FundamentalAggregatorService {
     private final UpstoxFundamentalClient client;
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
+    private final FundamentalHistoryService historyService;
     private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
     public FundamentalSnapshot aggregate(String isin) {
@@ -111,6 +112,7 @@ public class FundamentalAggregatorService {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
+                    historyService.archiveIfChanged(isin, name, result);
                     return SectionResponseFactory.success(result);
                 } else {
                     return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);

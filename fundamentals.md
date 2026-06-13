@@ -38,6 +38,49 @@
 2026-06-13T07:28:49.475Z  INFO 18390 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE002A01018
 2026-06-13T07:28:51.454Z ERROR 18390 --- [vega.fundamentals] [] c.v.f.client.UpstoxFundamentalClient     : Failed to fetch competitors for ISIN: INE002A01018. Status code: 400. Body: {"status":"error","errors":[{"errorCode":"UDAPI100011","message":"Invalid Instrument key","propertyPath":"getCompetitors.instrumentKey","invalidValue":"INE002A01018","error_code":"UDAPI100011","property_path":"getCompetitors.instrumentKey","invalid_value":"INE002A01018"}]}
 2026-06-13T07:28:52.149Z  INFO 18390 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Cache saved for ISIN: INE002A01018
+2026-06-13T13:06:02.574Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication using Java 21.0.10 with PID 7314 (/root/fundamentals/backend/target/classes started by root in /root/fundamentals/backend)
+2026-06-13T13:06:02.578Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T13:06:05.180Z  INFO 7314 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T13:06:05.203Z  INFO 7314 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T13:06:05.204Z  INFO 7314 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T13:06:05.376Z  INFO 7314 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T13:06:05.377Z  INFO 7314 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2704 ms
+2026-06-13T13:06:05.524Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T13:06:05.677Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T13:06:07.870Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T13:06:08.927Z  INFO 7314 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T13:06:08.947Z  INFO 7314 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.677 seconds (process running for 8.982)
+2026-06-13T13:06:49.022Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-13T13:06:49.026Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-13T13:06:49.032Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-13T13:06:50.302Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE839G01011
+2026-06-13T13:06:51.453Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Cache hit for ISIN: INE839G01011
+2026-06-13T13:06:59.886Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.controller.FundamentalController   : Request received for ISIN: INE839G01010
+2026-06-13T13:06:59.951Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.service.FundamentalCacheService    : Cache hit for ISIN: INE839G01010
+2026-06-13T13:07:08.511Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T13:07:08.612Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Cache hit for ISIN: INE669E01016
+2026-06-13T13:09:00.439Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.controller.FundamentalController   : Request received for ISIN: INE043A01012
+2026-06-13T13:09:00.451Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE043A01012
+2026-06-13T13:09:03.240Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of corporateActions for ISIN: INE043A01012
+2026-06-13T13:09:03.311Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of incomeStatement for ISIN: INE043A01012
+2026-06-13T13:09:03.367Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of competitors for ISIN: INE043A01012
+2026-06-13T13:09:03.420Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of keyRatios for ISIN: INE043A01012
+2026-06-13T13:09:03.467Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of profile for ISIN: INE043A01012
+2026-06-13T13:09:03.517Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of balanceSheet for ISIN: INE043A01012
+2026-06-13T13:09:03.569Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of cashFlow for ISIN: INE043A01012
+2026-06-13T13:09:03.620Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of shareHoldings for ISIN: INE043A01012
+2026-06-13T13:09:03.688Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.service.FundamentalCacheService    : Cache saved for ISIN: INE043A01012
+2026-06-13T13:13:08.511Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T13:13:08.519Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE669E01016
+2026-06-13T13:13:09.511Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of profile for ISIN: INE669E01016
+2026-06-13T13:13:09.549Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of balanceSheet for ISIN: INE669E01016
+2026-06-13T13:13:09.575Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of incomeStatement for ISIN: INE669E01016
+2026-06-13T13:13:09.606Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of cashFlow for ISIN: INE669E01016
+2026-06-13T13:13:09.627Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of corporateActions for ISIN: INE669E01016
+2026-06-13T13:13:09.646Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of shareHoldings for ISIN: INE669E01016
+2026-06-13T13:13:09.666Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of keyRatios for ISIN: INE669E01016
+2026-06-13T13:13:09.710Z  INFO 7314 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of competitors for ISIN: INE669E01016
+2026-06-13T13:13:09.785Z  INFO 7314 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.service.FundamentalCacheService    : Cache saved for ISIN: INE669E01016
 ```
 
 ```xml
@@ -811,6 +854,7 @@ public class FundamentalAggregatorService {
     private final UpstoxFundamentalClient client;
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
+    private final FundamentalHistoryService historyService;
     private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
     public FundamentalSnapshot aggregate(String isin) {
@@ -898,6 +942,7 @@ public class FundamentalAggregatorService {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
+                    historyService.archiveIfChanged(isin, name, result);
                     return SectionResponseFactory.success(result);
                 } else {
                     return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
@@ -1143,6 +1188,137 @@ public class FundamentalCacheService {
     private boolean isFresh(Instant ts) {
         if (ts == null) return false;
         return Duration.between(ts, Instant.now()).compareTo(TTL) < 0;
+    }
+}
+```
+
+```java
+// File: src/main/java/com/vega/fundamentals/service/FundamentalHistoryService.java
+package com.vega.fundamentals.service;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
+
+@Service
+@Slf4j
+public class FundamentalHistoryService {
+
+    private final String historyPath;
+    private final ObjectMapper objectMapper;
+    private final ConcurrentHashMap<String, ReentrantLock> locks = new ConcurrentHashMap<>();
+
+    public FundamentalHistoryService(@Value("${storage.cache.fundamentals-path}") String cachePath, ObjectMapper objectMapper) {
+        this.historyPath = cachePath + "/history";
+        this.objectMapper = objectMapper.copy();
+        // Ensure canonical JSON output for hashing
+        this.objectMapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
+    }
+
+    /**
+     * Entry point for the Toll Gate. 
+     * Compares incoming data with the latest stored hash and appends if different.
+     */
+    public void archiveIfChanged(String isin, String endpoint, Object data) {
+        if (data == null) return;
+
+        ReentrantLock lock = locks.computeIfAbsent(isin, k -> new ReentrantLock());
+        lock.lock();
+        try {
+            JsonNode dataNode = objectMapper.valueToTree(data);
+            String currentHash = generateHash(dataNode);
+            
+            Path isinHistoryDir = Path.of(historyPath, isin);
+            Files.createDirectories(isinHistoryDir);
+            
+            File indexFile = isinHistoryDir.resolve("latest-index.json").toFile();
+            Map<String, String> index = loadIndex(indexFile);
+            
+            String lastHash = index.get(endpoint);
+            
+            if (currentHash.equals(lastHash)) {
+                log.debug("No change detected for {} (ISIN: {}). Skipping archive.", endpoint, isin);
+                return;
+            }
+
+            // Data has changed, archive it
+            appendHistory(isinHistoryDir, endpoint, currentHash, dataNode);
+            
+            // Update index
+            index.put(endpoint, currentHash);
+            saveIndex(indexFile, index);
+            
+            log.info("Archived new version of {} for ISIN: {}", endpoint, isin);
+            
+        } catch (Exception e) {
+            log.error("Failed to archive history for {} (ISIN: {}): {}", endpoint, isin, e.getMessage());
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private String generateHash(JsonNode node) throws NoSuchAlgorithmException, JsonProcessingException {
+        // SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS ensures consistent hash
+        String canonicalJson = objectMapper.writeValueAsString(node);
+        
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hashBytes = digest.digest(canonicalJson.getBytes(StandardCharsets.UTF_8));
+        
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hashBytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    private Map<String, String> loadIndex(File indexFile) {
+        if (!indexFile.exists()) return new HashMap<>();
+        try {
+            return objectMapper.readValue(indexFile, new com.fasterxml.jackson.core.type.TypeReference<Map<String, String>>() {});
+        } catch (IOException e) {
+            log.warn("Failed to load history index: {}", e.getMessage());
+            return new HashMap<>();
+        }
+    }
+
+    private void saveIndex(File indexFile, Map<String, String> index) throws IOException {
+        objectMapper.writeValue(indexFile, index);
+    }
+
+    private void appendHistory(Path dir, String endpoint, String hash, JsonNode data) throws IOException {
+        File historyFile = dir.resolve(endpoint + ".jsonl").toFile();
+        
+        ObjectNode entry = objectMapper.createObjectNode();
+        entry.put("ts", Instant.now().toString());
+        entry.put("hash", hash);
+        entry.set("data", data);
+        
+        String line = objectMapper.writeValueAsString(entry);
+        
+        try (FileWriter fw = new FileWriter(historyFile, true)) {
+            fw.write(line + "\n");
+        }
     }
 }
 ```
