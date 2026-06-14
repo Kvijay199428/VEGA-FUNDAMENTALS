@@ -20,6 +20,7 @@ public class FundamentalSnapshot {
     private Instant generatedTs;
     private Long requestDurationMs;
     private boolean cacheHit;
+    private String analysisVersion;
 
     private SectionResponse<CompanyProfileDto> profile;
     private SectionResponse<BalanceSheetContainer> balanceSheet;

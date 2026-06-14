@@ -302,7 +302,9 @@ public class FundamentalHistoryService {
         array.forEach(elements::add);
 
         switch (endpoint) {
-            case COMPETITORS -> elements.sort(java.util.Comparator.comparing(n -> n.path("instrument_key").asText("")));
+            case COMPETITORS -> elements.sort(java.util.Comparator.comparing((JsonNode n) -> n.path("instrument_key").asText(""))
+                    .thenComparing(n -> n.path("isin").asText(""))
+                    .thenComparing(n -> n.path("company_name").asText("")));
             case SHARE_HOLDINGS -> elements.sort(java.util.Comparator.comparing(n -> n.path("category").asText("")));
             case KEY_RATIOS -> elements.sort(java.util.Comparator.comparing(n -> n.path("name").asText("")));
             case CORPORATE_ACTIONS -> elements.sort(java.util.Comparator.comparing((JsonNode n) -> n.path("name").asText(""))

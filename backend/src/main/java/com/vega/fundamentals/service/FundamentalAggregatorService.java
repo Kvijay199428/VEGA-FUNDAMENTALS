@@ -14,6 +14,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -110,7 +111,7 @@ public class FundamentalAggregatorService {
     }
 
     private <T> CompletableFuture<SectionResponse<T>> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, String name) {
-        return CompletableFuture.supplyAsync(() -> {
+        return CompletableFuture.<SectionResponse<T>>supplyAsync(() -> {
             try {
                 T result = client.fetch(isin, endpoint, type);
                 if (result != null) {
@@ -122,7 +123,10 @@ public class FundamentalAggregatorService {
                 log.error("Error fetching {} for ISIN: {}: {}", name, isin, e.getMessage());
                 return SectionResponseFactory.error("EXCEPTION", e.getMessage(), null);
             }
-        }, executor);
+        }, executor).orTimeout(5, TimeUnit.SECONDS).exceptionally(ex -> {
+            log.error("Timeout or error fetching {} for ISIN: {}: {}", name, isin, ex.getMessage());
+            return SectionResponseFactory.<T>error("TIMEOUT_OR_ERROR", "Failed to complete fetch for " + name, null);
+        });
     }
 
     private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
