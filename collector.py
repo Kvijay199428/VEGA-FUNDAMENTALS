@@ -126,8 +126,18 @@ class FundamentalCollector:
             response = requests.get(url, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
             data = response.json()
-            
+
+            status = data.get("status")
+            if status in ["queued", "processing"]:
+                logger.info(f"Instrument {symbol} ({isin}) is still {status}. Skipping archive.")
+                return "SKIPPED"
+
+            if status not in ["success", "partial_success"]:
+                logger.warning(f"Unexpected status '{status}' for {symbol} ({isin}). Skipping archive.")
+                return "FAILED"
+
             # Create ISIN directory
+
             isin_dir = self.history_path / isin
             isin_dir.mkdir(parents=True, exist_ok=True)
             

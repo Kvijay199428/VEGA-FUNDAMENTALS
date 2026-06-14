@@ -84,6 +84,7 @@ public class FundamentalFetchQueueService {
         queue.add(job);
         queuedIsins.add(isin);
         persistQueueAsync();
+        writeJobSnapshot(job, "queued");
 
         return JobStatusResponse.builder().status("queued").isin(isin).position(getPosition(isin)).build();
     }
@@ -94,16 +95,44 @@ public class FundamentalFetchQueueService {
             queuedIsins.remove(job.getIsin());
             inProgressIsins.add(job.getIsin());
             persistQueueAsync();
+            writeJobSnapshot(job, "processing");
         }
         return job;
     }
 
     public void markComplete(String isin, boolean success) {
         inProgressIsins.remove(isin);
+        deleteJobSnapshot(isin);
         if (success) {
             totalProcessed.incrementAndGet();
         } else {
             totalFailed.incrementAndGet();
+        }
+    }
+
+    private void writeJobSnapshot(FundamentalFetchJob job, String status) {
+        try {
+            Path jobsDir = Path.of(queuePath, "jobs");
+            Files.createDirectories(jobsDir);
+            File file = jobsDir.resolve(job.getIsin() + ".json").toFile();
+            
+            JobStatusResponse snapshot = JobStatusResponse.builder()
+                    .status(status)
+                    .isin(job.getIsin())
+                    .position("queued".equals(status) ? getPosition(job.getIsin()) : 0)
+                    .build();
+            
+            objectMapper.writeValue(file, snapshot);
+        } catch (IOException e) {
+            log.error("Failed to write job snapshot for ISIN: {}", job.getIsin(), e);
+        }
+    }
+
+    private void deleteJobSnapshot(String isin) {
+        try {
+            Files.deleteIfExists(Path.of(queuePath, "jobs", isin + ".json"));
+        } catch (IOException e) {
+            log.error("Failed to delete job snapshot for ISIN: {}", isin, e);
         }
     }
 
