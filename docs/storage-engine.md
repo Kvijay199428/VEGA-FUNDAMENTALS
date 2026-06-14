@@ -4,19 +4,28 @@ The history engine utilizes an append-only JSONL storage mechanism to act as an 
 
 ## Directory Structure
 
+### Business History
 ```
-history/
+storage/history/fundamentals/
   ISIN/
     metadata.json
     profile.jsonl
     balanceSheet.jsonl
-    cashFlow.jsonl
-    incomeStatement.jsonl
-    shareHoldings.jsonl
-    keyRatios.jsonl
-    corporateActions.jsonl
-    competitors.jsonl
+    ...
 ```
+
+### Operational Queue
+```
+storage/queue/
+  pending.json     # Persisted priority queue
+  jobs/            # Active job snapshots
+    ISIN.json      # Current status (queued/processing)
+```
+
+## Data Separation
+Operational data (like queue positions and transient job states) is strictly separated from the business history. 
+- **Queue Jobs:** Ephemeral snapshots that are deleted upon completion.
+- **Fundamental History:** Immutable, versioned records of business data.
 
 ## Event Sourcing Principles
 
