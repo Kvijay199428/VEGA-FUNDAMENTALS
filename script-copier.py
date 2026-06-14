@@ -24,6 +24,7 @@ if sys.stdout.encoding.lower() != 'utf-8':
 # Updated to match the current Linux workspace (/root/fundamentals)
 SOURCE_DIR = [
     Path("/root/fundamentals/backend"),
+    Path("/root/fundamentals/storage"),
 ]
 
 # Directories to exclude from scanning
@@ -60,6 +61,8 @@ EXTENSION_LANG = {
     ".cfg":        "ini",
     ".ini":        "ini",
     ".toml":       "toml",
+
+    ".jsonl":         "jsonl",
 }
 
 # Extensions to skip (binary / non-script files)
