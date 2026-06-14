@@ -95,6 +95,34 @@ class FundamentalHistoryServiceTest {
     }
 
     @Test
+    void testMetadataProvenanceRecovery() throws IOException {
+        String isin = "INE001A01011";
+        Instant firstTs = Instant.parse("2026-01-01T10:00:00Z");
+        
+        CompanyProfileDto profile = new CompanyProfileDto();
+        profile.setSector("Tech");
+        
+        // Manually create a history record with a specific timestamp
+        HistoryRecord record = HistoryRecord.builder()
+                .version(1)
+                .ts(firstTs)
+                .hash("abc")
+                .data(objectMapper.valueToTree(profile))
+                .build();
+        
+        Path isinDir = tempDir.resolve("history").resolve(isin);
+        java.nio.file.Files.createDirectories(isinDir);
+        java.nio.file.Files.writeString(isinDir.resolve("profile.jsonl"), objectMapper.writeValueAsString(record) + "\n");
+        
+        // Rebuild metadata
+        IsinMetadata recovered = historyService.rebuildMetadataFromHistory(isin);
+        
+        assertEquals(firstTs, recovered.getFirstSeenTs(), "Should recover firstSeenTs from history");
+        assertEquals(firstTs, recovered.getCreatedTs(), "Should recover createdTs from history");
+        assertEquals(1, recovered.getEndpoints().get("profile").getVersion());
+    }
+
+    @Test
     void testCanonicalSortingDeduplication() {
         String isin = "INE001A01011";
         

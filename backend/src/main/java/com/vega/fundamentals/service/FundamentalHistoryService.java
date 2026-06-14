@@ -146,6 +146,7 @@ public class FundamentalHistoryService {
         if (metadataFile.exists()) {
             try {
                 metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+                // Update with latest info from snapshot if provided
                 metadata.setSymbol(snapshot.getSymbol());
                 metadata.setCompanyName(snapshot.getCompanyName());
                 metadata.setExchange(snapshot.getExchange());
@@ -155,39 +156,112 @@ public class FundamentalHistoryService {
         }
 
         if (metadata == null) {
-            log.info("metadata.json missing or new ISIN: {}. Initializing...", isin);
-            Instant now = Instant.now();
-            metadata = IsinMetadata.builder()
-                    .isin(isin)
-                    .symbol(snapshot.getSymbol())
-                    .companyName(snapshot.getCompanyName())
-                    .exchange(snapshot.getExchange())
-                    .createdTs(now)
-                    .firstSeenTs(now)
-                    .lastUpdatedTs(now)
-                    .build();
+            log.info("metadata.json missing or corrupted for ISIN: {}. Rebuilding from history...", isin);
+            metadata = rebuildMetadataFromHistory(isin);
             
-            rebuildEndpointMetadata(isin, metadata);
+            // Supplement with snapshot data if history was incomplete
+            if (metadata.getSymbol() == null) metadata.setSymbol(snapshot.getSymbol());
+            if (metadata.getCompanyName() == null) metadata.setCompanyName(snapshot.getCompanyName());
+            if (metadata.getExchange() == null) metadata.setExchange(snapshot.getExchange());
+        }
+        return metadata;
+    }
+
+    public IsinMetadata rebuildMetadataFromHistory(String isin) {
+        Instant now = Instant.now();
+        IsinMetadata metadata = IsinMetadata.builder()
+                .isin(isin)
+                .createdTs(now) // Default to now, will be updated if history found
+                .firstSeenTs(now)
+                .lastUpdatedTs(now)
+                .endpoints(new HashMap<>())
+                .build();
+
+        Instant absoluteFirstTs = null;
+        Instant absoluteLastTs = null;
+
+        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
+            if (latestInfo != null) {
+                HistoryRecord lastRecord = latestInfo.getRecord();
+                metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
+                        .hash(lastRecord.getHash())
+                        .version(lastRecord.getVersion())
+                        .lastUpdatedTs(lastRecord.getTs())
+                        .offset(latestInfo.getOffset())
+                        .build());
+
+                if (absoluteLastTs == null || lastRecord.getTs().isAfter(absoluteLastTs)) {
+                    absoluteLastTs = lastRecord.getTs();
+                }
+
+                // Recover metadata from PROFILE if possible
+                if (endpoint == FundamentalEndpoint.PROFILE) {
+                    try {
+                        CompanyProfileDto profile = objectMapper.convertValue(lastRecord.getData(), CompanyProfileDto.class);
+                        // Some profile info might be null if not enriched, but Aggregator usually enriches.
+                        // However, history stores raw or enriched data depending on when it was archived.
+                    } catch (Exception e) {
+                        log.warn("Failed to extract profile info during metadata rebuild for ISIN: {}", isin);
+                    }
+                }
+
+                // Find the first record for this endpoint to get firstSeenTs
+                HistoryRecord firstRecord = readFirstRecord(isin, endpoint);
+                if (firstRecord != null) {
+                    if (absoluteFirstTs == null || firstRecord.getTs().isBefore(absoluteFirstTs)) {
+                        absoluteFirstTs = firstRecord.getTs();
+                    }
+                }
+            }
+        }
+
+        if (absoluteFirstTs != null) {
+            metadata.setFirstSeenTs(absoluteFirstTs);
+            metadata.setCreatedTs(absoluteFirstTs); // createdTs usually aligns with first seen
+        }
+        if (absoluteLastTs != null) {
+            metadata.setLastUpdatedTs(absoluteLastTs);
+        }
+
+        // Try to recover Symbol/Name from reconstruction if possible (PROFILE section)
+        reconstructSnapshot(isin).ifPresent(snapshot -> {
+            metadata.setSymbol(snapshot.getSymbol());
+            metadata.setCompanyName(snapshot.getCompanyName());
+            metadata.setExchange(snapshot.getExchange());
+        });
+
+        if (!metadata.getEndpoints().isEmpty()) {
+            log.info("Successfully rebuilt metadata from history for ISIN: {} with {} endpoints.", isin, metadata.getEndpoints().size());
         }
         return metadata;
     }
 
     private void rebuildEndpointMetadata(String isin, IsinMetadata metadata) {
-        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
-            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
-            if (latestInfo != null) {
-                HistoryRecord record = latestInfo.getRecord();
-                metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
-                        .hash(record.getHash())
-                        .version(record.getVersion())
-                        .lastUpdatedTs(record.getTs())
-                        .offset(latestInfo.getOffset())
-                        .build());
+        // Legacy method now delegates to the more comprehensive rebuild
+        IsinMetadata rebuilt = rebuildMetadataFromHistory(isin);
+        metadata.setEndpoints(rebuilt.getEndpoints());
+        metadata.setFirstSeenTs(rebuilt.getFirstSeenTs());
+        metadata.setCreatedTs(rebuilt.getCreatedTs());
+        metadata.setLastUpdatedTs(rebuilt.getLastUpdatedTs());
+        if (metadata.getSymbol() == null) metadata.setSymbol(rebuilt.getSymbol());
+        if (metadata.getCompanyName() == null) metadata.setCompanyName(rebuilt.getCompanyName());
+        if (metadata.getExchange() == null) metadata.setExchange(rebuilt.getExchange());
+    }
+
+    private HistoryRecord readFirstRecord(String isin, FundamentalEndpoint endpoint) {
+        Path historyFile = Path.of(historyPath, isin, endpoint.getFilename());
+        if (!Files.exists(historyFile)) return null;
+
+        try (RandomAccessFile raf = new RandomAccessFile(historyFile.toFile(), "r")) {
+            String line = raf.readLine();
+            if (line != null && !line.trim().isEmpty()) {
+                return objectMapper.readValue(line, HistoryRecord.class);
             }
+        } catch (IOException e) {
+            log.error("Failed to read first record for {} (ISIN: {}): {}", endpoint.getKey(), isin, e.getMessage());
         }
-        if (!metadata.getEndpoints().isEmpty()) {
-            log.info("Successfully rebuilt metadata endpoints for ISIN: {} with {} entries.", isin, metadata.getEndpoints().size());
-        }
+        return null;
     }
 
     private void saveIsinMetadata(String isin, IsinMetadata metadata) throws IOException {

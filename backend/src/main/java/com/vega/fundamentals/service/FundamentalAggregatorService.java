@@ -14,7 +14,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @Service
 @Slf4j
@@ -25,7 +24,7 @@ public class FundamentalAggregatorService {
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
     private final FundamentalHistoryService historyService;
-    private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
+    private final ExecutorService executor;
 
     public FundamentalSnapshot aggregate(String isin) {
         log.info("Aggregating fundamentals for ISIN: {}", isin);
