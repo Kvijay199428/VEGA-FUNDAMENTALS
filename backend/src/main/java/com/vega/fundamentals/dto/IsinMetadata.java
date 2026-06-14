@@ -1,3 +1,4 @@
+// File: src/main/java/com/vega/fundamentals/dto/IsinMetadata.java
 package com.vega.fundamentals.dto;
 
 import lombok.AllArgsConstructor;
@@ -6,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +35,7 @@ public class IsinMetadata {
     public static class EndpointMetadata {
         private long version;
         private String hash;
-        private java.time.Instant lastUpdatedTs;
+        private Instant lastUpdatedTs;
         private long offset;
     }
 }

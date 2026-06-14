@@ -107,6 +107,141 @@
 2026-06-13T15:37:27.284Z  INFO 17237 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of shareHoldings for ISIN: INE839G01010
 2026-06-13T15:37:27.313Z  INFO 17237 --- [vega.fundamentals] [] c.v.f.service.FundamentalHistoryService  : Archived new version of corporateActions for ISIN: INE839G01010
 2026-06-13T15:37:27.428Z  INFO 17237 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Cache saved for ISIN: INE839G01010
+2026-06-13T17:17:22.970Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication using Java 21.0.10 with PID 16582 (/root/fundamentals/backend/target/classes started by root in /root/fundamentals/backend)
+2026-06-13T17:17:22.975Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:17:25.393Z  INFO 16582 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:17:25.414Z  INFO 16582 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:17:25.419Z  INFO 16582 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:17:25.561Z  INFO 16582 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:17:25.561Z  INFO 16582 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2494 ms
+2026-06-13T17:17:25.714Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:17:25.906Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:17:27.799Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:17:29.078Z  INFO 16582 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:17:29.102Z  INFO 16582 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.218 seconds (process running for 8.112)
+2026-06-13T17:22:10.246Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication v0.0.1 using Java 21.0.10 with PID 17402 (/root/fundamentals/backend/target/vega.fundamentals.0.0.1.jar started by root in /root/fundamentals/backend)
+2026-06-13T17:22:10.251Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:22:12.993Z  INFO 17402 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:22:13.020Z  INFO 17402 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:22:13.020Z  INFO 17402 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:22:13.110Z  INFO 17402 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:22:13.110Z  INFO 17402 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2579 ms
+2026-06-13T17:22:13.259Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:22:13.359Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:22:14.895Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:22:15.952Z  INFO 17402 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:22:15.978Z  INFO 17402 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.055 seconds (process running for 8.144)
+2026-06-13T17:25:10.111Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication v0.0.1 using Java 21.0.10 with PID 19090 (/root/fundamentals/backend/target/vega.fundamentals.0.0.1.jar started by root in /root/fundamentals/backend)
+2026-06-13T17:25:10.122Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:25:13.377Z  INFO 19090 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:25:13.396Z  INFO 19090 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:25:13.397Z  INFO 19090 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:25:13.487Z  INFO 19090 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:25:13.487Z  INFO 19090 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3050 ms
+2026-06-13T17:25:13.651Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:25:13.755Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:25:15.169Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:25:16.301Z  INFO 19090 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:25:16.342Z  INFO 19090 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.698 seconds (process running for 9.197)
+2026-06-13T17:25:22.470Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-13T17:25:22.471Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-13T17:25:22.479Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-13T17:25:22.819Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:25:22.819Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:25:23.241Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Primary cache hit for ISIN: INE669E01016
+2026-06-13T17:25:23.242Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Legacy primary cache hit for ISIN: INE669E01016
+2026-06-13T17:25:23.493Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:25:23.493Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:25:23.538Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.service.FundamentalCacheService    : Primary cache hit for ISIN: INE669E01016
+2026-06-13T17:25:23.538Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-1] c.v.f.service.FundamentalCacheService    : Legacy primary cache hit for ISIN: INE669E01016
+2026-06-13T17:25:23.612Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:25:23.615Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:25:23.633Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Primary cache hit for ISIN: INE669E01016
+2026-06-13T17:25:23.634Z  INFO 19090 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Legacy primary cache hit for ISIN: INE669E01016
+2026-06-13T17:28:15.920Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication v0.0.1 using Java 21.0.10 with PID 19578 (/root/fundamentals/backend/target/vega.fundamentals.0.0.1.jar started by root in /root/fundamentals/backend)
+2026-06-13T17:28:15.926Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:28:18.564Z  INFO 19578 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:28:18.582Z  INFO 19578 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:28:18.583Z  INFO 19578 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:28:18.711Z  INFO 19578 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:28:18.712Z  INFO 19578 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2513 ms
+2026-06-13T17:28:18.853Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:28:18.953Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:28:20.408Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:28:21.210Z  INFO 19578 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:28:21.239Z  INFO 19578 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 6.53 seconds (process running for 7.597)
+2026-06-13T17:28:33.874Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-13T17:28:33.876Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-13T17:28:33.878Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-13T17:28:34.265Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:28:34.268Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:28:34.648Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Primary cache hit for ISIN: INE669E01016
+2026-06-13T17:28:34.648Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Legacy primary cache hit for ISIN: INE669E01016
+2026-06-13T17:28:37.068Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:28:37.069Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:28:37.103Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Primary cache hit for ISIN: INE669E01016
+2026-06-13T17:28:37.104Z  INFO 19578 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Legacy primary cache hit for ISIN: INE669E01016
+2026-06-13T17:29:18.866Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication v0.0.1 using Java 21.0.10 with PID 19675 (/root/fundamentals/backend/target/vega.fundamentals.0.0.1.jar started by root in /root/fundamentals/backend)
+2026-06-13T17:29:18.874Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:29:22.395Z  INFO 19675 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:29:22.450Z  INFO 19675 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:29:22.451Z  INFO 19675 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:29:22.550Z  INFO 19675 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:29:22.551Z  INFO 19675 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3356 ms
+2026-06-13T17:29:22.711Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:29:22.816Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:29:24.201Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:29:25.160Z  INFO 19675 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:29:25.186Z  INFO 19675 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.843 seconds (process running for 9.362)
+2026-06-13T17:29:36.122Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-13T17:29:36.123Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-13T17:29:36.126Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-13T17:29:36.475Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:29:36.481Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:29:36.485Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE669E01016
+2026-06-13T17:29:38.963Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : metadata.json missing or new ISIN: INE669E01016. Initializing...
+2026-06-13T17:29:39.041Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.056Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.066Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.075Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.087Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.092Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.095Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.113Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE669E01016 (offset: 0)
+2026-06-13T17:29:39.182Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Cache saved for ISIN: INE669E01016
+2026-06-13T17:29:44.338Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:29:44.339Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:29:45.769Z  INFO 19675 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
+2026-06-13T17:30:21.492Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication v0.0.1 using Java 21.0.10 with PID 19922 (/root/fundamentals/backend/target/vega.fundamentals.0.0.1.jar started by root in /root/fundamentals/backend)
+2026-06-13T17:30:21.499Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-13T17:30:24.642Z  INFO 19922 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-13T17:30:24.656Z  INFO 19922 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-13T17:30:24.658Z  INFO 19922 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-13T17:30:24.746Z  INFO 19922 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-13T17:30:24.747Z  INFO 19922 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2855 ms
+2026-06-13T17:30:24.893Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-13T17:30:24.982Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:30:26.501Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-13T17:30:27.484Z  INFO 19922 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-13T17:30:27.509Z  INFO 19922 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.969 seconds (process running for 9.298)
+2026-06-13T17:30:33.416Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-13T17:30:33.417Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-13T17:30:33.424Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2026-06-13T17:30:33.888Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:30:33.889Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:30:41.316Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
+2026-06-13T17:30:41.538Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:30:41.539Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:30:44.318Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
+2026-06-13T17:30:44.369Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-4] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:30:44.370Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-4] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:30:50.925Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-4] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
+2026-06-13T17:30:50.993Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-6] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:30:50.994Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-6] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:30:53.509Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-6] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
+2026-06-13T17:30:53.583Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-13T17:30:53.583Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.service.FundamentalCacheService    : Attempting history reconstruction for ISIN: INE669E01016...
+2026-06-13T17:30:59.464Z  INFO 19922 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.service.FundamentalCacheService    : History hit and fresh for ISIN: INE669E01016
 ```
 
 ```xml
@@ -392,7 +527,6 @@ public class FundamentalController {
         }
 
         FundamentalSnapshot snapshot = aggregatorService.aggregate(isin);
-        cacheService.put(isin, snapshot);
 
         return ResponseEntity.ok(snapshot);
     }
@@ -784,6 +918,7 @@ public class IsinMetadata {
     private String companyName;
     private String exchange;
     private Instant createdTs;
+    private Instant firstSeenTs;
     private Instant lastUpdatedTs;
 
     @Builder.Default
@@ -1189,19 +1324,16 @@ import java.util.Optional;
 @Slf4j
 public class FundamentalCacheService {
 
-    private final String cachePath;
     private final ObjectMapper objectMapper;
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
     private final FundamentalHistoryService historyService;
     private static final Duration TTL = Duration.ofHours(24);
 
-    public FundamentalCacheService(@Value("${storage.cache.fundamentals-path}") String cachePath, 
-                                 ObjectMapper objectMapper,
+    public FundamentalCacheService(ObjectMapper objectMapper,
                                  InstrumentService instrumentService,
                                  FundamentalAnalyzer analyzer,
                                  FundamentalHistoryService historyService) {
-        this.cachePath = cachePath;
         this.objectMapper = objectMapper;
         this.instrumentService = instrumentService;
         this.analyzer = analyzer;
@@ -1209,9 +1341,10 @@ public class FundamentalCacheService {
     }
 
     public Optional<FundamentalSnapshot> get(String isin) {
-        // 1. Try History Reconstruction (Stage 2: History is Primary)
-        log.info("Attempting history reconstruction for ISIN: {}...", isin);
+        // History is the absolute source of truth
+        log.info("Retrieving fundamentals from history for ISIN: {}...", isin);
         Optional<FundamentalSnapshot> historical = historyService.reconstructSnapshot(isin);
+        
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
             if (isFresh(snapshot.getGeneratedTs())) {
@@ -1223,142 +1356,15 @@ public class FundamentalCacheService {
             }
         }
 
-        // 2. Fallback to Legacy JSON Cache (Migration Support)
-        Optional<FundamentalSnapshot> legacyCached = getFromPrimaryCache(isin);
-        if (legacyCached.isPresent()) {
-            log.info("Legacy primary cache hit for ISIN: {}", isin);
-            return legacyCached;
-        }
-
         return Optional.empty();
     }
 
-    private Optional<FundamentalSnapshot> getFromPrimaryCache(String isin) {
-        Path isinDir = Path.of(cachePath, isin);
-        if (!Files.exists(isinDir) || !Files.exists(isinDir.resolve("profile.json"))) {
-            return Optional.empty();
-        }
-
-        try {
-            SectionResponse<CompanyProfileDto> profileRes = readSection(isinDir, "profile.json", new TypeReference<SectionResponse<CompanyProfileDto>>() {});
-            if (profileRes == null || !isFresh(profileRes.getFetchedTs())) {
-                log.info("Primary cache expired or missing for ISIN: {}", isin);
-                return Optional.empty();
-            }
-
-            InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
-            FundamentalSnapshot snapshot = buildSnapshotFromCache(isin, isinDir, profileRes, instrumentInfo);
-
-            if (isPartialSuccess(snapshot)) {
-                snapshot.setStatus("partial_success");
-            }
-
-            snapshot.setAnalysis(analyzer.analyze(snapshot));
-            log.info("Primary cache hit for ISIN: {}", isin);
-            return Optional.of(snapshot);
-        } catch (IOException e) {
-            log.error("Failed to read primary cache for ISIN: {}: {}", isin, e.getMessage());
-            return Optional.empty();
-        }
-    }
-
-    private FundamentalSnapshot buildSnapshotFromCache(String isin, Path isinDir, SectionResponse<CompanyProfileDto> profileRes, InstrumentService.InstrumentInfo instrumentInfo) throws IOException {
-        String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
-
-        FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
-                .schemaVersion("2.0")
-                .isin(isin)
-                .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
-                .companyName(companyName)
-                .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
-                .cacheHit(true)
-                .status("success")
-                .source("UPSTOX")
-                .generatedTs(profileRes.getFetchedTs())
-                .profile(SectionResponseFactory.cached(profileRes.getData(), profileRes.getFetchedTs()));
-
-        builder.balanceSheet(readAndWrapCached(isinDir, "balanceSheet.json", new TypeReference<SectionResponse<BalanceSheetContainer>>() {}));
-        builder.cashFlow(readAndWrapCached(isinDir, "cashFlow.json", new TypeReference<SectionResponse<CashFlowContainer>>() {}));
-        builder.incomeStatement(readAndWrapCached(isinDir, "incomeStatement.json", new TypeReference<SectionResponse<IncomeStatementContainer>>() {}));
-        
-        builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
-        builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
-        builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
-        
-        SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
-        builder.competitors(enrichCompetitors(competitorsRes));
-
-        return builder.build();
-    }
-
-    private boolean isPartialSuccess(FundamentalSnapshot snapshot) {
-        return List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
-                snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
-                snapshot.getCorporateActions(), snapshot.getCompetitors())
-                .stream().anyMatch(res -> "error".equals(res.getStatus()));
-    }
-
-    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
-        if (!"cached".equals(sectionRes.getStatus()) && !"success".equals(sectionRes.getStatus())) {
-            return sectionRes;
-        }
-        if (sectionRes.getData() == null) return sectionRes;
-
-        for (CompetitorDto competitor : sectionRes.getData()) {
-            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
-            if (info != null) {
-                competitor.setIsin(info.getIsin());
-                competitor.setSymbol(info.getSymbol());
-                competitor.setCompanyName(info.getName());
-                competitor.setExchange(info.getExchange());
-            }
-        }
-        return sectionRes;
-    }
-
+    /**
+     * Legacy put removed. Persistence happens exclusively via FundamentalHistoryService
+     * during the aggregation phase.
+     */
     public void put(String isin, FundamentalSnapshot snapshot) {
-        Path isinDir = Path.of(cachePath, isin);
-        try {
-            Files.createDirectories(isinDir);
-            
-            writeSection(isinDir, "profile.json", snapshot.getProfile());
-            writeSection(isinDir, "balanceSheet.json", snapshot.getBalanceSheet());
-            writeSection(isinDir, "cashFlow.json", snapshot.getCashFlow());
-            writeSection(isinDir, "incomeStatement.json", snapshot.getIncomeStatement());
-            writeSection(isinDir, "shareHoldings.json", snapshot.getShareHoldings());
-            writeSection(isinDir, "keyRatios.json", snapshot.getKeyRatios());
-            writeSection(isinDir, "corporateActions.json", snapshot.getCorporateActions());
-            writeSection(isinDir, "competitors.json", snapshot.getCompetitors());
-            
-            log.info("Cache saved for ISIN: {}", isin);
-        } catch (IOException e) {
-            log.error("Failed to save cache for ISIN: {}: {}", isin, e.getMessage());
-        }
-    }
-
-    private <T> T readSection(Path dir, String filename, TypeReference<T> type) throws IOException {
-        File file = dir.resolve(filename).toFile();
-        if (file.exists()) {
-            return objectMapper.readValue(file, type);
-        }
-        return null;
-    }
-
-    private <T> SectionResponse<T> readAndWrapCached(Path dir, String filename, TypeReference<SectionResponse<T>> type) throws IOException {
-        SectionResponse<T> res = readSection(dir, filename, type);
-        if (res != null) {
-            if ("success".equals(res.getStatus()) || "cached".equals(res.getStatus())) {
-                return SectionResponseFactory.cached(res.getData(), res.getFetchedTs());
-            }
-            return res;
-        }
-        return SectionResponseFactory.error("CACHE_MISS", "Section missing in cache", null);
-    }
-
-    private void writeSection(Path dir, String filename, Object data) throws IOException {
-        if (data != null) {
-            objectMapper.writeValue(dir.resolve(filename).toFile(), data);
-        }
+        // No-op: Stage 3 eliminates redundant legacy JSON cache writes
     }
 
     private boolean isFresh(Instant ts) {
@@ -1378,10 +1384,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.vega.fundamentals.dto.FundamentalSnapshot;
-import com.vega.fundamentals.dto.HistoryRecord;
-import com.vega.fundamentals.dto.IsinMetadata;
-import com.vega.fundamentals.dto.SectionResponse;
+import com.vega.fundamentals.dto.*;
 import com.vega.fundamentals.model.FundamentalEndpoint;
 import com.vega.fundamentals.util.SectionResponseFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -1399,6 +1402,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -1436,8 +1440,7 @@ public class FundamentalHistoryService {
             Path isinHistoryDir = Path.of(historyPath, isin);
             Files.createDirectories(isinHistoryDir);
             
-            rebuildIndexIfMissing(isin);
-            IsinMetadata metadata = updateIsinMetadata(snapshot);
+            IsinMetadata metadata = loadOrRebuildMetadata(snapshot);
 
             for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
                 SectionResponse<?> section = getSection(snapshot, endpoint);
@@ -1476,10 +1479,7 @@ public class FundamentalHistoryService {
             JsonNode normalizedNode = normalize(dataNode);
             String currentHash = generateHash(normalizedNode);
 
-            File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
-            Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
-
-            HistoryIndexEntry lastEntry = index.get(endpoint.getKey());
+            IsinMetadata.EndpointMetadata lastEntry = metadata.getEndpoints().get(endpoint.getKey());
 
             if (lastEntry != null && currentHash.equals(lastEntry.getHash())) {
                 log.debug("No change detected for {} (ISIN: {}). Skipping archive.", endpoint.getKey(), isin);
@@ -1497,11 +1497,14 @@ public class FundamentalHistoryService {
 
             long offset = appendHistory(Path.of(historyPath, isin), endpoint, record);
 
-            // Update index and metadata
-            index.put(endpoint.getKey(), new HistoryIndexEntry(currentHash, nextVersion, record.getTs(), offset));
-            saveIndex(indexFile, index);
+            // Update metadata
+            metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
+                    .hash(currentHash)
+                    .version(nextVersion)
+                    .lastUpdatedTs(record.getTs())
+                    .offset(offset)
+                    .build());
             
-            metadata.getEndpointVersions().put(endpoint.getKey(), nextVersion);
             metadata.setLastUpdatedTs(record.getTs());
 
             log.info("Archived v{} of {} for ISIN: {} (offset: {})", nextVersion, endpoint.getKey(), isin, offset);
@@ -1511,8 +1514,9 @@ public class FundamentalHistoryService {
         }
     }
 
-    private IsinMetadata updateIsinMetadata(FundamentalSnapshot snapshot) throws IOException {
-        Path isinDir = Path.of(historyPath, snapshot.getIsin());
+    private IsinMetadata loadOrRebuildMetadata(FundamentalSnapshot snapshot) throws IOException {
+        String isin = snapshot.getIsin();
+        Path isinDir = Path.of(historyPath, isin);
         File metadataFile = isinDir.resolve("metadata.json").toFile();
 
         IsinMetadata metadata;
@@ -1522,47 +1526,46 @@ public class FundamentalHistoryService {
             metadata.setCompanyName(snapshot.getCompanyName());
             metadata.setExchange(snapshot.getExchange());
         } else {
+            log.info("metadata.json missing or new ISIN: {}. Initializing...", isin);
+            Instant now = Instant.now();
             metadata = IsinMetadata.builder()
-                    .isin(snapshot.getIsin())
+                    .isin(isin)
                     .symbol(snapshot.getSymbol())
                     .companyName(snapshot.getCompanyName())
                     .exchange(snapshot.getExchange())
-                    .createdTs(Instant.now())
-                    .lastUpdatedTs(Instant.now())
+                    .createdTs(now)
+                    .firstSeenTs(now)
+                    .lastUpdatedTs(now)
                     .build();
+            
+            rebuildEndpointMetadata(isin, metadata);
         }
         return metadata;
+    }
+
+    private void rebuildEndpointMetadata(String isin, IsinMetadata metadata) {
+        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
+            if (latestInfo != null) {
+                HistoryRecord record = latestInfo.getRecord();
+                metadata.getEndpoints().put(endpoint.getKey(), IsinMetadata.EndpointMetadata.builder()
+                        .hash(record.getHash())
+                        .version(record.getVersion())
+                        .lastUpdatedTs(record.getTs())
+                        .offset(latestInfo.getOffset())
+                        .build());
+            }
+        }
+        if (!metadata.getEndpoints().isEmpty()) {
+            log.info("Successfully rebuilt metadata endpoints for ISIN: {} with {} entries.", isin, metadata.getEndpoints().size());
+        }
     }
 
     private void saveIsinMetadata(String isin, IsinMetadata metadata) throws IOException {
         File metadataFile = Path.of(historyPath, isin, "metadata.json").toFile();
         objectMapper.writeValue(metadataFile, metadata);
-    }
-
-    private void rebuildIndexIfMissing(String isin) {
-        Path isinDir = Path.of(historyPath, isin);
-        File indexFile = isinDir.resolve("latest-index.json").toFile();
-        if (indexFile.exists()) return;
-
-        log.info("latest-index.json missing for ISIN: {}. Rebuilding from history...", isin);
-        Map<String, HistoryIndexEntry> index = new HashMap<>();
-        
-        for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
-            LatestRecordInfo latestInfo = readLatestRecordDetailed(isin, endpoint);
-            if (latestInfo != null) {
-                HistoryRecord record = latestInfo.getRecord();
-                index.put(endpoint.getKey(), new HistoryIndexEntry(record.getHash(), record.getVersion(), record.getTs(), latestInfo.getOffset()));
-            }
-        }
-
-        if (!index.isEmpty()) {
-            try {
-                saveIndex(indexFile, index);
-                log.info("Successfully rebuilt index for ISIN: {} with {} entries.", isin, index.size());
-            } catch (IOException e) {
-                log.error("Failed to save rebuilt index for ISIN {}: {}", isin, e.getMessage());
-            }
-        }
+        // Clean up legacy index if it exists
+        Files.deleteIfExists(Path.of(historyPath, isin, "latest-index.json"));
     }
 
     private JsonNode normalize(JsonNode node) {
@@ -1601,20 +1604,6 @@ public class FundamentalHistoryService {
         return hexString.toString();
     }
 
-    private Map<String, HistoryIndexEntry> loadIndex(File indexFile) {
-        if (!indexFile.exists()) return new HashMap<>();
-        try {
-            return objectMapper.readValue(indexFile, new TypeReference<Map<String, HistoryIndexEntry>>() {});
-        } catch (IOException e) {
-            log.warn("Failed to load history index: {}", e.getMessage());
-            return new HashMap<>();
-        }
-    }
-
-    private void saveIndex(File indexFile, Map<String, HistoryIndexEntry> index) throws IOException {
-        objectMapper.writeValue(indexFile, index);
-    }
-
     private long appendHistory(Path dir, FundamentalEndpoint endpoint, HistoryRecord record) throws IOException {
         File historyFile = dir.resolve(endpoint.getFilename()).toFile();
         long offset = historyFile.exists() ? historyFile.length() : 0;
@@ -1647,14 +1636,9 @@ public class FundamentalHistoryService {
                     .generatedTs(metadata.getLastUpdatedTs())
                     .cacheHit(true);
 
-            builder.profile(reconstructSection(isin, FundamentalEndpoint.PROFILE));
-            builder.balanceSheet(reconstructSection(isin, FundamentalEndpoint.BALANCE_SHEET));
-            builder.cashFlow(reconstructSection(isin, FundamentalEndpoint.CASH_FLOW));
-            builder.incomeStatement(reconstructSection(isin, FundamentalEndpoint.INCOME_STATEMENT));
-            builder.shareHoldings(reconstructSection(isin, FundamentalEndpoint.SHARE_HOLDINGS));
-            builder.keyRatios(reconstructSection(isin, FundamentalEndpoint.KEY_RATIOS));
-            builder.corporateActions(reconstructSection(isin, FundamentalEndpoint.CORPORATE_ACTIONS));
-            builder.competitors(reconstructSection(isin, FundamentalEndpoint.COMPETITORS));
+            for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
+                setReconstructedSection(builder, isin, endpoint, metadata);
+            }
 
             FundamentalSnapshot snapshot = builder.build();
             return Optional.of(snapshot);
@@ -1666,14 +1650,27 @@ public class FundamentalHistoryService {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint) {
-        File indexFile = Path.of(historyPath, isin, "latest-index.json").toFile();
-        Map<String, HistoryIndexEntry> index = loadIndex(indexFile);
-        HistoryIndexEntry indexEntry = index.get(endpoint.getKey());
+    private void setReconstructedSection(FundamentalSnapshot.FundamentalSnapshotBuilder builder, String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
+        SectionResponse<?> section = reconstructSection(isin, endpoint, metadata);
+        switch (endpoint) {
+            case PROFILE -> builder.profile((SectionResponse<CompanyProfileDto>) section);
+            case BALANCE_SHEET -> builder.balanceSheet((SectionResponse<BalanceSheetContainer>) section);
+            case CASH_FLOW -> builder.cashFlow((SectionResponse<CashFlowContainer>) section);
+            case INCOME_STATEMENT -> builder.incomeStatement((SectionResponse<IncomeStatementContainer>) section);
+            case SHARE_HOLDINGS -> builder.shareHoldings((SectionResponse<List<ShareHoldingDto>>) section);
+            case KEY_RATIOS -> builder.keyRatios((SectionResponse<List<KeyRatioDto>>) section);
+            case CORPORATE_ACTIONS -> builder.corporateActions((SectionResponse<List<CorporateActionDto>>) section);
+            case COMPETITORS -> builder.competitors((SectionResponse<List<CompetitorDto>>) section);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
+        IsinMetadata.EndpointMetadata endpointMeta = metadata.getEndpoints().get(endpoint.getKey());
 
         HistoryRecord record;
-        if (indexEntry != null && indexEntry.getOffset() >= 0) {
-            record = readRecordAtOffset(isin, endpoint, indexEntry.getOffset());
+        if (endpointMeta != null && endpointMeta.getOffset() >= 0) {
+            record = readRecordAtOffset(isin, endpoint, endpointMeta.getOffset());
         } else {
             record = readLatestRecord(isin, endpoint);
         }
@@ -1763,16 +1760,6 @@ public class FundamentalHistoryService {
             }
         }
         return null;
-    }
-
-    @lombok.Data
-    @lombok.AllArgsConstructor
-    @lombok.NoArgsConstructor
-    public static class HistoryIndexEntry {
-        private String hash;
-        private long version;
-        private Instant ts;
-        private long offset = -1;
     }
 
     @lombok.Data
