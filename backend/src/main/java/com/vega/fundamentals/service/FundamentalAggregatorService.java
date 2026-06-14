@@ -34,42 +34,40 @@ public class FundamentalAggregatorService {
 
         InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
 
-        CompletableFuture<SectionResponse<CompanyProfileDto>> profileFuture = fetchAsync(isin, Endpoints.PROFILE, 
+        // Fetch sequentially to avoid Upstox 1 request/sec global rate limit
+        SectionResponse<CompanyProfileDto> profileRes = fetchSync(isin, Endpoints.PROFILE, 
                 new TypeReference<BaseResponseDto<CompanyProfileDto>>() {}, "profile");
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<BalanceSheetContainer>> balanceSheetFuture = fetchAsync(isin, Endpoints.BALANCE_SHEET, 
-                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet")
-                .thenApply(res -> wrapContainer(res, BalanceSheetContainer.class));
+        SectionResponse<BalanceSheetContainer> balanceSheetRes = wrapContainer(fetchSync(isin, Endpoints.BALANCE_SHEET, 
+                new TypeReference<BaseResponseDto<BalanceSheetDto>>() {}, "balanceSheet"), BalanceSheetContainer.class);
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<CashFlowContainer>> cashFlowFuture = fetchAsync(isin, Endpoints.CASH_FLOW, 
-                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow")
-                .thenApply(res -> wrapContainer(res, CashFlowContainer.class));
+        SectionResponse<CashFlowContainer> cashFlowRes = wrapContainer(fetchSync(isin, Endpoints.CASH_FLOW, 
+                new TypeReference<BaseResponseDto<CashFlowDto>>() {}, "cashFlow"), CashFlowContainer.class);
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<IncomeStatementContainer>> incomeStatementFuture = fetchAsync(isin, Endpoints.INCOME_STATEMENT, 
-                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement")
-                .thenApply(res -> wrapContainer(res, IncomeStatementContainer.class));
+        SectionResponse<IncomeStatementContainer> incomeStatementRes = wrapContainer(fetchSync(isin, Endpoints.INCOME_STATEMENT, 
+                new TypeReference<BaseResponseDto<IncomeStatementDto>>() {}, "incomeStatement"), IncomeStatementContainer.class);
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<List<ShareHoldingDto>>> shareHoldingsFuture = fetchAsync(isin, Endpoints.SHARE_HOLDINGS, 
+        SectionResponse<List<ShareHoldingDto>> shareHoldingsRes = fetchSync(isin, Endpoints.SHARE_HOLDINGS, 
                 new TypeReference<BaseResponseDto<List<ShareHoldingDto>>>() {}, "shareHoldings");
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<List<KeyRatioDto>>> keyRatiosFuture = fetchAsync(isin, Endpoints.KEY_RATIOS, 
+        SectionResponse<List<KeyRatioDto>> keyRatiosRes = fetchSync(isin, Endpoints.KEY_RATIOS, 
                 new TypeReference<BaseResponseDto<List<KeyRatioDto>>>() {}, "keyRatios");
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<List<CorporateActionDto>>> corporateActionsFuture = fetchAsync(isin, Endpoints.CORPORATE_ACTIONS, 
+        SectionResponse<List<CorporateActionDto>> corporateActionsRes = fetchSync(isin, Endpoints.CORPORATE_ACTIONS, 
                 new TypeReference<BaseResponseDto<List<CorporateActionDto>>>() {}, "corporateActions");
+        sleepQuietly(1000);
 
-        CompletableFuture<SectionResponse<List<CompetitorDto>>> competitorsFuture = fetchAsync(isin, Endpoints.COMPETITORS, 
-                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors")
-                .thenApply(this::enrichCompetitors);
-
-        CompletableFuture.allOf(
-                profileFuture, balanceSheetFuture, cashFlowFuture, incomeStatementFuture,
-                shareHoldingsFuture, keyRatiosFuture, corporateActionsFuture, competitorsFuture
-        ).join();
+        SectionResponse<List<CompetitorDto>> competitorsRes = enrichCompetitors(fetchSync(isin, Endpoints.COMPETITORS, 
+                new TypeReference<BaseResponseDto<List<CompetitorDto>>>() {}, "competitors"));
 
         stopWatch.stop();
 
-        SectionResponse<CompanyProfileDto> profileRes = profileFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null));
         String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
 
         FundamentalSnapshot snapshot = FundamentalSnapshot.builder()
@@ -84,13 +82,13 @@ public class FundamentalAggregatorService {
                 .requestDurationMs(stopWatch.getTotalTimeMillis())
                 .cacheHit(false)
                 .profile(profileRes)
-                .balanceSheet(balanceSheetFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
-                .cashFlow(cashFlowFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
-                .incomeStatement(incomeStatementFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", null)))
-                .shareHoldings(shareHoldingsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
-                .keyRatios(keyRatiosFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
-                .corporateActions(corporateActionsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
-                .competitors(competitorsFuture.getNow(SectionResponseFactory.error("INTERNAL_ERROR", "Fetch failed", List.of())))
+                .balanceSheet(balanceSheetRes)
+                .cashFlow(cashFlowRes)
+                .incomeStatement(incomeStatementRes)
+                .shareHoldings(shareHoldingsRes)
+                .keyRatios(keyRatiosRes)
+                .corporateActions(corporateActionsRes)
+                .competitors(competitorsRes)
                 .build();
 
         boolean anyError = List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
@@ -110,23 +108,26 @@ public class FundamentalAggregatorService {
         return snapshot;
     }
 
-    private <T> CompletableFuture<SectionResponse<T>> fetchAsync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, String name) {
-        return CompletableFuture.<SectionResponse<T>>supplyAsync(() -> {
-            try {
-                T result = client.fetch(isin, endpoint, type);
-                if (result != null) {
-                    return SectionResponseFactory.success(result);
-                } else {
-                    return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
-                }
-            } catch (Exception e) {
-                log.error("Error fetching {} for ISIN: {}: {}", name, isin, e.getMessage());
-                return SectionResponseFactory.error("EXCEPTION", e.getMessage(), null);
+    private void sleepQuietly(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    private <T> SectionResponse<T> fetchSync(String isin, String endpoint, TypeReference<BaseResponseDto<T>> type, String name) {
+        try {
+            T result = client.fetch(isin, endpoint, type);
+            if (result != null) {
+                return SectionResponseFactory.success(result);
+            } else {
+                return SectionResponseFactory.error("UPSTOX_FETCH_ERROR", "Failed to fetch " + name, null);
             }
-        }, executor).orTimeout(5, TimeUnit.SECONDS).exceptionally(ex -> {
-            log.error("Timeout or error fetching {} for ISIN: {}: {}", name, isin, ex.getMessage());
-            return SectionResponseFactory.<T>error("TIMEOUT_OR_ERROR", "Failed to complete fetch for " + name, null);
-        });
+        } catch (Exception e) {
+            log.error("Error fetching {} for ISIN: {}: {}", name, isin, e.getMessage());
+            return SectionResponseFactory.error("EXCEPTION", e.getMessage(), null);
+        }
     }
 
     private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
