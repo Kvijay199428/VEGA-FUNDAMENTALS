@@ -29,6 +29,7 @@ public class FundamentalController {
     private final FundamentalCacheService cacheService;
     private final com.vega.fundamentals.service.FundamentalHistoryService historyService;
     private final com.vega.fundamentals.service.FundamentalAnalyzer analyzer;
+    private final com.vega.fundamentals.service.FundamentalBootstrapService bootstrapService;
 
     @GetMapping("/{isin}")
     public ResponseEntity<FundamentalSnapshot> getFundamentals(
@@ -78,5 +79,11 @@ public class FundamentalController {
             return ResponseEntity.ok(s);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/bootstrap/fno")
+    public ResponseEntity<com.vega.fundamentals.service.FundamentalBootstrapService.BootstrapResult> bootstrapFno() {
+        log.info("F&O Bootstrap trigger received.");
+        return ResponseEntity.ok(bootstrapService.bootstrapFno());
     }
 }
