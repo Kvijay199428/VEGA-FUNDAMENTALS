@@ -8442,6 +8442,2770 @@
 2026-06-14T08:45:35.066Z  INFO 13036 --- [vega.fundamentals] [tomcat-handler-344] c.v.f.service.FundamentalHistoryService  : metadata.json missing or corrupted for ISIN: INE323A01026. Rebuilding from history...
 2026-06-14T08:45:35.084Z  WARN 13036 --- [vega.fundamentals] [tomcat-handler-344] c.v.f.service.FundamentalHistoryService  : No successful endpoints to archive for ISIN: INE323A01026. Skipping metadata creation.
 2026-06-14T08:45:35.088Z  WARN 13036 --- [vega.fundamentals] [tomcat-handler-342] c.v.f.service.FundamentalHistoryService  : No successful endpoints to archive for ISIN: INE415G01027. Skipping metadata creation.
+2026-06-14T10:08:18.454Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Starting VegaFundamentalsApplication using Java 21.0.10 with PID 18453 (/root/fundamentals/backend/target/classes started by root in /root/fundamentals/backend)
+2026-06-14T10:08:18.458Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-14T10:08:20.777Z  INFO 18453 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-14T10:08:20.800Z  INFO 18453 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-14T10:08:20.801Z  INFO 18453 --- [vega.fundamentals] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-14T10:08:20.946Z  INFO 18453 --- [vega.fundamentals] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-14T10:08:20.947Z  INFO 18453 --- [vega.fundamentals] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2382 ms
+2026-06-14T10:08:21.093Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.config.UpstoxCredentialManager     : Upstox access token loaded successfully.
+2026-06-14T10:08:21.221Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loading instruments from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-14T10:08:23.339Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Loaded 17996 instruments (ISINs: 17996, Keys: 139030) from /root/fundamentals/data/instruments/upstox/upstox.json
+2026-06-14T10:08:23.339Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.service.InstrumentService          : Identified 211 F&O linked equities.
+2026-06-14T10:08:23.663Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.service.FundamentalHistoryService  : Starting history integrity cleanup...
+2026-06-14T10:08:24.413Z  INFO 18453 --- [vega.fundamentals] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-06-14T10:08:24.437Z  INFO 18453 --- [vega.fundamentals] [main] c.v.f.VegaFundamentalsApplication        : Started VegaFundamentalsApplication in 7.138 seconds (process running for 8.011)
+2026-06-14T10:08:44.910Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-14T10:08:44.913Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-14T10:08:44.918Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-14T10:08:45.932Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.controller.FundamentalController   : Request received for ISIN: INE692A01016
+2026-06-14T10:08:45.934Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-0] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE692A01016...
+2026-06-14T10:08:46.441Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE692A01016 (Source: USER_REQUEST)
+2026-06-14T10:08:46.449Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE692A01016
+2026-06-14T10:08:48.649Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : metadata.json missing or corrupted for ISIN: INE692A01016. Rebuilding from history...
+2026-06-14T10:08:48.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.786Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.797Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.820Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.827Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.847Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.864Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE692A01016 (offset: 0)
+2026-06-14T10:08:48.873Z  INFO 18453 --- [vega.fundamentals] [scheduling-24] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE692A01016
+2026-06-14T10:10:42.686Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.controller.FundamentalController   : Request received for ISIN: INE070A01015
+2026-06-14T10:10:42.696Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-2] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE070A01015...
+2026-06-14T10:10:42.734Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.controller.FundamentalController   : Request received for ISIN: INE171Z01026
+2026-06-14T10:10:42.736Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE171Z01026...
+2026-06-14T10:10:42.751Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-4] c.v.f.controller.FundamentalController   : Request received for ISIN: INE267A01025
+2026-06-14T10:10:42.752Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-4] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE267A01025...
+2026-06-14T10:10:42.936Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.controller.FundamentalController   : Request received for ISIN: INE749A01030
+2026-06-14T10:10:42.939Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE749A01030...
+2026-06-14T10:10:42.963Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-6] c.v.f.controller.FundamentalController   : Request received for ISIN: INE522D01027
+2026-06-14T10:10:42.966Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-6] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE522D01027...
+2026-06-14T10:10:43.092Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.controller.FundamentalController   : Request received for ISIN: INE917I01010
+2026-06-14T10:10:43.094Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-7] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE917I01010...
+2026-06-14T10:10:43.126Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-8] c.v.f.controller.FundamentalController   : Request received for ISIN: INE00R701025
+2026-06-14T10:10:43.128Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-8] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE00R701025...
+2026-06-14T10:10:43.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE070A01015 (Source: USER_REQUEST)
+2026-06-14T10:10:43.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE070A01015
+2026-06-14T10:10:43.468Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-9] c.v.f.controller.FundamentalController   : Request received for ISIN: INE466L01038
+2026-06-14T10:10:43.469Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-9] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE466L01038...
+2026-06-14T10:10:43.475Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-10] c.v.f.controller.FundamentalController   : Request received for ISIN: INE585B01010
+2026-06-14T10:10:43.476Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-10] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE585B01010...
+2026-06-14T10:10:43.547Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-11] c.v.f.controller.FundamentalController   : Request received for ISIN: INE139A01034
+2026-06-14T10:10:43.549Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-11] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE139A01034...
+2026-06-14T10:10:44.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE171Z01026 (Source: USER_REQUEST)
+2026-06-14T10:10:44.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE171Z01026
+2026-06-14T10:10:44.523Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.544Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.546Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-18] c.v.f.controller.FundamentalController   : Request received for ISIN: INE591G01025
+2026-06-14T10:10:44.550Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-18] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE591G01025...
+2026-06-14T10:10:44.554Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.565Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.573Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.577Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.580Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.587Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE070A01015 (offset: 0)
+2026-06-14T10:10:44.594Z  INFO 18453 --- [vega.fundamentals] [scheduling-141] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE070A01015
+2026-06-14T10:10:44.676Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-19] c.v.f.controller.FundamentalController   : Request received for ISIN: INE160A01022
+2026-06-14T10:10:44.679Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-19] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE160A01022...
+2026-06-14T10:10:44.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE171Z01026 (offset: 0)
+2026-06-14T10:10:44.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-142] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE171Z01026
+2026-06-14T10:10:44.752Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-20] c.v.f.controller.FundamentalController   : Request received for ISIN: INE736A01011
+2026-06-14T10:10:44.753Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-20] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE736A01011...
+2026-06-14T10:10:44.853Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-21] c.v.f.controller.FundamentalController   : Request received for ISIN: INE814H01029
+2026-06-14T10:10:44.855Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-21] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE814H01029...
+2026-06-14T10:10:45.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE267A01025 (Source: USER_REQUEST)
+2026-06-14T10:10:45.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE267A01025
+2026-06-14T10:10:45.682Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-27] c.v.f.controller.FundamentalController   : Request received for ISIN: INE102D01028
+2026-06-14T10:10:45.683Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-27] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE102D01028...
+2026-06-14T10:10:45.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE267A01025 (offset: 0)
+2026-06-14T10:10:45.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-143] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE267A01025
+2026-06-14T10:10:46.286Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-29] c.v.f.controller.FundamentalController   : Request received for ISIN: INE376G01013
+2026-06-14T10:10:46.288Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-29] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE376G01013...
+2026-06-14T10:10:46.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE749A01030 (Source: USER_REQUEST)
+2026-06-14T10:10:46.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE749A01030
+2026-06-14T10:10:46.454Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-30] c.v.f.controller.FundamentalController   : Request received for ISIN: INE619A01035
+2026-06-14T10:10:46.455Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-30] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE619A01035...
+2026-06-14T10:10:46.469Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-32] c.v.f.controller.FundamentalController   : Request received for ISIN: INE918Z01012
+2026-06-14T10:10:46.471Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-32] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE918Z01012...
+2026-06-14T10:10:46.481Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-34] c.v.f.controller.FundamentalController   : Request received for ISIN: INE134E01011
+2026-06-14T10:10:46.483Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-36] c.v.f.controller.FundamentalController   : Request received for ISIN: INE009A01021
+2026-06-14T10:10:46.483Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-34] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE134E01011...
+2026-06-14T10:10:46.485Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-37] c.v.f.controller.FundamentalController   : Request received for ISIN: INE540L01014
+2026-06-14T10:10:46.486Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-36] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE009A01021...
+2026-06-14T10:10:46.486Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-37] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE540L01014...
+2026-06-14T10:10:46.515Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-38] c.v.f.controller.FundamentalController   : Request received for ISIN: INE465A01025
+2026-06-14T10:10:46.515Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-38] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE465A01025...
+2026-06-14T10:10:46.575Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-41] c.v.f.controller.FundamentalController   : Request received for ISIN: INE811K01011
+2026-06-14T10:10:46.576Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-42] c.v.f.controller.FundamentalController   : Request received for ISIN: INE237A01036
+2026-06-14T10:10:46.576Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-41] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE811K01011...
+2026-06-14T10:10:46.577Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-42] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE237A01036...
+2026-06-14T10:10:46.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE749A01030 (offset: 0)
+2026-06-14T10:10:46.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-144] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE749A01030
+2026-06-14T10:10:47.043Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-46] c.v.f.controller.FundamentalController   : Request received for ISIN: INE030A01027
+2026-06-14T10:10:47.045Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-46] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE030A01027...
+2026-06-14T10:10:47.247Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-47] c.v.f.controller.FundamentalController   : Request received for ISIN: INE476A01022
+2026-06-14T10:10:47.249Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-47] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE476A01022...
+2026-06-14T10:10:47.362Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-48] c.v.f.controller.FundamentalController   : Request received for ISIN: INE01EA01019
+2026-06-14T10:10:47.369Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-48] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE01EA01019...
+2026-06-14T10:10:47.396Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-49] c.v.f.controller.FundamentalController   : Request received for ISIN: INE745G01043
+2026-06-14T10:10:47.398Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-49] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE745G01043...
+2026-06-14T10:10:47.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE522D01027 (Source: USER_REQUEST)
+2026-06-14T10:10:47.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE522D01027
+2026-06-14T10:10:47.456Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-50] c.v.f.controller.FundamentalController   : Request received for ISIN: INE361B01024
+2026-06-14T10:10:47.464Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-50] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE361B01024...
+2026-06-14T10:10:47.742Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-54] c.v.f.controller.FundamentalController   : Request received for ISIN: INE721A01047
+2026-06-14T10:10:47.747Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-54] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE721A01047...
+2026-06-14T10:10:47.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.765Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.774Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.779Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.787Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE522D01027 (offset: 0)
+2026-06-14T10:10:47.789Z  INFO 18453 --- [vega.fundamentals] [scheduling-145] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE522D01027
+2026-06-14T10:10:48.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE917I01010 (Source: USER_REQUEST)
+2026-06-14T10:10:48.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE917I01010
+2026-06-14T10:10:48.564Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-58] c.v.f.controller.FundamentalController   : Request received for ISIN: INE670K01029
+2026-06-14T10:10:48.564Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-58] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE670K01029...
+2026-06-14T10:10:48.613Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-59] c.v.f.controller.FundamentalController   : Request received for ISIN: INE158A01026
+2026-06-14T10:10:48.613Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-59] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE158A01026...
+2026-06-14T10:10:48.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.693Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-62] c.v.f.controller.FundamentalController   : Request received for ISIN: INE028A01039
+2026-06-14T10:10:48.696Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-62] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE028A01039...
+2026-06-14T10:10:48.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE917I01010 (offset: 0)
+2026-06-14T10:10:48.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-146] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE917I01010
+2026-06-14T10:10:48.848Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-64] c.v.f.controller.FundamentalController   : Request received for ISIN: INE405E01023
+2026-06-14T10:10:48.849Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-64] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE405E01023...
+2026-06-14T10:10:49.093Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-67] c.v.f.controller.FundamentalController   : Request received for ISIN: INE123W01016
+2026-06-14T10:10:49.094Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-67] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE123W01016...
+2026-06-14T10:10:49.427Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-69] c.v.f.controller.FundamentalController   : Request received for ISIN: INE192A01025
+2026-06-14T10:10:49.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE00R701025 (Source: USER_REQUEST)
+2026-06-14T10:10:49.430Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-69] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE192A01025...
+2026-06-14T10:10:49.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE00R701025
+2026-06-14T10:10:49.639Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-70] c.v.f.controller.FundamentalController   : Request received for ISIN: INE118A01012
+2026-06-14T10:10:49.641Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-70] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE118A01012...
+2026-06-14T10:10:49.669Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE00R701025 (offset: 0)
+2026-06-14T10:10:49.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-147] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE00R701025
+2026-06-14T10:10:49.842Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-71] c.v.f.controller.FundamentalController   : Request received for ISIN: INE531F01023
+2026-06-14T10:10:49.844Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-71] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE531F01023...
+2026-06-14T10:10:49.850Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-72] c.v.f.controller.FundamentalController   : Request received for ISIN: INE674K01013
+2026-06-14T10:10:49.852Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-72] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE674K01013...
+2026-06-14T10:10:50.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE466L01038 (Source: USER_REQUEST)
+2026-06-14T10:10:50.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE466L01038
+2026-06-14T10:10:50.445Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-73] c.v.f.controller.FundamentalController   : Request received for ISIN: INE528G01035
+2026-06-14T10:10:50.448Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-73] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE528G01035...
+2026-06-14T10:10:50.521Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-74] c.v.f.controller.FundamentalController   : Request received for ISIN: INE093I01010
+2026-06-14T10:10:50.523Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-74] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE093I01010...
+2026-06-14T10:10:50.669Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE466L01038 (offset: 0)
+2026-06-14T10:10:50.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-148] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE466L01038
+2026-06-14T10:10:50.799Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-77] c.v.f.controller.FundamentalController   : Request received for ISIN: INE094A01015
+2026-06-14T10:10:50.801Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-77] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE094A01015...
+2026-06-14T10:10:51.192Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-82] c.v.f.controller.FundamentalController   : Request received for ISIN: INE073K01018
+2026-06-14T10:10:51.194Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-82] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE073K01018...
+2026-06-14T10:10:51.391Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-84] c.v.f.controller.FundamentalController   : Request received for ISIN: INE006I01046
+2026-06-14T10:10:51.394Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-84] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE006I01046...
+2026-06-14T10:10:51.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE585B01010 (Source: USER_REQUEST)
+2026-06-14T10:10:51.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE585B01010
+2026-06-14T10:10:51.471Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-85] c.v.f.controller.FundamentalController   : Request received for ISIN: INE726G01019
+2026-06-14T10:10:51.472Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-85] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE726G01019...
+2026-06-14T10:10:51.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE585B01010 (offset: 0)
+2026-06-14T10:10:51.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-149] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE585B01010
+2026-06-14T10:10:51.942Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-88] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669C01036
+2026-06-14T10:10:51.944Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-88] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE669C01036...
+2026-06-14T10:10:52.007Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-89] c.v.f.controller.FundamentalController   : Request received for ISIN: INE849A01020
+2026-06-14T10:10:52.009Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-89] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE849A01020...
+2026-06-14T10:10:52.037Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-91] c.v.f.controller.FundamentalController   : Request received for ISIN: INE111A01025
+2026-06-14T10:10:52.041Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-91] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE111A01025...
+2026-06-14T10:10:52.043Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-92] c.v.f.controller.FundamentalController   : Request received for ISIN: INE081A01020
+2026-06-14T10:10:52.044Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-92] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE081A01020...
+2026-06-14T10:10:52.049Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-94] c.v.f.controller.FundamentalController   : Request received for ISIN: INE216A01030
+2026-06-14T10:10:52.049Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-94] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE216A01030...
+2026-06-14T10:10:52.058Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-95] c.v.f.controller.FundamentalController   : Request received for ISIN: INE062A01020
+2026-06-14T10:10:52.059Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-95] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE062A01020...
+2026-06-14T10:10:52.329Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-99] c.v.f.controller.FundamentalController   : Request received for ISIN: INE075A01022
+2026-06-14T10:10:52.331Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-99] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE075A01022...
+2026-06-14T10:10:52.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE139A01034 (Source: USER_REQUEST)
+2026-06-14T10:10:52.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE139A01034
+2026-06-14T10:10:52.665Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-100] c.v.f.controller.FundamentalController   : Request received for ISIN: INE377N01017
+2026-06-14T10:10:52.666Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-100] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE377N01017...
+2026-06-14T10:10:52.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE139A01034 (offset: 0)
+2026-06-14T10:10:52.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-150] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE139A01034
+2026-06-14T10:10:52.796Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-103] c.v.f.controller.FundamentalController   : Request received for ISIN: INE484J01027
+2026-06-14T10:10:52.798Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-103] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE484J01027...
+2026-06-14T10:10:52.869Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-104] c.v.f.controller.FundamentalController   : Request received for ISIN: INE205A01025
+2026-06-14T10:10:52.870Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-104] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE205A01025...
+2026-06-14T10:10:52.882Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-105] c.v.f.controller.FundamentalController   : Request received for ISIN: INE498L01015
+2026-06-14T10:10:52.891Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-105] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE498L01015...
+2026-06-14T10:10:53.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE591G01025 (Source: USER_REQUEST)
+2026-06-14T10:10:53.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE591G01025
+2026-06-14T10:10:53.665Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-109] c.v.f.controller.FundamentalController   : Request received for ISIN: INE298J01013
+2026-06-14T10:10:53.669Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-109] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE298J01013...
+2026-06-14T10:10:53.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE591G01025 (offset: 0)
+2026-06-14T10:10:53.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-151] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE591G01025
+2026-06-14T10:10:53.965Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-113] c.v.f.controller.FundamentalController   : Request received for ISIN: INE854D01024
+2026-06-14T10:10:53.967Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-113] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE854D01024...
+2026-06-14T10:10:54.161Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-115] c.v.f.controller.FundamentalController   : Request received for ISIN: INE226A01021
+2026-06-14T10:10:54.162Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-115] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE226A01021...
+2026-06-14T10:10:54.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE160A01022 (Source: USER_REQUEST)
+2026-06-14T10:10:54.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE160A01022
+2026-06-14T10:10:54.505Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-116] c.v.f.controller.FundamentalController   : Request received for ISIN: INE974X01010
+2026-06-14T10:10:54.510Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-116] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE974X01010...
+2026-06-14T10:10:54.672Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-118] c.v.f.controller.FundamentalController   : Request received for ISIN: INE121A01024
+2026-06-14T10:10:54.673Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-118] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE121A01024...
+2026-06-14T10:10:54.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.738Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-119] c.v.f.controller.FundamentalController   : Request received for ISIN: INE742F01042
+2026-06-14T10:10:54.738Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-119] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE742F01042...
+2026-06-14T10:10:54.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE160A01022 (offset: 0)
+2026-06-14T10:10:54.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-152] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE160A01022
+2026-06-14T10:10:54.792Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-120] c.v.f.controller.FundamentalController   : Request received for ISIN: INE027H01010
+2026-06-14T10:10:54.793Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-120] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE027H01010...
+2026-06-14T10:10:54.842Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-122] c.v.f.controller.FundamentalController   : Request received for ISIN: INE326A01037
+2026-06-14T10:10:54.842Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-122] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE326A01037...
+2026-06-14T10:10:54.849Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-124] c.v.f.controller.FundamentalController   : Request received for ISIN: INE047A01021
+2026-06-14T10:10:54.850Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-124] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE047A01021...
+2026-06-14T10:10:55.202Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-127] c.v.f.controller.FundamentalController   : Request received for ISIN: INE584A01023
+2026-06-14T10:10:55.203Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-127] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE584A01023...
+2026-06-14T10:10:55.311Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-129] c.v.f.controller.FundamentalController   : Request received for ISIN: INE414G01012
+2026-06-14T10:10:55.312Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-129] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE414G01012...
+2026-06-14T10:10:55.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE736A01011 (Source: USER_REQUEST)
+2026-06-14T10:10:55.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE736A01011
+2026-06-14T10:10:55.646Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.654Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.659Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.673Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.692Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-131] c.v.f.controller.FundamentalController   : Request received for ISIN: INE669E01016
+2026-06-14T10:10:55.695Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-131] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE669E01016...
+2026-06-14T10:10:55.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE736A01011 (offset: 0)
+2026-06-14T10:10:55.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-153] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE736A01011
+2026-06-14T10:10:55.803Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-133] c.v.f.controller.FundamentalController   : Request received for ISIN: INE066P01011
+2026-06-14T10:10:55.805Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-133] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE066P01011...
+2026-06-14T10:10:56.073Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-135] c.v.f.controller.FundamentalController   : Request received for ISIN: INE213A01029
+2026-06-14T10:10:56.078Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-135] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE213A01029...
+2026-06-14T10:10:56.082Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-136] c.v.f.controller.FundamentalController   : Request received for ISIN: INE211B01039
+2026-06-14T10:10:56.084Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-136] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE211B01039...
+2026-06-14T10:10:56.241Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-138] c.v.f.controller.FundamentalController   : Request received for ISIN: INE931S01010
+2026-06-14T10:10:56.242Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-138] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE931S01010...
+2026-06-14T10:10:56.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE814H01029 (Source: USER_REQUEST)
+2026-06-14T10:10:56.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE814H01029
+2026-06-14T10:10:56.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.766Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-141] c.v.f.controller.FundamentalController   : Request received for ISIN: INE704P01025
+2026-06-14T10:10:56.769Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-141] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE704P01025...
+2026-06-14T10:10:56.788Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-142] c.v.f.controller.FundamentalController   : Request received for ISIN: INE127D01025
+2026-06-14T10:10:56.790Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-142] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE127D01025...
+2026-06-14T10:10:56.789Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE814H01029 (offset: 0)
+2026-06-14T10:10:56.828Z  INFO 18453 --- [vega.fundamentals] [scheduling-154] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE814H01029
+2026-06-14T10:10:56.955Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-145] c.v.f.controller.FundamentalController   : Request received for ISIN: INE053F01010
+2026-06-14T10:10:56.957Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-145] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE053F01010...
+2026-06-14T10:10:57.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE102D01028 (Source: USER_REQUEST)
+2026-06-14T10:10:57.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE102D01028
+2026-06-14T10:10:57.543Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-150] c.v.f.controller.FundamentalController   : Request received for ISIN: INE733E01010
+2026-06-14T10:10:57.544Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-150] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE733E01010...
+2026-06-14T10:10:57.679Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-151] c.v.f.controller.FundamentalController   : Request received for ISIN: INE356A01018
+2026-06-14T10:10:57.683Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-151] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE356A01018...
+2026-06-14T10:10:57.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.768Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-152] c.v.f.controller.FundamentalController   : Request received for ISIN: INE596I01020
+2026-06-14T10:10:57.768Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE102D01028 (offset: 0)
+2026-06-14T10:10:57.771Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-152] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE596I01020...
+2026-06-14T10:10:57.805Z  INFO 18453 --- [vega.fundamentals] [scheduling-155] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE102D01028
+2026-06-14T10:10:57.840Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-153] c.v.f.controller.FundamentalController   : Request received for ISIN: INE115A01026
+2026-06-14T10:10:57.841Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-153] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE115A01026...
+2026-06-14T10:10:57.895Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-154] c.v.f.controller.FundamentalController   : Request received for ISIN: INE702C01027
+2026-06-14T10:10:57.897Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-154] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE702C01027...
+2026-06-14T10:10:58.123Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-155] c.v.f.controller.FundamentalController   : Request received for ISIN: INE388Y01029
+2026-06-14T10:10:58.125Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-155] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE388Y01029...
+2026-06-14T10:10:58.292Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-156] c.v.f.controller.FundamentalController   : Request received for ISIN: INE021A01026
+2026-06-14T10:10:58.295Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-156] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE021A01026...
+2026-06-14T10:10:58.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE376G01013 (Source: USER_REQUEST)
+2026-06-14T10:10:58.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE376G01013
+2026-06-14T10:10:58.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.765Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.768Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.769Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-159] c.v.f.controller.FundamentalController   : Request received for ISIN: INE022Q01020
+2026-06-14T10:10:58.770Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-159] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE022Q01020...
+2026-06-14T10:10:58.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE376G01013 (offset: 0)
+2026-06-14T10:10:58.780Z  INFO 18453 --- [vega.fundamentals] [scheduling-156] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE376G01013
+2026-06-14T10:10:59.159Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-164] c.v.f.controller.FundamentalController   : Request received for ISIN: INE437A01024
+2026-06-14T10:10:59.160Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-164] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE437A01024...
+2026-06-14T10:10:59.273Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-165] c.v.f.controller.FundamentalController   : Request received for ISIN: INE117A01022
+2026-06-14T10:10:59.275Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-165] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE117A01022...
+2026-06-14T10:10:59.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE619A01035 (Source: USER_REQUEST)
+2026-06-14T10:10:59.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE619A01035
+2026-06-14T10:10:59.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.703Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-168] c.v.f.controller.FundamentalController   : Request received for ISIN: INE239A01024
+2026-06-14T10:10:59.709Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-168] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE239A01024...
+2026-06-14T10:10:59.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.737Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-169] c.v.f.controller.FundamentalController   : Request received for ISIN: INE053A01029
+2026-06-14T10:10:59.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.740Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-169] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE053A01029...
+2026-06-14T10:10:59.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE619A01035 (offset: 0)
+2026-06-14T10:10:59.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-157] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE619A01035
+2026-06-14T10:10:59.789Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-170] c.v.f.controller.FundamentalController   : Request received for ISIN: INE245A01021
+2026-06-14T10:10:59.791Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-170] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE245A01021...
+2026-06-14T10:11:00.135Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-172] c.v.f.controller.FundamentalController   : Request received for ISIN: INE121J01017
+2026-06-14T10:11:00.137Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-172] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE121J01017...
+2026-06-14T10:11:00.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE918Z01012 (Source: USER_REQUEST)
+2026-06-14T10:11:00.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE918Z01012
+2026-06-14T10:11:00.531Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-174] c.v.f.controller.FundamentalController   : Request received for ISIN: INE196A01026
+2026-06-14T10:11:00.532Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-174] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE196A01026...
+2026-06-14T10:11:00.622Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-175] c.v.f.controller.FundamentalController   : Request received for ISIN: INE121E01018
+2026-06-14T10:11:00.624Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-175] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE121E01018...
+2026-06-14T10:11:00.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE918Z01012 (offset: 0)
+2026-06-14T10:11:00.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-158] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE918Z01012
+2026-06-14T10:11:01.058Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-179] c.v.f.controller.FundamentalController   : Request received for ISIN: INE019A01038
+2026-06-14T10:11:01.060Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-179] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE019A01038...
+2026-06-14T10:11:01.272Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-183] c.v.f.controller.FundamentalController   : Request received for ISIN: INE522F01014
+2026-06-14T10:11:01.274Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-183] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE522F01014...
+2026-06-14T10:11:01.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE134E01011 (Source: USER_REQUEST)
+2026-06-14T10:11:01.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE134E01011
+2026-06-14T10:11:01.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.760Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-185] c.v.f.controller.FundamentalController   : Request received for ISIN: INE066F01020
+2026-06-14T10:11:01.761Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-185] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE066F01020...
+2026-06-14T10:11:01.772Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-187] c.v.f.controller.FundamentalController   : Request received for ISIN: INE095N01031
+2026-06-14T10:11:01.774Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-187] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE095N01031...
+2026-06-14T10:11:01.774Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.783Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.794Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.802Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.806Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE134E01011 (offset: 0)
+2026-06-14T10:11:01.814Z  INFO 18453 --- [vega.fundamentals] [scheduling-159] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE134E01011
+2026-06-14T10:11:02.054Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-188] c.v.f.controller.FundamentalController   : Request received for ISIN: INE002A01018
+2026-06-14T10:11:02.056Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-188] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE002A01018...
+2026-06-14T10:11:02.096Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-189] c.v.f.controller.FundamentalController   : Request received for ISIN: INE467B01029
+2026-06-14T10:11:02.100Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-189] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE467B01029...
+2026-06-14T10:11:02.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE540L01014 (Source: USER_REQUEST)
+2026-06-14T10:11:02.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE540L01014
+2026-06-14T10:11:02.513Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-191] c.v.f.controller.FundamentalController   : Request received for ISIN: INE296A01032
+2026-06-14T10:11:02.517Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-191] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE296A01032...
+2026-06-14T10:11:02.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.747Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-193] c.v.f.controller.FundamentalController   : Request received for ISIN: INE079A01024
+2026-06-14T10:11:02.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE540L01014 (offset: 0)
+2026-06-14T10:11:02.749Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-193] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE079A01024...
+2026-06-14T10:11:02.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-160] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE540L01014
+2026-06-14T10:11:02.944Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-195] c.v.f.controller.FundamentalController   : Request received for ISIN: INE0J1Y01017
+2026-06-14T10:11:02.947Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-195] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE0J1Y01017...
+2026-06-14T10:11:03.019Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-196] c.v.f.controller.FundamentalController   : Request received for ISIN: INE260B01028
+2026-06-14T10:11:03.022Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-196] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE260B01028...
+2026-06-14T10:11:03.076Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-197] c.v.f.controller.FundamentalController   : Request received for ISIN: INE457L01029
+2026-06-14T10:11:03.077Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-197] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE457L01029...
+2026-06-14T10:11:03.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE009A01021 (Source: USER_REQUEST)
+2026-06-14T10:11:03.439Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE009A01021
+2026-06-14T10:11:03.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE009A01021 (offset: 0)
+2026-06-14T10:11:03.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-161] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE009A01021
+2026-06-14T10:11:03.836Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-201] c.v.f.controller.FundamentalController   : Request received for ISIN: INE200A01026
+2026-06-14T10:11:03.838Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-201] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE200A01026...
+2026-06-14T10:11:03.848Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-202] c.v.f.controller.FundamentalController   : Request received for ISIN: INE299U01018
+2026-06-14T10:11:03.851Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-202] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE299U01018...
+2026-06-14T10:11:03.979Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-204] c.v.f.controller.FundamentalController   : Request received for ISIN: INE371P01015
+2026-06-14T10:11:03.981Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-204] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE371P01015...
+2026-06-14T10:11:04.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE465A01025 (Source: USER_REQUEST)
+2026-06-14T10:11:04.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE465A01025
+2026-06-14T10:11:04.444Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-206] c.v.f.controller.FundamentalController   : Request received for ISIN: INE040A01034
+2026-06-14T10:11:04.451Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-206] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE040A01034...
+2026-06-14T10:11:04.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE465A01025 (offset: 0)
+2026-06-14T10:11:04.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-162] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE465A01025
+2026-06-14T10:11:04.746Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-208] c.v.f.controller.FundamentalController   : Request received for ISIN: INE202E01016
+2026-06-14T10:11:04.747Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-208] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE202E01016...
+2026-06-14T10:11:05.024Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-210] c.v.f.controller.FundamentalController   : Request received for ISIN: INE663F01032
+2026-06-14T10:11:05.025Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-210] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE663F01032...
+2026-06-14T10:11:05.229Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-213] c.v.f.controller.FundamentalController   : Request received for ISIN: INE603J01030
+2026-06-14T10:11:05.231Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-213] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE603J01030...
+2026-06-14T10:11:05.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE811K01011 (Source: USER_REQUEST)
+2026-06-14T10:11:05.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE811K01011
+2026-06-14T10:11:05.454Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-214] c.v.f.controller.FundamentalController   : Request received for ISIN: INE066A01021
+2026-06-14T10:11:05.457Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-214] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE066A01021...
+2026-06-14T10:11:05.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.779Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.782Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.785Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE811K01011 (offset: 0)
+2026-06-14T10:11:05.787Z  INFO 18453 --- [vega.fundamentals] [scheduling-163] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE811K01011
+2026-06-14T10:11:05.868Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-216] c.v.f.controller.FundamentalController   : Request received for ISIN: INE752E01010
+2026-06-14T10:11:05.869Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-216] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE752E01010...
+2026-06-14T10:11:06.372Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-219] c.v.f.controller.FundamentalController   : Request received for ISIN: INE318A01026
+2026-06-14T10:11:06.376Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-219] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE318A01026...
+2026-06-14T10:11:06.379Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-220] c.v.f.controller.FundamentalController   : Request received for ISIN: INE947Q01028
+2026-06-14T10:11:06.381Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-220] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE947Q01028...
+2026-06-14T10:11:06.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE237A01036 (Source: USER_REQUEST)
+2026-06-14T10:11:06.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE237A01036
+2026-06-14T10:11:06.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE237A01036 (offset: 0)
+2026-06-14T10:11:06.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-164] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE237A01036
+2026-06-14T10:11:06.920Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-223] c.v.f.controller.FundamentalController   : Request received for ISIN: INE271C01023
+2026-06-14T10:11:06.921Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-223] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE271C01023...
+2026-06-14T10:11:07.093Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-224] c.v.f.controller.FundamentalController   : Request received for ISIN: INE918I01026
+2026-06-14T10:11:07.093Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-224] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE918I01026...
+2026-06-14T10:11:07.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE030A01027 (Source: USER_REQUEST)
+2026-06-14T10:11:07.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE030A01027
+2026-06-14T10:11:07.500Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-227] c.v.f.controller.FundamentalController   : Request received for ISIN: INE848E01016
+2026-06-14T10:11:07.502Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-227] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE848E01016...
+2026-06-14T10:11:07.558Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-228] c.v.f.controller.FundamentalController   : Request received for ISIN: INE089A01031
+2026-06-14T10:11:07.559Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-228] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE089A01031...
+2026-06-14T10:11:07.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE030A01027 (offset: 0)
+2026-06-14T10:11:07.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-165] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE030A01027
+2026-06-14T10:11:08.020Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-232] c.v.f.controller.FundamentalController   : Request received for ISIN: INE982J01020
+2026-06-14T10:11:08.021Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-232] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE982J01020...
+2026-06-14T10:11:08.222Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-234] c.v.f.controller.FundamentalController   : Request received for ISIN: INE758E01017
+2026-06-14T10:11:08.224Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-234] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE758E01017...
+2026-06-14T10:11:08.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE476A01022 (Source: USER_REQUEST)
+2026-06-14T10:11:08.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE476A01022
+2026-06-14T10:11:08.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.718Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-237] c.v.f.controller.FundamentalController   : Request received for ISIN: INE451A01017
+2026-06-14T10:11:08.719Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-237] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE451A01017...
+2026-06-14T10:11:08.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.738Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-238] c.v.f.controller.FundamentalController   : Request received for ISIN: INE646L01027
+2026-06-14T10:11:08.741Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-238] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE646L01027...
+2026-06-14T10:11:08.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE476A01022 (offset: 0)
+2026-06-14T10:11:08.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-166] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE476A01022
+2026-06-14T10:11:08.846Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-240] c.v.f.controller.FundamentalController   : Request received for ISIN: INE494B01023
+2026-06-14T10:11:08.848Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-240] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE494B01023...
+2026-06-14T10:11:09.227Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-241] c.v.f.controller.FundamentalController   : Request received for ISIN: INE010B01027
+2026-06-14T10:11:09.227Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-241] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE010B01027...
+2026-06-14T10:11:09.237Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-242] c.v.f.controller.FundamentalController   : Request received for ISIN: INE0V6F01027
+2026-06-14T10:11:09.238Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-242] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE0V6F01027...
+2026-06-14T10:11:09.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE01EA01019 (Source: USER_REQUEST)
+2026-06-14T10:11:09.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE01EA01019
+2026-06-14T10:11:09.771Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.781Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.788Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.793Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.796Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.799Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.801Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.810Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE01EA01019 (offset: 0)
+2026-06-14T10:11:09.812Z  INFO 18453 --- [vega.fundamentals] [scheduling-167] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE01EA01019
+2026-06-14T10:11:09.813Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-245] c.v.f.controller.FundamentalController   : Request received for ISIN: INE302A01020
+2026-06-14T10:11:09.814Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-245] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE302A01020...
+2026-06-14T10:11:10.324Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-248] c.v.f.controller.FundamentalController   : Request received for ISIN: INE397D01024
+2026-06-14T10:11:10.325Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-248] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE397D01024...
+2026-06-14T10:11:10.361Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-249] c.v.f.controller.FundamentalController   : Request received for ISIN: INE059A01026
+2026-06-14T10:11:10.367Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-249] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE059A01026...
+2026-06-14T10:11:10.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE745G01043 (Source: USER_REQUEST)
+2026-06-14T10:11:10.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE745G01043
+2026-06-14T10:11:10.441Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-250] c.v.f.controller.FundamentalController   : Request received for ISIN: INE192R01011
+2026-06-14T10:11:10.442Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-250] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE192R01011...
+2026-06-14T10:11:10.458Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-251] c.v.f.controller.FundamentalController   : Request received for ISIN: INE761H01022
+2026-06-14T10:11:10.468Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-251] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE761H01022...
+2026-06-14T10:11:10.667Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-252] c.v.f.controller.FundamentalController   : Request received for ISIN: INE732I01021
+2026-06-14T10:11:10.668Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-252] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE732I01021...
+2026-06-14T10:11:10.678Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-253] c.v.f.controller.FundamentalController   : Request received for ISIN: INE634S01028
+2026-06-14T10:11:10.679Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-253] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE634S01028...
+2026-06-14T10:11:10.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE745G01043 (offset: 0)
+2026-06-14T10:11:10.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-168] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE745G01043
+2026-06-14T10:11:11.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE361B01024 (Source: USER_REQUEST)
+2026-06-14T10:11:11.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE361B01024
+2026-06-14T10:11:11.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE361B01024 (offset: 0)
+2026-06-14T10:11:11.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-169] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE361B01024
+2026-06-14T10:11:12.044Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-262] c.v.f.controller.FundamentalController   : Request received for ISIN: INE949L01017
+2026-06-14T10:11:12.046Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-262] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE949L01017...
+2026-06-14T10:11:12.233Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-263] c.v.f.controller.FundamentalController   : Request received for ISIN: INE881D01027
+2026-06-14T10:11:12.235Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-263] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE881D01027...
+2026-06-14T10:11:12.339Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-264] c.v.f.controller.FundamentalController   : Request received for ISIN: INE280A01028
+2026-06-14T10:11:12.340Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-264] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE280A01028...
+2026-06-14T10:11:12.353Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-265] c.v.f.controller.FundamentalController   : Request received for ISIN: INE148I01020
+2026-06-14T10:11:12.355Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-265] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE148I01020...
+2026-06-14T10:11:12.359Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-266] c.v.f.controller.FundamentalController   : Request received for ISIN: INE180A01020
+2026-06-14T10:11:12.360Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-266] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE180A01020...
+2026-06-14T10:11:12.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE721A01047 (Source: USER_REQUEST)
+2026-06-14T10:11:12.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE721A01047
+2026-06-14T10:11:12.486Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-267] c.v.f.controller.FundamentalController   : Request received for ISIN: INE797F01020
+2026-06-14T10:11:12.488Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-267] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE797F01020...
+2026-06-14T10:11:12.658Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-268] c.v.f.controller.FundamentalController   : Request received for ISIN: INE795G01014
+2026-06-14T10:11:12.662Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-268] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE795G01014...
+2026-06-14T10:11:12.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE721A01047 (offset: 0)
+2026-06-14T10:11:12.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-170] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE721A01047
+2026-06-14T10:11:13.061Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-271] c.v.f.controller.FundamentalController   : Request received for ISIN: INE138Y01010
+2026-06-14T10:11:13.062Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-271] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE138Y01010...
+2026-06-14T10:11:13.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE670K01029 (Source: USER_REQUEST)
+2026-06-14T10:11:13.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE670K01029
+2026-06-14T10:11:13.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE670K01029 (offset: 0)
+2026-06-14T10:11:13.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-171] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE670K01029
+2026-06-14T10:11:13.853Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-277] c.v.f.controller.FundamentalController   : Request received for ISIN: INE155A01022
+2026-06-14T10:11:13.855Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-277] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE155A01022...
+2026-06-14T10:11:14.012Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-279] c.v.f.controller.FundamentalController   : Request received for ISIN: INE944F01028
+2026-06-14T10:11:14.013Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-279] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE944F01028...
+2026-06-14T10:11:14.332Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-281] c.v.f.controller.FundamentalController   : Request received for ISIN: INE562A01011
+2026-06-14T10:11:14.334Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-281] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE562A01011...
+2026-06-14T10:11:14.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE158A01026 (Source: USER_REQUEST)
+2026-06-14T10:11:14.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE158A01026
+2026-06-14T10:11:14.495Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-282] c.v.f.controller.FundamentalController   : Request received for ISIN: INE572E01012
+2026-06-14T10:11:14.497Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-282] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE572E01012...
+2026-06-14T10:11:14.586Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-283] c.v.f.controller.FundamentalController   : Request received for ISIN: INE298A01020
+2026-06-14T10:11:14.591Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-283] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE298A01020...
+2026-06-14T10:11:14.658Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-284] c.v.f.controller.FundamentalController   : Request received for ISIN: INE095A01012
+2026-06-14T10:11:14.659Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-284] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE095A01012...
+2026-06-14T10:11:14.689Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-285] c.v.f.controller.FundamentalController   : Request received for ISIN: INE274J01014
+2026-06-14T10:11:14.691Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-285] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE274J01014...
+2026-06-14T10:11:14.837Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.852Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.859Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.867Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.871Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.874Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.876Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.879Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE158A01026 (offset: 0)
+2026-06-14T10:11:14.883Z  INFO 18453 --- [vega.fundamentals] [scheduling-172] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE158A01026
+2026-06-14T10:11:15.072Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-287] c.v.f.controller.FundamentalController   : Request received for ISIN: INE195A01028
+2026-06-14T10:11:15.073Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-287] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE195A01028...
+2026-06-14T10:11:15.297Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-290] c.v.f.controller.FundamentalController   : Request received for ISIN: INE118H01025
+2026-06-14T10:11:15.298Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-290] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE118H01025...
+2026-06-14T10:11:15.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE028A01039 (Source: USER_REQUEST)
+2026-06-14T10:11:15.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE028A01039
+2026-06-14T10:11:15.589Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-291] c.v.f.controller.FundamentalController   : Request received for ISIN: INE364U01010
+2026-06-14T10:11:15.590Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-291] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE364U01010...
+2026-06-14T10:11:15.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE028A01039 (offset: 0)
+2026-06-14T10:11:15.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-173] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE028A01039
+2026-06-14T10:11:16.175Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-297] c.v.f.controller.FundamentalController   : Request received for ISIN: INE044A01036
+2026-06-14T10:11:16.177Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-297] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE044A01036...
+2026-06-14T10:11:16.410Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-299] c.v.f.controller.FundamentalController   : Request received for ISIN: INE935N01020
+2026-06-14T10:11:16.411Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-299] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE935N01020...
+2026-06-14T10:11:16.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE405E01023 (Source: USER_REQUEST)
+2026-06-14T10:11:16.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE405E01023
+2026-06-14T10:11:16.519Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-300] c.v.f.controller.FundamentalController   : Request received for ISIN: INE238A01034
+2026-06-14T10:11:16.520Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-300] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE238A01034...
+2026-06-14T10:11:16.555Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-301] c.v.f.controller.FundamentalController   : Request received for ISIN: INE038A01020
+2026-06-14T10:11:16.555Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-301] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE038A01020...
+2026-06-14T10:11:16.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.768Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-302] c.v.f.controller.FundamentalController   : Request received for ISIN: INE242A01010
+2026-06-14T10:11:16.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE405E01023 (offset: 0)
+2026-06-14T10:11:16.771Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-302] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE242A01010...
+2026-06-14T10:11:16.793Z  INFO 18453 --- [vega.fundamentals] [scheduling-174] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE405E01023
+2026-06-14T10:11:16.815Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-304] c.v.f.controller.FundamentalController   : Request received for ISIN: INE692A01016
+2026-06-14T10:11:16.816Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-304] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE692A01016...
+2026-06-14T10:11:17.043Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-307] c.v.f.controller.FundamentalController   : Request received for ISIN: INE04I401011
+2026-06-14T10:11:17.047Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-307] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE04I401011...
+2026-06-14T10:11:17.135Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-309] c.v.f.controller.FundamentalController   : Request received for ISIN: INE338I01027
+2026-06-14T10:11:17.142Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-309] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE338I01027...
+2026-06-14T10:11:17.376Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-311] c.v.f.controller.FundamentalController   : Request received for ISIN: INE061F01013
+2026-06-14T10:11:17.381Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-311] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE061F01013...
+2026-06-14T10:11:17.440Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE123W01016 (Source: USER_REQUEST)
+2026-06-14T10:11:17.444Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE123W01016
+2026-06-14T10:11:17.611Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-313] c.v.f.controller.FundamentalController   : Request received for ISIN: INE020B01018
+2026-06-14T10:11:17.619Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-313] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE020B01018...
+2026-06-14T10:11:17.687Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-315] c.v.f.controller.FundamentalController   : Request received for ISIN: INE263A01024
+2026-06-14T10:11:17.695Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-315] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE263A01024...
+2026-06-14T10:11:17.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE123W01016 (offset: 0)
+2026-06-14T10:11:17.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-175] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE123W01016
+2026-06-14T10:11:17.881Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-316] c.v.f.controller.FundamentalController   : Request received for ISIN: INE685A01028
+2026-06-14T10:11:17.888Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-316] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE685A01028...
+2026-06-14T10:11:18.076Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-318] c.v.f.controller.FundamentalController   : Request received for ISIN: INE647A01010
+2026-06-14T10:11:18.083Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-318] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE647A01010...
+2026-06-14T10:11:18.115Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-319] c.v.f.controller.FundamentalController   : Request received for ISIN: INE860A01027
+2026-06-14T10:11:18.116Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-319] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE860A01027...
+2026-06-14T10:11:18.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE192A01025 (Source: USER_REQUEST)
+2026-06-14T10:11:18.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE192A01025
+2026-06-14T10:11:18.713Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-325] c.v.f.controller.FundamentalController   : Request received for ISIN: INE00H001014
+2026-06-14T10:11:18.715Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-325] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE00H001014...
+2026-06-14T10:11:18.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.797Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-326] c.v.f.controller.FundamentalController   : Request received for ISIN: INE0BS701011
+2026-06-14T10:11:18.803Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-326] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE0BS701011...
+2026-06-14T10:11:18.816Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.833Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE192A01025 (offset: 0)
+2026-06-14T10:11:18.851Z  INFO 18453 --- [vega.fundamentals] [scheduling-176] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE192A01025
+2026-06-14T10:11:19.139Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-329] c.v.f.controller.FundamentalController   : Request received for ISIN: INE976G01028
+2026-06-14T10:11:19.144Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-329] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE976G01028...
+2026-06-14T10:11:19.264Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-330] c.v.f.controller.FundamentalController   : Request received for ISIN: INE171A01029
+2026-06-14T10:11:19.266Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-330] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE171A01029...
+2026-06-14T10:11:19.296Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-331] c.v.f.controller.FundamentalController   : Request received for ISIN: INE084A01016
+2026-06-14T10:11:19.298Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-331] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE084A01016...
+2026-06-14T10:11:19.313Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-332] c.v.f.controller.FundamentalController   : Request received for ISIN: INE262H01021
+2026-06-14T10:11:19.318Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-332] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE262H01021...
+2026-06-14T10:11:19.334Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-333] c.v.f.controller.FundamentalController   : Request received for ISIN: INE775A01035
+2026-06-14T10:11:19.335Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-333] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE775A01035...
+2026-06-14T10:11:19.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE118A01012 (Source: USER_REQUEST)
+2026-06-14T10:11:19.431Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-334] c.v.f.controller.FundamentalController   : Request received for ISIN: INE018E01016
+2026-06-14T10:11:19.438Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE118A01012
+2026-06-14T10:11:19.438Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-334] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE018E01016...
+2026-06-14T10:11:19.707Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-335] c.v.f.controller.FundamentalController   : Request received for ISIN: INE878B01027
+2026-06-14T10:11:19.709Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-335] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE878B01027...
+2026-06-14T10:11:19.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.775Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.794Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE118A01012 (offset: 0)
+2026-06-14T10:11:19.798Z  INFO 18453 --- [vega.fundamentals] [scheduling-177] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE118A01012
+2026-06-14T10:11:20.440Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE531F01023 (Source: USER_REQUEST)
+2026-06-14T10:11:20.445Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE531F01023
+2026-06-14T10:11:20.511Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-344] c.v.f.controller.FundamentalController   : Request received for ISIN: INE214T01019
+2026-06-14T10:11:20.520Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-344] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE214T01019...
+2026-06-14T10:11:20.596Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-345] c.v.f.controller.FundamentalController   : Request received for ISIN: INE415G01027
+2026-06-14T10:11:20.598Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-345] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE415G01027...
+2026-06-14T10:11:20.616Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-346] c.v.f.controller.FundamentalController   : Request received for ISIN: INE545U01014
+2026-06-14T10:11:20.619Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-346] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE545U01014...
+2026-06-14T10:11:20.655Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-347] c.v.f.controller.FundamentalController   : Request received for ISIN: INE776C01039
+2026-06-14T10:11:20.655Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-347] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE776C01039...
+2026-06-14T10:11:20.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.681Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-348] c.v.f.controller.FundamentalController   : Request received for ISIN: INE176B01034
+2026-06-14T10:11:20.686Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-348] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE176B01034...
+2026-06-14T10:11:20.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.695Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-349] c.v.f.controller.FundamentalController   : Request received for ISIN: INE323A01026
+2026-06-14T10:11:20.695Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-349] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE323A01026...
+2026-06-14T10:11:20.698Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-351] c.v.f.controller.FundamentalController   : Request received for ISIN: INE417T01026
+2026-06-14T10:11:20.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.698Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-350] c.v.f.controller.FundamentalController   : Request received for ISIN: INE249Z01020
+2026-06-14T10:11:20.702Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-350] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE249Z01020...
+2026-06-14T10:11:20.703Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-351] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE417T01026...
+2026-06-14T10:11:20.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE531F01023 (offset: 0)
+2026-06-14T10:11:20.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-178] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE531F01023
+2026-06-14T10:11:21.170Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-361] c.v.f.controller.FundamentalController   : Request received for ISIN: INE758T01015
+2026-06-14T10:11:21.175Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-361] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE758T01015...
+2026-06-14T10:11:21.216Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-362] c.v.f.controller.FundamentalController   : Request received for ISIN: INE343H01029
+2026-06-14T10:11:21.217Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-362] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE343H01029...
+2026-06-14T10:11:21.284Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-363] c.v.f.controller.FundamentalController   : Request received for ISIN: INE154A01025
+2026-06-14T10:11:21.286Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-363] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE154A01025...
+2026-06-14T10:11:21.335Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-364] c.v.f.controller.FundamentalController   : Request received for ISIN: INE455K01017
+2026-06-14T10:11:21.336Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-364] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE455K01017...
+2026-06-14T10:11:21.380Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-365] c.v.f.controller.FundamentalController   : Request received for ISIN: INE101A01026
+2026-06-14T10:11:21.381Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-365] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE101A01026...
+2026-06-14T10:11:21.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE674K01013 (Source: USER_REQUEST)
+2026-06-14T10:11:21.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE674K01013
+2026-06-14T10:11:21.491Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-366] c.v.f.controller.FundamentalController   : Request received for ISIN: INE406A01037
+2026-06-14T10:11:21.497Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-366] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE406A01037...
+2026-06-14T10:11:21.519Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-367] c.v.f.controller.FundamentalController   : Request received for ISIN: INE208A01029
+2026-06-14T10:11:21.519Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-367] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE208A01029...
+2026-06-14T10:11:21.531Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-368] c.v.f.controller.FundamentalController   : Request received for ISIN: INE148O01028
+2026-06-14T10:11:21.533Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-368] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE148O01028...
+2026-06-14T10:11:21.556Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-369] c.v.f.controller.FundamentalController   : Request received for ISIN: INE303R01014
+2026-06-14T10:11:21.561Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-369] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE303R01014...
+2026-06-14T10:11:21.635Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-377] c.v.f.controller.FundamentalController   : Request received for ISIN: INE628A01036
+2026-06-14T10:11:21.636Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-377] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE628A01036...
+2026-06-14T10:11:21.642Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-378] c.v.f.controller.FundamentalController   : Request received for ISIN: INE090A01021
+2026-06-14T10:11:21.643Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-378] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE090A01021...
+2026-06-14T10:11:21.648Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-379] c.v.f.controller.FundamentalController   : Request received for ISIN: INE472A01039
+2026-06-14T10:11:21.650Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-379] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE472A01039...
+2026-06-14T10:11:21.667Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-382] c.v.f.controller.FundamentalController   : Request received for ISIN: INE040H01021
+2026-06-14T10:11:21.668Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-382] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE040H01021...
+2026-06-14T10:11:21.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.687Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-383] c.v.f.controller.FundamentalController   : Request received for ISIN: INE092T01019
+2026-06-14T10:11:21.688Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-383] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE092T01019...
+2026-06-14T10:11:21.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.691Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-384] c.v.f.controller.FundamentalController   : Request received for ISIN: INE018A01030
+2026-06-14T10:11:21.694Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-384] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE018A01030...
+2026-06-14T10:11:21.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.716Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-385] c.v.f.controller.FundamentalController   : Request received for ISIN: INE347G01014
+2026-06-14T10:11:21.716Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-385] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE347G01014...
+2026-06-14T10:11:21.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE674K01013 (offset: 0)
+2026-06-14T10:11:21.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-179] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE674K01013
+2026-06-14T10:11:21.729Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-387] c.v.f.controller.FundamentalController   : Request received for ISIN: INE423A01024
+2026-06-14T10:11:21.731Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-387] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE423A01024...
+2026-06-14T10:11:21.759Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-390] c.v.f.controller.FundamentalController   : Request received for ISIN: INE067A01029
+2026-06-14T10:11:21.763Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-390] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE067A01029...
+2026-06-14T10:11:21.785Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-393] c.v.f.controller.FundamentalController   : Request received for ISIN: INE07Y701011
+2026-06-14T10:11:21.786Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-393] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE07Y701011...
+2026-06-14T10:11:21.809Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-396] c.v.f.controller.FundamentalController   : Request received for ISIN: INE259A01022
+2026-06-14T10:11:21.809Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-396] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE259A01022...
+2026-06-14T10:11:21.814Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-397] c.v.f.controller.FundamentalController   : Request received for ISIN: INE257A01026
+2026-06-14T10:11:21.815Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-397] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE257A01026...
+2026-06-14T10:11:21.819Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-399] c.v.f.controller.FundamentalController   : Request received for ISIN: INE765G01017
+2026-06-14T10:11:21.819Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-399] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE765G01017...
+2026-06-14T10:11:21.840Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-400] c.v.f.controller.FundamentalController   : Request received for ISIN: INE129A01019
+2026-06-14T10:11:21.841Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-400] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE129A01019...
+2026-06-14T10:11:21.848Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-402] c.v.f.controller.FundamentalController   : Request received for ISIN: INE114A01011
+2026-06-14T10:11:21.855Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-402] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE114A01011...
+2026-06-14T10:11:21.872Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-403] c.v.f.controller.FundamentalController   : Request received for ISIN: INE481G01011
+2026-06-14T10:11:21.873Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-403] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE481G01011...
+2026-06-14T10:11:21.968Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-408] c.v.f.controller.FundamentalController   : Request received for ISIN: INE003A01024
+2026-06-14T10:11:21.976Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-408] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE003A01024...
+2026-06-14T10:11:21.981Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-409] c.v.f.controller.FundamentalController   : Request received for ISIN: INE935A01035
+2026-06-14T10:11:21.983Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-409] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE935A01035...
+2026-06-14T10:11:22.204Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-412] c.v.f.controller.FundamentalController   : Request received for ISIN: INE670A01012
+2026-06-14T10:11:22.206Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-412] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE670A01012...
+2026-06-14T10:11:22.250Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-414] c.v.f.controller.FundamentalController   : Request received for ISIN: INE016A01026
+2026-06-14T10:11:22.257Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-414] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE016A01026...
+2026-06-14T10:11:22.272Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-416] c.v.f.controller.FundamentalController   : Request received for ISIN: INE029A01011
+2026-06-14T10:11:22.273Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-416] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE029A01011...
+2026-06-14T10:11:22.274Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-415] c.v.f.controller.FundamentalController   : Request received for ISIN: INE200M01039
+2026-06-14T10:11:22.281Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-415] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE200M01039...
+2026-06-14T10:11:22.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE528G01035 (Source: USER_REQUEST)
+2026-06-14T10:11:22.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE528G01035
+2026-06-14T10:11:22.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.792Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.804Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.816Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.842Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.868Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.896Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.942Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE528G01035 (offset: 0)
+2026-06-14T10:11:22.973Z  INFO 18453 --- [vega.fundamentals] [scheduling-180] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE528G01035
+2026-06-14T10:11:23.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE093I01010 (Source: USER_REQUEST)
+2026-06-14T10:11:23.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE093I01010
+2026-06-14T10:11:23.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.777Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.788Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.808Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE093I01010 (offset: 0)
+2026-06-14T10:11:23.813Z  INFO 18453 --- [vega.fundamentals] [scheduling-181] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE093I01010
+2026-06-14T10:11:24.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE094A01015 (Source: USER_REQUEST)
+2026-06-14T10:11:24.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE094A01015
+2026-06-14T10:11:24.659Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.767Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE094A01015 (offset: 0)
+2026-06-14T10:11:24.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-182] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE094A01015
+2026-06-14T10:11:25.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE073K01018 (Source: USER_REQUEST)
+2026-06-14T10:11:25.446Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE073K01018
+2026-06-14T10:11:25.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.774Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.804Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.811Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.821Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.843Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE073K01018 (offset: 0)
+2026-06-14T10:11:25.862Z  INFO 18453 --- [vega.fundamentals] [scheduling-183] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE073K01018
+2026-06-14T10:11:26.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE006I01046 (Source: USER_REQUEST)
+2026-06-14T10:11:26.438Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE006I01046
+2026-06-14T10:11:26.859Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.881Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.902Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.918Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.937Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.945Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.956Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.968Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE006I01046 (offset: 0)
+2026-06-14T10:11:26.982Z  INFO 18453 --- [vega.fundamentals] [scheduling-184] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE006I01046
+2026-06-14T10:11:27.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE726G01019 (Source: USER_REQUEST)
+2026-06-14T10:11:27.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE726G01019
+2026-06-14T10:11:27.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.764Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.818Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.836Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.866Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE726G01019 (offset: 0)
+2026-06-14T10:11:27.883Z  INFO 18453 --- [vega.fundamentals] [scheduling-185] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE726G01019
+2026-06-14T10:11:28.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE669C01036 (Source: USER_REQUEST)
+2026-06-14T10:11:28.439Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE669C01036
+2026-06-14T10:11:28.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.783Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.797Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.827Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.858Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE669C01036 (offset: 0)
+2026-06-14T10:11:28.874Z  INFO 18453 --- [vega.fundamentals] [scheduling-186] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE669C01036
+2026-06-14T10:11:29.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE849A01020 (Source: USER_REQUEST)
+2026-06-14T10:11:29.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE849A01020
+2026-06-14T10:11:29.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.779Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.806Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.825Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.847Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.866Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE849A01020 (offset: 0)
+2026-06-14T10:11:29.881Z  INFO 18453 --- [vega.fundamentals] [scheduling-187] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE849A01020
+2026-06-14T10:11:30.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE111A01025 (Source: USER_REQUEST)
+2026-06-14T10:11:30.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE111A01025
+2026-06-14T10:11:30.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE111A01025 (offset: 0)
+2026-06-14T10:11:30.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-188] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE111A01025
+2026-06-14T10:11:30.922Z  INFO 18453 --- [vega.fundamentals] [tomcat-handler-304] c.v.f.service.FundamentalCacheService    : History hit for ISIN: INE692A01016
+2026-06-14T10:11:31.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE081A01020 (Source: USER_REQUEST)
+2026-06-14T10:11:31.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE081A01020
+2026-06-14T10:11:31.635Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.637Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.639Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.641Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.643Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.644Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.645Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.647Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE081A01020 (offset: 0)
+2026-06-14T10:11:31.654Z  INFO 18453 --- [vega.fundamentals] [scheduling-189] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE081A01020
+2026-06-14T10:11:32.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE216A01030 (Source: USER_REQUEST)
+2026-06-14T10:11:32.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE216A01030
+2026-06-14T10:11:32.649Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.654Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.662Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.666Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE216A01030 (offset: 0)
+2026-06-14T10:11:32.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-190] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE216A01030
+2026-06-14T10:11:33.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE062A01020 (Source: USER_REQUEST)
+2026-06-14T10:11:33.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE062A01020
+2026-06-14T10:11:33.669Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE062A01020 (offset: 0)
+2026-06-14T10:11:33.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-191] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE062A01020
+2026-06-14T10:11:34.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE075A01022 (Source: USER_REQUEST)
+2026-06-14T10:11:34.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE075A01022
+2026-06-14T10:11:34.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE075A01022 (offset: 0)
+2026-06-14T10:11:34.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-192] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE075A01022
+2026-06-14T10:11:35.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE377N01017 (Source: USER_REQUEST)
+2026-06-14T10:11:35.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE377N01017
+2026-06-14T10:11:35.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE377N01017 (offset: 0)
+2026-06-14T10:11:35.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-193] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE377N01017
+2026-06-14T10:11:36.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE484J01027 (Source: USER_REQUEST)
+2026-06-14T10:11:36.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE484J01027
+2026-06-14T10:11:36.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE484J01027 (offset: 0)
+2026-06-14T10:11:36.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-194] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE484J01027
+2026-06-14T10:11:37.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE205A01025 (Source: USER_REQUEST)
+2026-06-14T10:11:37.439Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE205A01025
+2026-06-14T10:11:37.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.775Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.777Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.779Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.781Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.784Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.787Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE205A01025 (offset: 0)
+2026-06-14T10:11:37.791Z  INFO 18453 --- [vega.fundamentals] [scheduling-195] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE205A01025
+2026-06-14T10:11:38.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE498L01015 (Source: USER_REQUEST)
+2026-06-14T10:11:38.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE498L01015
+2026-06-14T10:11:38.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE498L01015 (offset: 0)
+2026-06-14T10:11:38.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-196] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE498L01015
+2026-06-14T10:11:39.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE298J01013 (Source: USER_REQUEST)
+2026-06-14T10:11:39.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE298J01013
+2026-06-14T10:11:39.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE298J01013 (offset: 0)
+2026-06-14T10:11:39.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-197] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE298J01013
+2026-06-14T10:11:40.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE854D01024 (Source: USER_REQUEST)
+2026-06-14T10:11:40.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE854D01024
+2026-06-14T10:11:40.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE854D01024 (offset: 0)
+2026-06-14T10:11:40.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-198] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE854D01024
+2026-06-14T10:11:41.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE226A01021 (Source: USER_REQUEST)
+2026-06-14T10:11:41.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE226A01021
+2026-06-14T10:11:41.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE226A01021 (offset: 0)
+2026-06-14T10:11:41.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-199] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE226A01021
+2026-06-14T10:11:42.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE974X01010 (Source: USER_REQUEST)
+2026-06-14T10:11:42.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE974X01010
+2026-06-14T10:11:42.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE974X01010 (offset: 0)
+2026-06-14T10:11:42.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-200] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE974X01010
+2026-06-14T10:11:43.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE121A01024 (Source: USER_REQUEST)
+2026-06-14T10:11:43.440Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE121A01024
+2026-06-14T10:11:43.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE121A01024 (offset: 0)
+2026-06-14T10:11:43.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-201] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE121A01024
+2026-06-14T10:11:44.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE742F01042 (Source: USER_REQUEST)
+2026-06-14T10:11:44.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE742F01042
+2026-06-14T10:11:44.642Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.650Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.656Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.660Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE742F01042 (offset: 0)
+2026-06-14T10:11:44.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-202] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE742F01042
+2026-06-14T10:11:45.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE027H01010 (Source: USER_REQUEST)
+2026-06-14T10:11:45.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE027H01010
+2026-06-14T10:11:45.869Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.875Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.885Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.891Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.899Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.903Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.907Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.911Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE027H01010 (offset: 0)
+2026-06-14T10:11:45.913Z  INFO 18453 --- [vega.fundamentals] [scheduling-203] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE027H01010
+2026-06-14T10:11:46.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE326A01037 (Source: USER_REQUEST)
+2026-06-14T10:11:46.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE326A01037
+2026-06-14T10:11:46.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE326A01037 (offset: 0)
+2026-06-14T10:11:46.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-204] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE326A01037
+2026-06-14T10:11:47.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE047A01021 (Source: USER_REQUEST)
+2026-06-14T10:11:47.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE047A01021
+2026-06-14T10:11:47.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE047A01021 (offset: 0)
+2026-06-14T10:11:47.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-205] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE047A01021
+2026-06-14T10:11:48.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE584A01023 (Source: USER_REQUEST)
+2026-06-14T10:11:48.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE584A01023
+2026-06-14T10:11:48.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE584A01023 (offset: 0)
+2026-06-14T10:11:48.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-206] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE584A01023
+2026-06-14T10:11:49.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE414G01012 (Source: USER_REQUEST)
+2026-06-14T10:11:49.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE414G01012
+2026-06-14T10:11:49.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE414G01012 (offset: 0)
+2026-06-14T10:11:49.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-207] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE414G01012
+2026-06-14T10:11:50.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE669E01016 (Source: USER_REQUEST)
+2026-06-14T10:11:50.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE669E01016
+2026-06-14T10:11:50.664Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.669Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE669E01016 (offset: 0)
+2026-06-14T10:11:50.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-208] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE669E01016
+2026-06-14T10:11:51.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE066P01011 (Source: USER_REQUEST)
+2026-06-14T10:11:51.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE066P01011
+2026-06-14T10:11:51.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE066P01011 (offset: 0)
+2026-06-14T10:11:51.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-209] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE066P01011
+2026-06-14T10:11:52.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE213A01029 (Source: USER_REQUEST)
+2026-06-14T10:11:52.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE213A01029
+2026-06-14T10:11:52.644Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.652Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.657Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.664Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE213A01029 (offset: 0)
+2026-06-14T10:11:52.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-210] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE213A01029
+2026-06-14T10:11:53.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE211B01039 (Source: USER_REQUEST)
+2026-06-14T10:11:53.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE211B01039
+2026-06-14T10:11:53.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE211B01039 (offset: 0)
+2026-06-14T10:11:53.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-211] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE211B01039
+2026-06-14T10:11:54.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE931S01010 (Source: USER_REQUEST)
+2026-06-14T10:11:54.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE931S01010
+2026-06-14T10:11:54.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE931S01010 (offset: 0)
+2026-06-14T10:11:54.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-212] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE931S01010
+2026-06-14T10:11:55.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE704P01025 (Source: USER_REQUEST)
+2026-06-14T10:11:55.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE704P01025
+2026-06-14T10:11:55.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE704P01025 (offset: 0)
+2026-06-14T10:11:55.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-213] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE704P01025
+2026-06-14T10:11:56.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE127D01025 (Source: USER_REQUEST)
+2026-06-14T10:11:56.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE127D01025
+2026-06-14T10:11:56.839Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.850Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.857Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.863Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.872Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.879Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.884Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.890Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE127D01025 (offset: 0)
+2026-06-14T10:11:56.896Z  INFO 18453 --- [vega.fundamentals] [scheduling-214] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE127D01025
+2026-06-14T10:11:57.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE053F01010 (Source: USER_REQUEST)
+2026-06-14T10:11:57.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE053F01010
+2026-06-14T10:11:57.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE053F01010 (offset: 0)
+2026-06-14T10:11:57.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-215] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE053F01010
+2026-06-14T10:11:58.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE733E01010 (Source: USER_REQUEST)
+2026-06-14T10:11:58.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE733E01010
+2026-06-14T10:11:58.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE733E01010 (offset: 0)
+2026-06-14T10:11:58.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-216] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE733E01010
+2026-06-14T10:11:59.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE356A01018 (Source: USER_REQUEST)
+2026-06-14T10:11:59.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE356A01018
+2026-06-14T10:11:59.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE356A01018 (offset: 0)
+2026-06-14T10:11:59.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-217] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE356A01018
+2026-06-14T10:12:00.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE596I01020 (Source: USER_REQUEST)
+2026-06-14T10:12:00.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE596I01020
+2026-06-14T10:12:00.647Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE596I01020 (offset: 0)
+2026-06-14T10:12:00.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-218] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE596I01020
+2026-06-14T10:12:01.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE115A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:01.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE115A01026
+2026-06-14T10:12:01.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE115A01026 (offset: 0)
+2026-06-14T10:12:01.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-219] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE115A01026
+2026-06-14T10:12:02.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE702C01027 (Source: USER_REQUEST)
+2026-06-14T10:12:02.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE702C01027
+2026-06-14T10:12:02.881Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.886Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.900Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.908Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.914Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.919Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.925Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.933Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE702C01027 (offset: 0)
+2026-06-14T10:12:02.940Z  INFO 18453 --- [vega.fundamentals] [scheduling-220] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE702C01027
+2026-06-14T10:12:03.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE388Y01029 (Source: USER_REQUEST)
+2026-06-14T10:12:03.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE388Y01029
+2026-06-14T10:12:03.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE388Y01029 (offset: 0)
+2026-06-14T10:12:03.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-221] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE388Y01029
+2026-06-14T10:12:04.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE021A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:04.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE021A01026
+2026-06-14T10:12:04.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.767Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE021A01026 (offset: 0)
+2026-06-14T10:12:04.790Z  INFO 18453 --- [vega.fundamentals] [scheduling-222] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE021A01026
+2026-06-14T10:12:05.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE022Q01020 (Source: USER_REQUEST)
+2026-06-14T10:12:05.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE022Q01020
+2026-06-14T10:12:05.635Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.641Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.647Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.664Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE022Q01020 (offset: 0)
+2026-06-14T10:12:05.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-223] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE022Q01020
+2026-06-14T10:12:06.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE437A01024 (Source: USER_REQUEST)
+2026-06-14T10:12:06.439Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE437A01024
+2026-06-14T10:12:06.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE437A01024 (offset: 0)
+2026-06-14T10:12:06.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-224] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE437A01024
+2026-06-14T10:12:07.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE117A01022 (Source: USER_REQUEST)
+2026-06-14T10:12:07.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE117A01022
+2026-06-14T10:12:07.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE117A01022 (offset: 0)
+2026-06-14T10:12:07.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-225] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE117A01022
+2026-06-14T10:12:08.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE239A01024 (Source: USER_REQUEST)
+2026-06-14T10:12:08.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE239A01024
+2026-06-14T10:12:08.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE239A01024 (offset: 0)
+2026-06-14T10:12:08.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-226] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE239A01024
+2026-06-14T10:12:09.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE053A01029 (Source: USER_REQUEST)
+2026-06-14T10:12:09.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE053A01029
+2026-06-14T10:12:09.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.761Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.768Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.774Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.784Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.788Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.793Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.806Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE053A01029 (offset: 0)
+2026-06-14T10:12:09.814Z  INFO 18453 --- [vega.fundamentals] [scheduling-227] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE053A01029
+2026-06-14T10:12:10.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE245A01021 (Source: USER_REQUEST)
+2026-06-14T10:12:10.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE245A01021
+2026-06-14T10:12:10.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE245A01021 (offset: 0)
+2026-06-14T10:12:10.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-228] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE245A01021
+2026-06-14T10:12:11.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE121J01017 (Source: USER_REQUEST)
+2026-06-14T10:12:11.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE121J01017
+2026-06-14T10:12:11.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE121J01017 (offset: 0)
+2026-06-14T10:12:11.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-229] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE121J01017
+2026-06-14T10:12:12.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE196A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:12.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE196A01026
+2026-06-14T10:12:12.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE196A01026 (offset: 0)
+2026-06-14T10:12:12.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-230] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE196A01026
+2026-06-14T10:12:13.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE121E01018 (Source: USER_REQUEST)
+2026-06-14T10:12:13.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE121E01018
+2026-06-14T10:12:13.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE121E01018 (offset: 0)
+2026-06-14T10:12:13.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-231] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE121E01018
+2026-06-14T10:12:14.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE019A01038 (Source: USER_REQUEST)
+2026-06-14T10:12:14.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE019A01038
+2026-06-14T10:12:14.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.771Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.777Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE019A01038 (offset: 0)
+2026-06-14T10:12:14.783Z  INFO 18453 --- [vega.fundamentals] [scheduling-232] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE019A01038
+2026-06-14T10:12:15.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE522F01014 (Source: USER_REQUEST)
+2026-06-14T10:12:15.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE522F01014
+2026-06-14T10:12:15.874Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.881Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.885Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.891Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.895Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.900Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.904Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.909Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE522F01014 (offset: 0)
+2026-06-14T10:12:15.915Z  INFO 18453 --- [vega.fundamentals] [scheduling-233] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE522F01014
+2026-06-14T10:12:16.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE066F01020 (Source: USER_REQUEST)
+2026-06-14T10:12:16.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE066F01020
+2026-06-14T10:12:16.805Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.814Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.820Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.827Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.833Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.838Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.844Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.853Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE066F01020 (offset: 0)
+2026-06-14T10:12:16.862Z  INFO 18453 --- [vega.fundamentals] [scheduling-234] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE066F01020
+2026-06-14T10:12:17.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE095N01031 (Source: USER_REQUEST)
+2026-06-14T10:12:17.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE095N01031
+2026-06-14T10:12:17.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE095N01031 (offset: 0)
+2026-06-14T10:12:17.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-235] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE095N01031
+2026-06-14T10:12:18.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE002A01018 (Source: USER_REQUEST)
+2026-06-14T10:12:18.441Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE002A01018
+2026-06-14T10:12:18.662Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE002A01018 (offset: 0)
+2026-06-14T10:12:18.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-236] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE002A01018
+2026-06-14T10:12:19.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE467B01029 (Source: USER_REQUEST)
+2026-06-14T10:12:19.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE467B01029
+2026-06-14T10:12:19.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE467B01029 (offset: 0)
+2026-06-14T10:12:19.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-237] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE467B01029
+2026-06-14T10:12:20.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE296A01032 (Source: USER_REQUEST)
+2026-06-14T10:12:20.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE296A01032
+2026-06-14T10:12:20.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE296A01032 (offset: 0)
+2026-06-14T10:12:20.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-238] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE296A01032
+2026-06-14T10:12:21.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE079A01024 (Source: USER_REQUEST)
+2026-06-14T10:12:21.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE079A01024
+2026-06-14T10:12:21.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE079A01024 (offset: 0)
+2026-06-14T10:12:21.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-239] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE079A01024
+2026-06-14T10:12:22.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE0J1Y01017 (Source: USER_REQUEST)
+2026-06-14T10:12:22.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE0J1Y01017
+2026-06-14T10:12:22.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE0J1Y01017 (offset: 0)
+2026-06-14T10:12:22.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-240] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE0J1Y01017
+2026-06-14T10:12:23.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE260B01028 (Source: USER_REQUEST)
+2026-06-14T10:12:23.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE260B01028
+2026-06-14T10:12:23.642Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.651Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.664Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE260B01028 (offset: 0)
+2026-06-14T10:12:23.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-241] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE260B01028
+2026-06-14T10:12:24.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE457L01029 (Source: USER_REQUEST)
+2026-06-14T10:12:24.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE457L01029
+2026-06-14T10:12:24.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE457L01029 (offset: 0)
+2026-06-14T10:12:24.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-242] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE457L01029
+2026-06-14T10:12:25.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE200A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:25.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE200A01026
+2026-06-14T10:12:25.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.761Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE200A01026 (offset: 0)
+2026-06-14T10:12:25.773Z  INFO 18453 --- [vega.fundamentals] [scheduling-243] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE200A01026
+2026-06-14T10:12:26.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE299U01018 (Source: USER_REQUEST)
+2026-06-14T10:12:26.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE299U01018
+2026-06-14T10:12:26.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE299U01018 (offset: 0)
+2026-06-14T10:12:26.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-244] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE299U01018
+2026-06-14T10:12:27.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE371P01015 (Source: USER_REQUEST)
+2026-06-14T10:12:27.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE371P01015
+2026-06-14T10:12:27.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE371P01015 (offset: 0)
+2026-06-14T10:12:27.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-245] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE371P01015
+2026-06-14T10:12:28.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE040A01034 (Source: USER_REQUEST)
+2026-06-14T10:12:28.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE040A01034
+2026-06-14T10:12:28.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE040A01034 (offset: 0)
+2026-06-14T10:12:28.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-246] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE040A01034
+2026-06-14T10:12:29.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE202E01016 (Source: USER_REQUEST)
+2026-06-14T10:12:29.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE202E01016
+2026-06-14T10:12:29.832Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.836Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.839Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.841Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.844Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.847Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.849Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.853Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE202E01016 (offset: 0)
+2026-06-14T10:12:29.857Z  INFO 18453 --- [vega.fundamentals] [scheduling-247] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE202E01016
+2026-06-14T10:12:30.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE663F01032 (Source: USER_REQUEST)
+2026-06-14T10:12:30.438Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE663F01032
+2026-06-14T10:12:30.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE663F01032 (offset: 0)
+2026-06-14T10:12:30.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-248] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE663F01032
+2026-06-14T10:12:31.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE603J01030 (Source: USER_REQUEST)
+2026-06-14T10:12:31.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE603J01030
+2026-06-14T10:12:31.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE603J01030 (offset: 0)
+2026-06-14T10:12:31.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-249] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE603J01030
+2026-06-14T10:12:32.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE066A01021 (Source: USER_REQUEST)
+2026-06-14T10:12:32.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE066A01021
+2026-06-14T10:12:32.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE066A01021 (offset: 0)
+2026-06-14T10:12:32.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-250] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE066A01021
+2026-06-14T10:12:33.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE752E01010 (Source: USER_REQUEST)
+2026-06-14T10:12:33.438Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE752E01010
+2026-06-14T10:12:33.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE752E01010 (offset: 0)
+2026-06-14T10:12:33.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-251] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE752E01010
+2026-06-14T10:12:34.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE318A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:34.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE318A01026
+2026-06-14T10:12:34.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE318A01026 (offset: 0)
+2026-06-14T10:12:34.767Z  INFO 18453 --- [vega.fundamentals] [scheduling-252] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE318A01026
+2026-06-14T10:12:35.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE947Q01028 (Source: USER_REQUEST)
+2026-06-14T10:12:35.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE947Q01028
+2026-06-14T10:12:35.673Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE947Q01028 (offset: 0)
+2026-06-14T10:12:35.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-253] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE947Q01028
+2026-06-14T10:12:36.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE271C01023 (Source: USER_REQUEST)
+2026-06-14T10:12:36.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE271C01023
+2026-06-14T10:12:36.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE271C01023 (offset: 0)
+2026-06-14T10:12:36.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-254] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE271C01023
+2026-06-14T10:12:37.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE918I01026 (Source: USER_REQUEST)
+2026-06-14T10:12:37.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE918I01026
+2026-06-14T10:12:37.804Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.811Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.818Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.821Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.829Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.836Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.839Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.845Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE918I01026 (offset: 0)
+2026-06-14T10:12:37.851Z  INFO 18453 --- [vega.fundamentals] [scheduling-255] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE918I01026
+2026-06-14T10:12:38.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE848E01016 (Source: USER_REQUEST)
+2026-06-14T10:12:38.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE848E01016
+2026-06-14T10:12:38.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE848E01016 (offset: 0)
+2026-06-14T10:12:38.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-256] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE848E01016
+2026-06-14T10:12:39.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE089A01031 (Source: USER_REQUEST)
+2026-06-14T10:12:39.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE089A01031
+2026-06-14T10:12:39.880Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.888Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.894Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.901Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.905Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.912Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.916Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.920Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE089A01031 (offset: 0)
+2026-06-14T10:12:39.925Z  INFO 18453 --- [vega.fundamentals] [scheduling-257] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE089A01031
+2026-06-14T10:12:40.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE982J01020 (Source: USER_REQUEST)
+2026-06-14T10:12:40.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE982J01020
+2026-06-14T10:12:40.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE982J01020 (offset: 0)
+2026-06-14T10:12:40.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-258] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE982J01020
+2026-06-14T10:12:41.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE758E01017 (Source: USER_REQUEST)
+2026-06-14T10:12:41.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE758E01017
+2026-06-14T10:12:41.917Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.925Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.932Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.939Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.943Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.947Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.950Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.954Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE758E01017 (offset: 0)
+2026-06-14T10:12:41.958Z  INFO 18453 --- [vega.fundamentals] [scheduling-259] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE758E01017
+2026-06-14T10:12:42.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE451A01017 (Source: USER_REQUEST)
+2026-06-14T10:12:42.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE451A01017
+2026-06-14T10:12:42.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE451A01017 (offset: 0)
+2026-06-14T10:12:42.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-260] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE451A01017
+2026-06-14T10:12:43.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE646L01027 (Source: USER_REQUEST)
+2026-06-14T10:12:43.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE646L01027
+2026-06-14T10:12:43.624Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.631Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.639Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.646Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.652Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.661Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE646L01027 (offset: 0)
+2026-06-14T10:12:43.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-261] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE646L01027
+2026-06-14T10:12:44.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE494B01023 (Source: USER_REQUEST)
+2026-06-14T10:12:44.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE494B01023
+2026-06-14T10:12:44.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE494B01023 (offset: 0)
+2026-06-14T10:12:44.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-262] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE494B01023
+2026-06-14T10:12:45.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE010B01027 (Source: USER_REQUEST)
+2026-06-14T10:12:45.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE010B01027
+2026-06-14T10:12:45.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE010B01027 (offset: 0)
+2026-06-14T10:12:45.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-263] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE010B01027
+2026-06-14T10:12:46.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE0V6F01027 (Source: USER_REQUEST)
+2026-06-14T10:12:46.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE0V6F01027
+2026-06-14T10:12:46.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.738Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE0V6F01027 (offset: 0)
+2026-06-14T10:12:46.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-264] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE0V6F01027
+2026-06-14T10:12:47.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE302A01020 (Source: USER_REQUEST)
+2026-06-14T10:12:47.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE302A01020
+2026-06-14T10:12:47.838Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.851Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.857Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.866Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.876Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.881Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.885Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.892Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE302A01020 (offset: 0)
+2026-06-14T10:12:47.898Z  INFO 18453 --- [vega.fundamentals] [scheduling-265] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE302A01020
+2026-06-14T10:12:48.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE397D01024 (Source: USER_REQUEST)
+2026-06-14T10:12:48.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE397D01024
+2026-06-14T10:12:48.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE397D01024 (offset: 0)
+2026-06-14T10:12:48.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-266] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE397D01024
+2026-06-14T10:12:49.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE059A01026 (Source: USER_REQUEST)
+2026-06-14T10:12:49.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE059A01026
+2026-06-14T10:12:49.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE059A01026 (offset: 0)
+2026-06-14T10:12:49.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-267] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE059A01026
+2026-06-14T10:12:50.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE192R01011 (Source: USER_REQUEST)
+2026-06-14T10:12:50.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE192R01011
+2026-06-14T10:12:50.661Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE192R01011 (offset: 0)
+2026-06-14T10:12:50.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-268] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE192R01011
+2026-06-14T10:12:51.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE761H01022 (Source: USER_REQUEST)
+2026-06-14T10:12:51.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE761H01022
+2026-06-14T10:12:51.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE761H01022 (offset: 0)
+2026-06-14T10:12:51.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-269] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE761H01022
+2026-06-14T10:12:52.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE732I01021 (Source: USER_REQUEST)
+2026-06-14T10:12:52.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE732I01021
+2026-06-14T10:12:52.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE732I01021 (offset: 0)
+2026-06-14T10:12:52.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-270] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE732I01021
+2026-06-14T10:12:53.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE634S01028 (Source: USER_REQUEST)
+2026-06-14T10:12:53.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE634S01028
+2026-06-14T10:12:53.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE634S01028 (offset: 0)
+2026-06-14T10:12:53.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-271] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE634S01028
+2026-06-14T10:12:54.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE949L01017 (Source: USER_REQUEST)
+2026-06-14T10:12:54.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE949L01017
+2026-06-14T10:12:54.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE949L01017 (offset: 0)
+2026-06-14T10:12:54.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-272] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE949L01017
+2026-06-14T10:12:55.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE881D01027 (Source: USER_REQUEST)
+2026-06-14T10:12:55.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE881D01027
+2026-06-14T10:12:55.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE881D01027 (offset: 0)
+2026-06-14T10:12:55.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-273] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE881D01027
+2026-06-14T10:12:56.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE280A01028 (Source: USER_REQUEST)
+2026-06-14T10:12:56.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE280A01028
+2026-06-14T10:12:56.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.765Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.771Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.777Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.786Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.792Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.800Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE280A01028 (offset: 0)
+2026-06-14T10:12:56.805Z  INFO 18453 --- [vega.fundamentals] [scheduling-274] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE280A01028
+2026-06-14T10:12:57.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE148I01020 (Source: USER_REQUEST)
+2026-06-14T10:12:57.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE148I01020
+2026-06-14T10:12:57.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE148I01020 (offset: 0)
+2026-06-14T10:12:57.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-275] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE148I01020
+2026-06-14T10:12:58.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE180A01020 (Source: USER_REQUEST)
+2026-06-14T10:12:58.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE180A01020
+2026-06-14T10:12:58.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE180A01020 (offset: 0)
+2026-06-14T10:12:58.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-276] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE180A01020
+2026-06-14T10:12:59.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE797F01020 (Source: USER_REQUEST)
+2026-06-14T10:12:59.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE797F01020
+2026-06-14T10:12:59.820Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.825Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.827Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.830Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.832Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.833Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.835Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.838Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE797F01020 (offset: 0)
+2026-06-14T10:12:59.841Z  INFO 18453 --- [vega.fundamentals] [scheduling-277] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE797F01020
+2026-06-14T10:13:00.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE795G01014 (Source: USER_REQUEST)
+2026-06-14T10:13:00.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE795G01014
+2026-06-14T10:13:00.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE795G01014 (offset: 0)
+2026-06-14T10:13:00.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-278] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE795G01014
+2026-06-14T10:13:01.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE138Y01010 (Source: USER_REQUEST)
+2026-06-14T10:13:01.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE138Y01010
+2026-06-14T10:13:01.614Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.620Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.624Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.630Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.632Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.634Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.636Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.638Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE138Y01010 (offset: 0)
+2026-06-14T10:13:01.642Z  INFO 18453 --- [vega.fundamentals] [scheduling-279] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE138Y01010
+2026-06-14T10:13:02.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE155A01022 (Source: USER_REQUEST)
+2026-06-14T10:13:02.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE155A01022
+2026-06-14T10:13:02.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE155A01022 (offset: 0)
+2026-06-14T10:13:02.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-280] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE155A01022
+2026-06-14T10:13:03.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE944F01028 (Source: USER_REQUEST)
+2026-06-14T10:13:03.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE944F01028
+2026-06-14T10:13:03.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE944F01028 (offset: 0)
+2026-06-14T10:13:03.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-281] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE944F01028
+2026-06-14T10:13:04.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE562A01011 (Source: USER_REQUEST)
+2026-06-14T10:13:04.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE562A01011
+2026-06-14T10:13:04.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE562A01011 (offset: 0)
+2026-06-14T10:13:04.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-282] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE562A01011
+2026-06-14T10:13:05.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE572E01012 (Source: USER_REQUEST)
+2026-06-14T10:13:05.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE572E01012
+2026-06-14T10:13:05.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE572E01012 (offset: 0)
+2026-06-14T10:13:05.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-283] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE572E01012
+2026-06-14T10:13:06.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE298A01020 (Source: USER_REQUEST)
+2026-06-14T10:13:06.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE298A01020
+2026-06-14T10:13:06.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE298A01020 (offset: 0)
+2026-06-14T10:13:06.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-284] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE298A01020
+2026-06-14T10:13:07.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE095A01012 (Source: USER_REQUEST)
+2026-06-14T10:13:07.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE095A01012
+2026-06-14T10:13:07.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE095A01012 (offset: 0)
+2026-06-14T10:13:07.782Z  INFO 18453 --- [vega.fundamentals] [scheduling-285] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE095A01012
+2026-06-14T10:13:08.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE274J01014 (Source: USER_REQUEST)
+2026-06-14T10:13:08.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE274J01014
+2026-06-14T10:13:08.649Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.655Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.662Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE274J01014 (offset: 0)
+2026-06-14T10:13:08.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-286] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE274J01014
+2026-06-14T10:13:09.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE195A01028 (Source: USER_REQUEST)
+2026-06-14T10:13:09.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE195A01028
+2026-06-14T10:13:09.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE195A01028 (offset: 0)
+2026-06-14T10:13:09.784Z  INFO 18453 --- [vega.fundamentals] [scheduling-287] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE195A01028
+2026-06-14T10:13:10.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE118H01025 (Source: USER_REQUEST)
+2026-06-14T10:13:10.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE118H01025
+2026-06-14T10:13:10.645Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.656Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE118H01025 (offset: 0)
+2026-06-14T10:13:10.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-288] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE118H01025
+2026-06-14T10:13:11.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE364U01010 (Source: USER_REQUEST)
+2026-06-14T10:13:11.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE364U01010
+2026-06-14T10:13:11.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE364U01010 (offset: 0)
+2026-06-14T10:13:11.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-289] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE364U01010
+2026-06-14T10:13:12.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE044A01036 (Source: USER_REQUEST)
+2026-06-14T10:13:12.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE044A01036
+2026-06-14T10:13:12.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE044A01036 (offset: 0)
+2026-06-14T10:13:12.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-290] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE044A01036
+2026-06-14T10:13:13.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE935N01020 (Source: USER_REQUEST)
+2026-06-14T10:13:13.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE935N01020
+2026-06-14T10:13:13.852Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.859Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.867Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.873Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.879Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.883Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.886Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.890Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE935N01020 (offset: 0)
+2026-06-14T10:13:13.898Z  INFO 18453 --- [vega.fundamentals] [scheduling-291] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE935N01020
+2026-06-14T10:13:14.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE238A01034 (Source: USER_REQUEST)
+2026-06-14T10:13:14.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE238A01034
+2026-06-14T10:13:14.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE238A01034 (offset: 0)
+2026-06-14T10:13:14.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-292] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE238A01034
+2026-06-14T10:13:15.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE038A01020 (Source: USER_REQUEST)
+2026-06-14T10:13:15.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE038A01020
+2026-06-14T10:13:15.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE038A01020 (offset: 0)
+2026-06-14T10:13:15.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-293] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE038A01020
+2026-06-14T10:13:16.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE242A01010 (Source: USER_REQUEST)
+2026-06-14T10:13:16.440Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE242A01010
+2026-06-14T10:13:16.662Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE242A01010 (offset: 0)
+2026-06-14T10:13:16.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-294] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE242A01010
+2026-06-14T10:13:17.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE04I401011 (Source: USER_REQUEST)
+2026-06-14T10:13:17.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE04I401011
+2026-06-14T10:13:17.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE04I401011 (offset: 0)
+2026-06-14T10:13:17.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-295] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE04I401011
+2026-06-14T10:13:18.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE338I01027 (Source: USER_REQUEST)
+2026-06-14T10:13:18.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE338I01027
+2026-06-14T10:13:18.846Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.854Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.860Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.873Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.879Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.884Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.888Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.895Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE338I01027 (offset: 0)
+2026-06-14T10:13:18.900Z  INFO 18453 --- [vega.fundamentals] [scheduling-296] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE338I01027
+2026-06-14T10:13:19.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE061F01013 (Source: USER_REQUEST)
+2026-06-14T10:13:19.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE061F01013
+2026-06-14T10:13:19.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE061F01013 (offset: 0)
+2026-06-14T10:13:19.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-297] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE061F01013
+2026-06-14T10:13:20.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE020B01018 (Source: USER_REQUEST)
+2026-06-14T10:13:20.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE020B01018
+2026-06-14T10:13:20.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE020B01018 (offset: 0)
+2026-06-14T10:13:20.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-298] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE020B01018
+2026-06-14T10:13:21.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE263A01024 (Source: USER_REQUEST)
+2026-06-14T10:13:21.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE263A01024
+2026-06-14T10:13:21.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE263A01024 (offset: 0)
+2026-06-14T10:13:21.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-299] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE263A01024
+2026-06-14T10:13:22.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE685A01028 (Source: USER_REQUEST)
+2026-06-14T10:13:22.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE685A01028
+2026-06-14T10:13:22.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE685A01028 (offset: 0)
+2026-06-14T10:13:22.755Z  INFO 18453 --- [vega.fundamentals] [scheduling-300] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE685A01028
+2026-06-14T10:13:23.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE647A01010 (Source: USER_REQUEST)
+2026-06-14T10:13:23.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE647A01010
+2026-06-14T10:13:23.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.773Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.782Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE647A01010 (offset: 0)
+2026-06-14T10:13:23.787Z  INFO 18453 --- [vega.fundamentals] [scheduling-301] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE647A01010
+2026-06-14T10:13:24.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE860A01027 (Source: USER_REQUEST)
+2026-06-14T10:13:24.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE860A01027
+2026-06-14T10:13:24.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE860A01027 (offset: 0)
+2026-06-14T10:13:24.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-302] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE860A01027
+2026-06-14T10:13:25.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE00H001014 (Source: USER_REQUEST)
+2026-06-14T10:13:25.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE00H001014
+2026-06-14T10:13:25.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.762Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE00H001014 (offset: 0)
+2026-06-14T10:13:25.770Z  INFO 18453 --- [vega.fundamentals] [scheduling-303] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE00H001014
+2026-06-14T10:13:26.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE0BS701011 (Source: USER_REQUEST)
+2026-06-14T10:13:26.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE0BS701011
+2026-06-14T10:13:26.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE0BS701011 (offset: 0)
+2026-06-14T10:13:26.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-304] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE0BS701011
+2026-06-14T10:13:27.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE976G01028 (Source: USER_REQUEST)
+2026-06-14T10:13:27.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE976G01028
+2026-06-14T10:13:27.836Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.844Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.851Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.857Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.861Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.865Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.872Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.878Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE976G01028 (offset: 0)
+2026-06-14T10:13:27.883Z  INFO 18453 --- [vega.fundamentals] [scheduling-305] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE976G01028
+2026-06-14T10:13:28.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE171A01029 (Source: USER_REQUEST)
+2026-06-14T10:13:28.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE171A01029
+2026-06-14T10:13:28.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.719Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE171A01029 (offset: 0)
+2026-06-14T10:13:28.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-306] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE171A01029
+2026-06-14T10:13:29.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE084A01016 (Source: USER_REQUEST)
+2026-06-14T10:13:29.437Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE084A01016
+2026-06-14T10:13:29.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE084A01016 (offset: 0)
+2026-06-14T10:13:29.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-307] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE084A01016
+2026-06-14T10:13:30.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE262H01021 (Source: USER_REQUEST)
+2026-06-14T10:13:30.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE262H01021
+2026-06-14T10:13:30.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE262H01021 (offset: 0)
+2026-06-14T10:13:30.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-308] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE262H01021
+2026-06-14T10:13:31.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE775A01035 (Source: USER_REQUEST)
+2026-06-14T10:13:31.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE775A01035
+2026-06-14T10:13:31.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE775A01035 (offset: 0)
+2026-06-14T10:13:31.749Z  INFO 18453 --- [vega.fundamentals] [scheduling-309] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE775A01035
+2026-06-14T10:13:32.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE018E01016 (Source: USER_REQUEST)
+2026-06-14T10:13:32.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE018E01016
+2026-06-14T10:13:32.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.745Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE018E01016 (offset: 0)
+2026-06-14T10:13:32.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-310] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE018E01016
+2026-06-14T10:13:33.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE878B01027 (Source: USER_REQUEST)
+2026-06-14T10:13:33.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE878B01027
+2026-06-14T10:13:33.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE878B01027 (offset: 0)
+2026-06-14T10:13:33.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-311] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE878B01027
+2026-06-14T10:13:34.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE214T01019 (Source: USER_REQUEST)
+2026-06-14T10:13:34.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE214T01019
+2026-06-14T10:13:34.666Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE214T01019 (offset: 0)
+2026-06-14T10:13:34.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-312] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE214T01019
+2026-06-14T10:13:35.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE415G01027 (Source: USER_REQUEST)
+2026-06-14T10:13:35.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE415G01027
+2026-06-14T10:13:35.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.767Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE415G01027 (offset: 0)
+2026-06-14T10:13:35.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-313] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE415G01027
+2026-06-14T10:13:36.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE545U01014 (Source: USER_REQUEST)
+2026-06-14T10:13:36.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE545U01014
+2026-06-14T10:13:36.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.764Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE545U01014 (offset: 0)
+2026-06-14T10:13:36.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-314] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE545U01014
+2026-06-14T10:13:37.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE776C01039 (Source: USER_REQUEST)
+2026-06-14T10:13:37.434Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE776C01039
+2026-06-14T10:13:37.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.723Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE776C01039 (offset: 0)
+2026-06-14T10:13:37.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-315] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE776C01039
+2026-06-14T10:13:38.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE176B01034 (Source: USER_REQUEST)
+2026-06-14T10:13:38.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE176B01034
+2026-06-14T10:13:38.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.729Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.752Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE176B01034 (offset: 0)
+2026-06-14T10:13:38.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-316] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE176B01034
+2026-06-14T10:13:39.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE323A01026 (Source: USER_REQUEST)
+2026-06-14T10:13:39.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE323A01026
+2026-06-14T10:13:39.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.735Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.754Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.760Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.766Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.775Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE323A01026 (offset: 0)
+2026-06-14T10:13:39.788Z  INFO 18453 --- [vega.fundamentals] [scheduling-317] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE323A01026
+2026-06-14T10:13:40.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE249Z01020 (Source: USER_REQUEST)
+2026-06-14T10:13:40.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE249Z01020
+2026-06-14T10:13:40.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.748Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE249Z01020 (offset: 0)
+2026-06-14T10:13:40.753Z  INFO 18453 --- [vega.fundamentals] [scheduling-318] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE249Z01020
+2026-06-14T10:13:41.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE417T01026 (Source: USER_REQUEST)
+2026-06-14T10:13:41.439Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE417T01026
+2026-06-14T10:13:41.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.759Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE417T01026 (offset: 0)
+2026-06-14T10:13:41.765Z  INFO 18453 --- [vega.fundamentals] [scheduling-319] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE417T01026
+2026-06-14T10:13:42.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE758T01015 (Source: USER_REQUEST)
+2026-06-14T10:13:42.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE758T01015
+2026-06-14T10:13:42.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.733Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE758T01015 (offset: 0)
+2026-06-14T10:13:42.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-320] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE758T01015
+2026-06-14T10:13:43.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE343H01029 (Source: USER_REQUEST)
+2026-06-14T10:13:43.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE343H01029
+2026-06-14T10:13:43.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.709Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.716Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.758Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE343H01029 (offset: 0)
+2026-06-14T10:13:43.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-321] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE343H01029
+2026-06-14T10:13:44.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE154A01025 (Source: USER_REQUEST)
+2026-06-14T10:13:44.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE154A01025
+2026-06-14T10:13:44.585Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.589Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.591Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.594Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.596Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.599Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.605Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.607Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE154A01025 (offset: 0)
+2026-06-14T10:13:44.610Z  INFO 18453 --- [vega.fundamentals] [scheduling-322] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE154A01025
+2026-06-14T10:13:45.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE455K01017 (Source: USER_REQUEST)
+2026-06-14T10:13:45.436Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE455K01017
+2026-06-14T10:13:45.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.730Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.757Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.763Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE455K01017 (offset: 0)
+2026-06-14T10:13:45.768Z  INFO 18453 --- [vega.fundamentals] [scheduling-323] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE455K01017
+2026-06-14T10:13:46.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE101A01026 (Source: USER_REQUEST)
+2026-06-14T10:13:46.435Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE101A01026
+2026-06-14T10:13:46.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.720Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.725Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE101A01026 (offset: 0)
+2026-06-14T10:13:46.756Z  INFO 18453 --- [vega.fundamentals] [scheduling-324] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE101A01026
+2026-06-14T10:13:47.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE406A01037 (Source: USER_REQUEST)
+2026-06-14T10:13:47.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE406A01037
+2026-06-14T10:13:47.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.669Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE406A01037 (offset: 0)
+2026-06-14T10:13:47.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-325] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE406A01037
+2026-06-14T10:13:48.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE208A01029 (Source: USER_REQUEST)
+2026-06-14T10:13:48.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE208A01029
+2026-06-14T10:13:48.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.712Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE208A01029 (offset: 0)
+2026-06-14T10:13:48.727Z  INFO 18453 --- [vega.fundamentals] [scheduling-326] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE208A01029
+2026-06-14T10:13:49.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE148O01028 (Source: USER_REQUEST)
+2026-06-14T10:13:49.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE148O01028
+2026-06-14T10:13:49.788Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.795Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.801Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.806Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.812Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.817Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.822Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.828Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE148O01028 (offset: 0)
+2026-06-14T10:13:49.832Z  INFO 18453 --- [vega.fundamentals] [scheduling-327] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE148O01028
+2026-06-14T10:13:50.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE303R01014 (Source: USER_REQUEST)
+2026-06-14T10:13:50.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE303R01014
+2026-06-14T10:13:50.673Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.710Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.713Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE303R01014 (offset: 0)
+2026-06-14T10:13:50.721Z  INFO 18453 --- [vega.fundamentals] [scheduling-328] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE303R01014
+2026-06-14T10:13:51.433Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE628A01036 (Source: USER_REQUEST)
+2026-06-14T10:13:51.438Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE628A01036
+2026-06-14T10:13:51.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE628A01036 (offset: 0)
+2026-06-14T10:13:51.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-329] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE628A01036
+2026-06-14T10:13:52.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE090A01021 (Source: USER_REQUEST)
+2026-06-14T10:13:52.431Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE090A01021
+2026-06-14T10:13:52.772Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.776Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.781Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.785Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.789Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.794Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.799Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.804Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE090A01021 (offset: 0)
+2026-06-14T10:13:52.808Z  INFO 18453 --- [vega.fundamentals] [scheduling-330] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE090A01021
+2026-06-14T10:13:53.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE472A01039 (Source: USER_REQUEST)
+2026-06-14T10:13:53.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE472A01039
+2026-06-14T10:13:53.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.661Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.665Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.673Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE472A01039 (offset: 0)
+2026-06-14T10:13:53.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-331] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE472A01039
+2026-06-14T10:13:54.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE040H01021 (Source: USER_REQUEST)
+2026-06-14T10:13:54.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE040H01021
+2026-06-14T10:13:54.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.722Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.724Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.728Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.731Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.736Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE040H01021 (offset: 0)
+2026-06-14T10:13:54.739Z  INFO 18453 --- [vega.fundamentals] [scheduling-332] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE040H01021
+2026-06-14T10:13:55.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE092T01019 (Source: USER_REQUEST)
+2026-06-14T10:13:55.432Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE092T01019
+2026-06-14T10:13:55.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.704Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.714Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE092T01019 (offset: 0)
+2026-06-14T10:13:55.717Z  INFO 18453 --- [vega.fundamentals] [scheduling-333] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE092T01019
+2026-06-14T10:13:56.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE018A01030 (Source: USER_REQUEST)
+2026-06-14T10:13:56.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE018A01030
+2026-06-14T10:13:56.761Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.769Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.773Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.775Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.777Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.778Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.780Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.783Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE018A01030 (offset: 0)
+2026-06-14T10:13:56.784Z  INFO 18453 --- [vega.fundamentals] [scheduling-334] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE018A01030
+2026-06-14T10:13:57.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE347G01014 (Source: USER_REQUEST)
+2026-06-14T10:13:57.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE347G01014
+2026-06-14T10:13:57.634Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.638Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.643Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.646Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.650Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.652Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.654Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.656Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE347G01014 (offset: 0)
+2026-06-14T10:13:57.657Z  INFO 18453 --- [vega.fundamentals] [scheduling-335] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE347G01014
+2026-06-14T10:13:58.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE423A01024 (Source: USER_REQUEST)
+2026-06-14T10:13:58.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE423A01024
+2026-06-14T10:13:58.637Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.641Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.644Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.648Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.652Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.654Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.655Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE423A01024 (offset: 0)
+2026-06-14T10:13:58.660Z  INFO 18453 --- [vega.fundamentals] [scheduling-336] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE423A01024
+2026-06-14T10:13:59.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE067A01029 (Source: USER_REQUEST)
+2026-06-14T10:13:59.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE067A01029
+2026-06-14T10:13:59.832Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.837Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.840Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.843Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.846Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.848Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.850Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.858Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE067A01029 (offset: 0)
+2026-06-14T10:13:59.861Z  INFO 18453 --- [vega.fundamentals] [scheduling-337] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE067A01029
+2026-06-14T10:14:00.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE07Y701011 (Source: USER_REQUEST)
+2026-06-14T10:14:00.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE07Y701011
+2026-06-14T10:14:00.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE07Y701011 (offset: 0)
+2026-06-14T10:14:00.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-338] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE07Y701011
+2026-06-14T10:14:01.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE259A01022 (Source: USER_REQUEST)
+2026-06-14T10:14:01.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE259A01022
+2026-06-14T10:14:01.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.711Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.715Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.718Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.726Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.732Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.734Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.737Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE259A01022 (offset: 0)
+2026-06-14T10:14:01.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-339] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE259A01022
+2026-06-14T10:14:02.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE257A01026 (Source: USER_REQUEST)
+2026-06-14T10:14:02.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE257A01026
+2026-06-14T10:14:02.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.666Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.668Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.672Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE257A01026 (offset: 0)
+2026-06-14T10:14:02.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-340] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE257A01026
+2026-06-14T10:14:03.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE765G01017 (Source: USER_REQUEST)
+2026-06-14T10:14:03.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE765G01017
+2026-06-14T10:14:03.740Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.741Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.742Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.743Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.744Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.746Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.747Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.750Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE765G01017 (offset: 0)
+2026-06-14T10:14:03.751Z  INFO 18453 --- [vega.fundamentals] [scheduling-341] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE765G01017
+2026-06-14T10:14:04.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE129A01019 (Source: USER_REQUEST)
+2026-06-14T10:14:04.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE129A01019
+2026-06-14T10:14:04.641Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.646Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.655Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.660Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.664Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.670Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.676Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE129A01019 (offset: 0)
+2026-06-14T10:14:04.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-342] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE129A01019
+2026-06-14T10:14:05.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE114A01011 (Source: USER_REQUEST)
+2026-06-14T10:14:05.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE114A01011
+2026-06-14T10:14:05.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.680Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.699Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE114A01011 (offset: 0)
+2026-06-14T10:14:05.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-343] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE114A01011
+2026-06-14T10:14:06.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE481G01011 (Source: USER_REQUEST)
+2026-06-14T10:14:06.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE481G01011
+2026-06-14T10:14:06.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.683Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.687Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE481G01011 (offset: 0)
+2026-06-14T10:14:06.707Z  INFO 18453 --- [vega.fundamentals] [scheduling-344] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE481G01011
+2026-06-14T10:14:07.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE003A01024 (Source: USER_REQUEST)
+2026-06-14T10:14:07.430Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE003A01024
+2026-06-14T10:14:07.658Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.663Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.667Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.682Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE003A01024 (offset: 0)
+2026-06-14T10:14:07.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-345] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE003A01024
+2026-06-14T10:14:08.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE935A01035 (Source: USER_REQUEST)
+2026-06-14T10:14:08.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE935A01035
+2026-06-14T10:14:08.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.677Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.692Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.705Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE935A01035 (offset: 0)
+2026-06-14T10:14:08.708Z  INFO 18453 --- [vega.fundamentals] [scheduling-346] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE935A01035
+2026-06-14T10:14:09.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE670A01012 (Source: USER_REQUEST)
+2026-06-14T10:14:09.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE670A01012
+2026-06-14T10:14:09.674Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.679Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.686Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.690Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.701Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.703Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE670A01012 (offset: 0)
+2026-06-14T10:14:09.706Z  INFO 18453 --- [vega.fundamentals] [scheduling-347] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE670A01012
+2026-06-14T10:14:10.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE016A01026 (Source: USER_REQUEST)
+2026-06-14T10:14:10.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE016A01026
+2026-06-14T10:14:10.685Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.689Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.691Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.693Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.695Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.696Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.698Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.700Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE016A01026 (offset: 0)
+2026-06-14T10:14:10.702Z  INFO 18453 --- [vega.fundamentals] [scheduling-348] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE016A01026
+2026-06-14T10:14:11.427Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE029A01011 (Source: USER_REQUEST)
+2026-06-14T10:14:11.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE029A01011
+2026-06-14T10:14:11.625Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.630Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.633Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.636Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.638Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.640Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.642Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.643Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE029A01011 (offset: 0)
+2026-06-14T10:14:11.645Z  INFO 18453 --- [vega.fundamentals] [scheduling-349] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE029A01011
+2026-06-14T10:14:12.428Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalFetchScheduler  : Scheduler executing fetch for ISIN: INE200M01039 (Source: USER_REQUEST)
+2026-06-14T10:14:12.429Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE200M01039
+2026-06-14T10:14:12.666Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of profile for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.671Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of balanceSheet for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.675Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of cashFlow for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.678Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of incomeStatement for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.681Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of shareHoldings for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.684Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of keyRatios for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.688Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of corporateActions for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.694Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalHistoryService  : Archived v1 of competitors for ISIN: INE200M01039 (offset: 0)
+2026-06-14T10:14:12.697Z  INFO 18453 --- [vega.fundamentals] [scheduling-350] c.v.f.service.FundamentalFetchScheduler  : Scheduler successfully completed fetch for ISIN: INE200M01039
 ```
 
 ```xml
