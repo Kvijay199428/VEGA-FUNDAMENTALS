@@ -3,6 +3,7 @@ package com.vega.fundamentals.controller;
 import com.vega.fundamentals.dto.FundamentalSnapshot;
 import com.vega.fundamentals.service.FundamentalAggregatorService;
 import com.vega.fundamentals.service.FundamentalCacheService;
+import com.vega.fundamentals.service.FundamentalFetchQueueService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +31,10 @@ public class FundamentalController {
     private final com.vega.fundamentals.service.FundamentalHistoryService historyService;
     private final com.vega.fundamentals.service.FundamentalAnalyzer analyzer;
     private final com.vega.fundamentals.service.FundamentalBootstrapService bootstrapService;
+    private final FundamentalFetchQueueService queueService;
 
     @GetMapping("/{isin}")
-    public ResponseEntity<FundamentalSnapshot> getFundamentals(
+    public ResponseEntity<?> getFundamentals(
             @PathVariable 
             @Pattern(regexp = "^[A-Z]{2}[A-Z0-9]{9}[0-9]$", message = "Invalid ISIN format")
             String isin) {
@@ -44,9 +46,31 @@ public class FundamentalController {
             return ResponseEntity.ok(cachedSnapshot.get());
         }
 
-        FundamentalSnapshot snapshot = aggregatorService.aggregate(isin);
+        com.vega.fundamentals.dto.JobStatusResponse status = queueService.enqueue(isin, 10, "USER_REQUEST");
+        
+        if ("queue_full".equals(status.getStatus())) {
+            return ResponseEntity.status(429).body(status);
+        }
+        
+        return ResponseEntity.accepted().body(status);
+    }
 
-        return ResponseEntity.ok(snapshot);
+    @GetMapping("/queue")
+    public ResponseEntity<com.vega.fundamentals.dto.QueueStatusResponse> getQueueStatus() {
+        return ResponseEntity.ok(queueService.getQueueStatus());
+    }
+
+    @GetMapping("/status/{isin}")
+    public ResponseEntity<com.vega.fundamentals.dto.JobStatusResponse> getJobStatus(
+            @PathVariable 
+            @Pattern(regexp = "^[A-Z]{2}[A-Z0-9]{9}[0-9]$", message = "Invalid ISIN format")
+            String isin) {
+        return ResponseEntity.ok(queueService.getStatus(isin));
+    }
+
+    @GetMapping("/metrics")
+    public ResponseEntity<com.vega.fundamentals.dto.MetricsResponse> getMetrics() {
+        return ResponseEntity.ok(queueService.getMetrics());
     }
 
     @GetMapping("/{isin}/history")

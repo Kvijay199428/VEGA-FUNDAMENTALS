@@ -1,6 +1,5 @@
 package com.vega.fundamentals.service;
 
-import com.vega.fundamentals.dto.FundamentalSnapshot;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,9 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @Slf4j
@@ -18,38 +14,38 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FundamentalBootstrapService {
 
     private final InstrumentService instrumentService;
-    private final FundamentalAggregatorService aggregatorService;
-    private final ExecutorService executor;
+    private final FundamentalFetchQueueService queueService;
 
     public BootstrapResult bootstrapFno() {
         log.info("Starting F&O bootstrap process...");
         Map<String, InstrumentService.InstrumentInfo> fnoEquities = instrumentService.getFnoEquities();
         int total = fnoEquities.size();
-        log.info("Found {} F&O equities to bootstrap.", total);
+        log.info("Found {} F&O equities to bootstrap. Queuing them up...", total);
 
-        AtomicInteger successCount = new AtomicInteger(0);
-        AtomicInteger failureCount = new AtomicInteger(0);
+        int queuedCount = 0;
+        int failedCount = 0;
         List<String> failedIsins = new ArrayList<>();
 
-        List<CompletableFuture<Void>> futures = fnoEquities.values().stream()
-                .map(info -> CompletableFuture.runAsync(() -> {
-                    try {
-                        aggregatorService.aggregate(info.getIsin());
-                        successCount.incrementAndGet();
-                        log.info("[BOOTSTRAP] Successfully processed {} ({})", info.getIsin(), info.getSymbol());
-                    } catch (Exception e) {
-                        failureCount.incrementAndGet();
-                        failedIsins.add(info.getIsin());
-                        log.error("[BOOTSTRAP] Failed to process {} ({}): {}", info.getIsin(), info.getSymbol(), e.getMessage());
-                    }
-                }, executor))
-                .toList();
+        for (InstrumentService.InstrumentInfo info : fnoEquities.values()) {
+            try {
+                com.vega.fundamentals.dto.JobStatusResponse status = queueService.enqueue(info.getIsin(), 5, "BOOTSTRAP");
+                if ("queue_full".equals(status.getStatus())) {
+                    failedCount++;
+                    failedIsins.add(info.getIsin());
+                    log.warn("[BOOTSTRAP] Queue full. Failed to queue {} ({})", info.getIsin(), info.getSymbol());
+                } else {
+                    queuedCount++;
+                }
+            } catch (Exception e) {
+                failedCount++;
+                failedIsins.add(info.getIsin());
+                log.error("[BOOTSTRAP] Failed to queue {} ({}): {}", info.getIsin(), info.getSymbol(), e.getMessage());
+            }
+        }
 
-        CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+        log.info("Bootstrap enqueue complete. Total: {}, Queued: {}, Failed: {}", total, queuedCount, failedCount);
 
-        log.info("Bootstrap complete. Total: {}, Success: {}, Failed: {}", total, successCount.get(), failureCount.get());
-
-        return new BootstrapResult(total, successCount.get(), failureCount.get(), failedIsins);
+        return new BootstrapResult(total, queuedCount, failedCount, failedIsins);
     }
 
     public record BootstrapResult(int total, int success, int failed, List<String> failedIsins) {}

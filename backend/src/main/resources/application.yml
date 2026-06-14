@@ -26,3 +26,11 @@ storage:
     fundamentals-path: /root/fundamentals/storage/cache/fundamentals/
   history:
     fundamentals-path: /root/fundamentals/storage/history/fundamentals/
+  queue:
+    path: /root/fundamentals/storage/queue/
+
+fundamentals:
+  queue:
+    enabled: true
+    max-size: 10000
+    fetch-rate-seconds: 1
