@@ -3351,6 +3351,18 @@
 2026-06-14T06:52:36.375Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.controller.FundamentalController   : Request received for ISIN: INE692A01016
 2026-06-14T06:52:36.376Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE692A01016...
 2026-06-14T06:52:36.394Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-3] c.v.f.service.FundamentalCacheService    : History hit for ISIN: INE692A01016
+2026-06-14T06:58:22.200Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.controller.FundamentalController   : Request received for ISIN: INE692A01016
+2026-06-14T06:58:22.208Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.service.FundamentalCacheService    : Retrieving fundamentals from history for ISIN: INE692A01016...
+2026-06-14T06:58:22.210Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.s.FundamentalAggregatorService     : Aggregating fundamentals for ISIN: INE692A01016
+2026-06-14T06:58:27.255Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching profile for ISIN: INE692A01016: null
+2026-06-14T06:58:27.278Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching balanceSheet for ISIN: INE692A01016: null
+2026-06-14T06:58:27.283Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching cashFlow for ISIN: INE692A01016: null
+2026-06-14T06:58:27.288Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching incomeStatement for ISIN: INE692A01016: null
+2026-06-14T06:58:27.291Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching shareHoldings for ISIN: INE692A01016: null
+2026-06-14T06:58:27.292Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching keyRatios for ISIN: INE692A01016: null
+2026-06-14T06:58:27.293Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching corporateActions for ISIN: INE692A01016: null
+2026-06-14T06:58:27.293Z ERROR 30320 --- [vega.fundamentals] [CompletableFutureDelayScheduler] c.v.f.s.FundamentalAggregatorService     : Timeout or error fetching competitors for ISIN: INE692A01016: null
+2026-06-14T06:58:27.340Z  INFO 30320 --- [vega.fundamentals] [tomcat-handler-5] c.v.f.service.FundamentalHistoryService  : metadata.json missing or corrupted for ISIN: INE692A01016. Rebuilding from history...
 ```
 
 ```xml
@@ -5516,4 +5528,9 @@ storage:
     fundamentals-path: /root/fundamentals/storage/cache/fundamentals/
   history:
     fundamentals-path: /root/fundamentals/storage/history/fundamentals/
+```
+
+```json
+// File: history/fundamentals/INE692A01016/metadata.json
+{"schemaVersion":"1.0","isin":"INE692A01016","symbol":"UNIONBANK","companyName":"UNION BANK OF INDIA","exchange":"NSE","createdTs":"2026-06-14T06:58:27.342710160Z","firstSeenTs":"2026-06-14T06:58:27.342710160Z","lastUpdatedTs":"2026-06-14T06:58:27.342710160Z","endpoints":{}}
 ```
