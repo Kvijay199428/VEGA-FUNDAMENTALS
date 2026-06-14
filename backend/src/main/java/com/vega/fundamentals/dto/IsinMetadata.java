@@ -22,6 +22,7 @@ public class IsinMetadata {
     private String companyName;
     private String exchange;
     private Instant createdTs;
+    private Instant firstSeenTs;
     private Instant lastUpdatedTs;
 
     @Builder.Default

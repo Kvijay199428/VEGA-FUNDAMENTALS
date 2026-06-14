@@ -39,7 +39,6 @@ public class FundamentalController {
         }
 
         FundamentalSnapshot snapshot = aggregatorService.aggregate(isin);
-        cacheService.put(isin, snapshot);
 
         return ResponseEntity.ok(snapshot);
     }

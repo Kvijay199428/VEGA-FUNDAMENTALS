@@ -21,19 +21,16 @@ import java.util.Optional;
 @Slf4j
 public class FundamentalCacheService {
 
-    private final String cachePath;
     private final ObjectMapper objectMapper;
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
     private final FundamentalHistoryService historyService;
     private static final Duration TTL = Duration.ofHours(24);
 
-    public FundamentalCacheService(@Value("${storage.cache.fundamentals-path}") String cachePath, 
-                                 ObjectMapper objectMapper,
+    public FundamentalCacheService(ObjectMapper objectMapper,
                                  InstrumentService instrumentService,
                                  FundamentalAnalyzer analyzer,
                                  FundamentalHistoryService historyService) {
-        this.cachePath = cachePath;
         this.objectMapper = objectMapper;
         this.instrumentService = instrumentService;
         this.analyzer = analyzer;
@@ -41,9 +38,10 @@ public class FundamentalCacheService {
     }
 
     public Optional<FundamentalSnapshot> get(String isin) {
-        // 1. Try History Reconstruction (Stage 2: History is Primary)
-        log.info("Attempting history reconstruction for ISIN: {}...", isin);
+        // History is the absolute source of truth
+        log.info("Retrieving fundamentals from history for ISIN: {}...", isin);
         Optional<FundamentalSnapshot> historical = historyService.reconstructSnapshot(isin);
+        
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
             if (isFresh(snapshot.getGeneratedTs())) {
@@ -55,142 +53,15 @@ public class FundamentalCacheService {
             }
         }
 
-        // 2. Fallback to Legacy JSON Cache (Migration Support)
-        Optional<FundamentalSnapshot> legacyCached = getFromPrimaryCache(isin);
-        if (legacyCached.isPresent()) {
-            log.info("Legacy primary cache hit for ISIN: {}", isin);
-            return legacyCached;
-        }
-
         return Optional.empty();
     }
 
-    private Optional<FundamentalSnapshot> getFromPrimaryCache(String isin) {
-        Path isinDir = Path.of(cachePath, isin);
-        if (!Files.exists(isinDir) || !Files.exists(isinDir.resolve("profile.json"))) {
-            return Optional.empty();
-        }
-
-        try {
-            SectionResponse<CompanyProfileDto> profileRes = readSection(isinDir, "profile.json", new TypeReference<SectionResponse<CompanyProfileDto>>() {});
-            if (profileRes == null || !isFresh(profileRes.getFetchedTs())) {
-                log.info("Primary cache expired or missing for ISIN: {}", isin);
-                return Optional.empty();
-            }
-
-            InstrumentService.InstrumentInfo instrumentInfo = instrumentService.getInstrument(isin);
-            FundamentalSnapshot snapshot = buildSnapshotFromCache(isin, isinDir, profileRes, instrumentInfo);
-
-            if (isPartialSuccess(snapshot)) {
-                snapshot.setStatus("partial_success");
-            }
-
-            snapshot.setAnalysis(analyzer.analyze(snapshot));
-            log.info("Primary cache hit for ISIN: {}", isin);
-            return Optional.of(snapshot);
-        } catch (IOException e) {
-            log.error("Failed to read primary cache for ISIN: {}: {}", isin, e.getMessage());
-            return Optional.empty();
-        }
-    }
-
-    private FundamentalSnapshot buildSnapshotFromCache(String isin, Path isinDir, SectionResponse<CompanyProfileDto> profileRes, InstrumentService.InstrumentInfo instrumentInfo) throws IOException {
-        String companyName = instrumentInfo != null ? instrumentInfo.getName() : null;
-
-        FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
-                .schemaVersion("2.0")
-                .isin(isin)
-                .symbol(instrumentInfo != null ? instrumentInfo.getSymbol() : null)
-                .companyName(companyName)
-                .exchange(instrumentInfo != null ? instrumentInfo.getExchange() : null)
-                .cacheHit(true)
-                .status("success")
-                .source("UPSTOX")
-                .generatedTs(profileRes.getFetchedTs())
-                .profile(SectionResponseFactory.cached(profileRes.getData(), profileRes.getFetchedTs()));
-
-        builder.balanceSheet(readAndWrapCached(isinDir, "balanceSheet.json", new TypeReference<SectionResponse<BalanceSheetContainer>>() {}));
-        builder.cashFlow(readAndWrapCached(isinDir, "cashFlow.json", new TypeReference<SectionResponse<CashFlowContainer>>() {}));
-        builder.incomeStatement(readAndWrapCached(isinDir, "incomeStatement.json", new TypeReference<SectionResponse<IncomeStatementContainer>>() {}));
-        
-        builder.shareHoldings(readAndWrapCached(isinDir, "shareHoldings.json", new TypeReference<SectionResponse<List<ShareHoldingDto>>>() {}));
-        builder.keyRatios(readAndWrapCached(isinDir, "keyRatios.json", new TypeReference<SectionResponse<List<KeyRatioDto>>>() {}));
-        builder.corporateActions(readAndWrapCached(isinDir, "corporateActions.json", new TypeReference<SectionResponse<List<CorporateActionDto>>>() {}));
-        
-        SectionResponse<List<CompetitorDto>> competitorsRes = readAndWrapCached(isinDir, "competitors.json", new TypeReference<SectionResponse<List<CompetitorDto>>>() {});
-        builder.competitors(enrichCompetitors(competitorsRes));
-
-        return builder.build();
-    }
-
-    private boolean isPartialSuccess(FundamentalSnapshot snapshot) {
-        return List.of(snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(), 
-                snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(), 
-                snapshot.getCorporateActions(), snapshot.getCompetitors())
-                .stream().anyMatch(res -> "error".equals(res.getStatus()));
-    }
-
-    private SectionResponse<List<CompetitorDto>> enrichCompetitors(SectionResponse<List<CompetitorDto>> sectionRes) {
-        if (!"cached".equals(sectionRes.getStatus()) && !"success".equals(sectionRes.getStatus())) {
-            return sectionRes;
-        }
-        if (sectionRes.getData() == null) return sectionRes;
-
-        for (CompetitorDto competitor : sectionRes.getData()) {
-            InstrumentService.InstrumentInfo info = instrumentService.getByInstrumentKey(competitor.getInstrumentKey());
-            if (info != null) {
-                competitor.setIsin(info.getIsin());
-                competitor.setSymbol(info.getSymbol());
-                competitor.setCompanyName(info.getName());
-                competitor.setExchange(info.getExchange());
-            }
-        }
-        return sectionRes;
-    }
-
+    /**
+     * Legacy put removed. Persistence happens exclusively via FundamentalHistoryService
+     * during the aggregation phase.
+     */
     public void put(String isin, FundamentalSnapshot snapshot) {
-        Path isinDir = Path.of(cachePath, isin);
-        try {
-            Files.createDirectories(isinDir);
-            
-            writeSection(isinDir, "profile.json", snapshot.getProfile());
-            writeSection(isinDir, "balanceSheet.json", snapshot.getBalanceSheet());
-            writeSection(isinDir, "cashFlow.json", snapshot.getCashFlow());
-            writeSection(isinDir, "incomeStatement.json", snapshot.getIncomeStatement());
-            writeSection(isinDir, "shareHoldings.json", snapshot.getShareHoldings());
-            writeSection(isinDir, "keyRatios.json", snapshot.getKeyRatios());
-            writeSection(isinDir, "corporateActions.json", snapshot.getCorporateActions());
-            writeSection(isinDir, "competitors.json", snapshot.getCompetitors());
-            
-            log.info("Cache saved for ISIN: {}", isin);
-        } catch (IOException e) {
-            log.error("Failed to save cache for ISIN: {}: {}", isin, e.getMessage());
-        }
-    }
-
-    private <T> T readSection(Path dir, String filename, TypeReference<T> type) throws IOException {
-        File file = dir.resolve(filename).toFile();
-        if (file.exists()) {
-            return objectMapper.readValue(file, type);
-        }
-        return null;
-    }
-
-    private <T> SectionResponse<T> readAndWrapCached(Path dir, String filename, TypeReference<SectionResponse<T>> type) throws IOException {
-        SectionResponse<T> res = readSection(dir, filename, type);
-        if (res != null) {
-            if ("success".equals(res.getStatus()) || "cached".equals(res.getStatus())) {
-                return SectionResponseFactory.cached(res.getData(), res.getFetchedTs());
-            }
-            return res;
-        }
-        return SectionResponseFactory.error("CACHE_MISS", "Section missing in cache", null);
-    }
-
-    private void writeSection(Path dir, String filename, Object data) throws IOException {
-        if (data != null) {
-            objectMapper.writeValue(dir.resolve(filename).toFile(), data);
-        }
+        // No-op: Stage 3 eliminates redundant legacy JSON cache writes
     }
 
     private boolean isFresh(Instant ts) {

@@ -149,13 +149,15 @@ public class FundamentalHistoryService {
             metadata.setExchange(snapshot.getExchange());
         } else {
             log.info("metadata.json missing or new ISIN: {}. Initializing...", isin);
+            Instant now = Instant.now();
             metadata = IsinMetadata.builder()
                     .isin(isin)
                     .symbol(snapshot.getSymbol())
                     .companyName(snapshot.getCompanyName())
                     .exchange(snapshot.getExchange())
-                    .createdTs(Instant.now())
-                    .lastUpdatedTs(Instant.now())
+                    .createdTs(now)
+                    .firstSeenTs(now)
+                    .lastUpdatedTs(now)
                     .build();
             
             rebuildEndpointMetadata(isin, metadata);
