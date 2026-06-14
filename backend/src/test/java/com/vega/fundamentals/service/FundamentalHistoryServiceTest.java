@@ -185,4 +185,46 @@ class FundamentalHistoryServiceTest {
         assertTrue(snapshotNow.isPresent());
         assertEquals("Sector 2", snapshotNow.get().getProfile().getData().getSector());
     }
+
+    @Test
+    void testEmptyHistoryNotArchived() {
+        String isin = "INE999A01011";
+        // Create a snapshot with only failed endpoints
+        FundamentalSnapshot failedSnapshot = FundamentalSnapshot.builder()
+                .isin(isin)
+                .profile(SectionResponse.error("TIMEOUT", "Failed to fetch", null))
+                .balanceSheet(SectionResponse.error("TIMEOUT", "Failed to fetch", null))
+                .build();
+
+        historyService.archiveSnapshot(failedSnapshot);
+
+        File metadataFile = tempDir.resolve("history/" + isin + "/metadata.json").toFile();
+        assertFalse(metadataFile.exists(), "Metadata file should not be created for empty history");
+
+        File isinDir = tempDir.resolve("history/" + isin).toFile();
+        // Since no jsonl was created, the directory might exist if created early, but metadata should not.
+    }
+
+    @Test
+    void testCleanupPoisonedDirectories() throws IOException {
+        String isin = "INE888A01011";
+        Path isinDir = tempDir.resolve("history").resolve(isin);
+        java.nio.file.Files.createDirectories(isinDir);
+        
+        IsinMetadata poisonedMetadata = IsinMetadata.builder()
+                .isin(isin)
+                .endpoints(new java.util.HashMap<>()) // Empty endpoints
+                .build();
+                
+        File metadataFile = isinDir.resolve("metadata.json").toFile();
+        objectMapper.writeValue(metadataFile, poisonedMetadata);
+        
+        assertTrue(metadataFile.exists());
+        
+        // Run cleanup
+        historyService.cleanupPoisonedDirectories();
+        
+        assertFalse(metadataFile.exists(), "Poisoned metadata should be deleted");
+        assertFalse(isinDir.toFile().exists(), "Poisoned directory should be deleted");
+    }
 }

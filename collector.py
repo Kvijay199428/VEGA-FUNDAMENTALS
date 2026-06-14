@@ -15,8 +15,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 SCRIPT_DIR = Path(__file__).parent.resolve()
 
 API_BASE_URL = "http://localhost:8080/api/fundamentals"
-INSTRUMENT_FILE = SCRIPT_DIR / "data/instruments/upstox.json"
-HISTORY_DIR = SCRIPT_DIR / "data/history"
+INSTRUMENT_FILE = SCRIPT_DIR / "data/instruments/upstox/upstox.json"
+HISTORY_DIR = SCRIPT_DIR / "storage/history/fundamentals"
 LOG_DIR = SCRIPT_DIR / "logs"
 LOG_FILE = LOG_DIR / "collector.log"
 

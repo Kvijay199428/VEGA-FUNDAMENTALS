@@ -49,6 +49,41 @@ public class FundamentalHistoryService {
         this.objectMapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
     }
 
+    @jakarta.annotation.PostConstruct
+    public void cleanupPoisonedDirectories() {
+        log.info("Starting history integrity cleanup...");
+        try {
+            Path historyRoot = Path.of(historyPath);
+            if (!Files.exists(historyRoot)) return;
+            
+            try (java.util.stream.Stream<Path> dirs = Files.list(historyRoot)) {
+                dirs.filter(Files::isDirectory).forEach(isinDir -> {
+                    try {
+                        File metadataFile = isinDir.resolve("metadata.json").toFile();
+                        if (metadataFile.exists()) {
+                            IsinMetadata metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+                            boolean noEndpoints = metadata.getEndpoints() == null || metadata.getEndpoints().isEmpty();
+                            boolean noJsonlFiles = false;
+                            try (java.util.stream.Stream<Path> files = Files.list(isinDir)) {
+                                noJsonlFiles = files.noneMatch(p -> p.toString().endsWith(".jsonl"));
+                            }
+                            
+                            if (noEndpoints && noJsonlFiles) {
+                                Files.delete(metadataFile.toPath());
+                                Files.delete(isinDir);
+                                log.info("Cleaned up poisoned directory: {}", isinDir.getFileName());
+                            }
+                        }
+                    } catch (Exception e) {
+                        log.warn("Failed to check directory for cleanup: {}", isinDir.getFileName(), e.getMessage());
+                    }
+                });
+            }
+        } catch (Exception e) {
+            log.error("Failed to run history cleanup", e);
+        }
+    }
+
     /**
      * Archives all changed sections of a snapshot.
      */
@@ -69,7 +104,11 @@ public class FundamentalHistoryService {
                 archiveIfChanged(isin, endpoint, section, metadata);
             }
             
-            saveIsinMetadata(isin, metadata);
+            if (metadata.getEndpoints() != null && !metadata.getEndpoints().isEmpty()) {
+                saveIsinMetadata(isin, metadata);
+            } else {
+                log.warn("No successful endpoints to archive for ISIN: {}. Skipping metadata creation.", isin);
+            }
 
         } catch (Exception e) {
             log.error("Failed to archive snapshot for ISIN {}: {}", isin, e.getMessage());
@@ -354,6 +393,11 @@ public class FundamentalHistoryService {
         try {
             IsinMetadata metadata = metadataFile.exists() ? objectMapper.readValue(metadataFile, IsinMetadata.class) : null;
 
+            if (metadata != null && (metadata.getEndpoints() == null || metadata.getEndpoints().isEmpty())) {
+                log.warn("Metadata for ISIN {} has no endpoints. Treating as history miss.", isin);
+                return Optional.empty();
+            }
+
             FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
                     .schemaVersion("2.0")
                     .status("success")
@@ -373,6 +417,18 @@ public class FundamentalHistoryService {
             }
 
             FundamentalSnapshot snapshot = builder.build();
+            
+            boolean hasValidData = java.util.stream.Stream.of(
+                    snapshot.getProfile(), snapshot.getBalanceSheet(), snapshot.getCashFlow(),
+                    snapshot.getIncomeStatement(), snapshot.getShareHoldings(), snapshot.getKeyRatios(),
+                    snapshot.getCorporateActions(), snapshot.getCompetitors()
+            ).anyMatch(section -> section != null && ("success".equals(section.getStatus()) || "cached".equals(section.getStatus())));
+
+            if (!hasValidData) {
+                log.warn("Reconstructed snapshot for ISIN {} contains no successful sections. Treating as history miss.", isin);
+                return Optional.empty();
+            }
+
             return Optional.of(snapshot);
 
         } catch (IOException e) {

@@ -59,27 +59,54 @@ public class UpstoxFundamentalClient {
             return null;
         }
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Authorization", "Bearer " + token)
-                .header("Accept", "application/json")
-                .timeout(Duration.ofSeconds(10))
-                .GET()
-                .build();
+        int maxRetries = 3;
+        long backoffMs = 1000;
 
-        try {
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                BaseResponseDto<T> baseResponse = objectMapper.readValue(response.body(), typeReference);
-                return baseResponse.getData();
-            } else {
-                log.error("Failed to fetch {} for identifier: {}. Status code: {}. Body: {}", 
-                        resource, identifier, response.statusCode(), response.body());
-            }
-        } catch (IOException | InterruptedException e) {
-            log.error("Error fetching {} for identifier: {}: {}", resource, identifier, e.getMessage());
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
+        for (int attempt = 1; attempt <= maxRetries; attempt++) {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Authorization", "Bearer " + token)
+                    .header("Accept", "application/json")
+                    .timeout(Duration.ofSeconds(10))
+                    .GET()
+                    .build();
+
+            try {
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                if (response.statusCode() == 200) {
+                    BaseResponseDto<T> baseResponse = objectMapper.readValue(response.body(), typeReference);
+                    return baseResponse.getData();
+                } else if (response.statusCode() == 429) {
+                    log.warn("Rate limit (429) encountered for {} (attempt {}/{}). Retrying in {}ms...", identifier, attempt, maxRetries, backoffMs);
+                    if (attempt < maxRetries) {
+                        Thread.sleep(backoffMs);
+                        backoffMs *= 2;
+                        continue;
+                    } else {
+                        log.error("Max retries reached for 429 Too Many Requests on {}", identifier);
+                    }
+                } else {
+                    log.error("Failed to fetch {} for identifier: {}. Status code: {}. Body: {}", 
+                            resource, identifier, response.statusCode(), response.body());
+                    break;
+                }
+            } catch (IOException | InterruptedException e) {
+                log.warn("Error fetching {} for identifier: {} (attempt {}/{}): {}", resource, identifier, attempt, maxRetries, e.getMessage());
+                if (e instanceof InterruptedException) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+                if (attempt < maxRetries) {
+                    try {
+                        Thread.sleep(backoffMs);
+                        backoffMs *= 2;
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                } else {
+                    log.error("Max retries reached due to IO exceptions for {}", identifier);
+                }
             }
         }
         return null;
