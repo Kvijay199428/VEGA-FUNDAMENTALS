@@ -255,6 +255,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.*;
+
+import java.time.Instant;
 import java.util.Optional;
 
 @RestController
@@ -266,6 +269,8 @@ public class FundamentalController {
 
     private final FundamentalAggregatorService aggregatorService;
     private final FundamentalCacheService cacheService;
+    private final com.vega.fundamentals.service.FundamentalHistoryService historyService;
+    private final com.vega.fundamentals.service.FundamentalAnalyzer analyzer;
 
     @GetMapping("/{isin}")
     public ResponseEntity<FundamentalSnapshot> getFundamentals(
@@ -283,6 +288,38 @@ public class FundamentalController {
         FundamentalSnapshot snapshot = aggregatorService.aggregate(isin);
 
         return ResponseEntity.ok(snapshot);
+    }
+
+    @GetMapping("/{isin}/history")
+    public ResponseEntity<FundamentalSnapshot> getHistoricalFundamentals(
+            @PathVariable 
+            @Pattern(regexp = "^[A-Z]{2}[A-Z0-9]{9}[0-9]$", message = "Invalid ISIN format")
+            String isin,
+            @RequestParam(required = false) String timestamp) {
+        
+        log.info("Historical request received for ISIN: {} at {}", isin, timestamp);
+
+        Instant asOf = null;
+        if (timestamp != null) {
+            try {
+                asOf = Instant.parse(timestamp);
+            } catch (Exception e) {
+                // Try epoch millis if ISO format fails
+                try {
+                    asOf = Instant.ofEpochMilli(Long.parseLong(timestamp));
+                } catch (Exception e2) {
+                    return ResponseEntity.badRequest().build();
+                }
+            }
+        }
+
+        Optional<FundamentalSnapshot> snapshot = historyService.reconstructSnapshot(isin, asOf);
+        if (snapshot.isPresent()) {
+            FundamentalSnapshot s = snapshot.get();
+            s.setAnalysis(analyzer.analyze(s));
+            return ResponseEntity.ok(s);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
 ```
@@ -815,6 +852,7 @@ public class Endpoints {
 // File: src/main/java/com/vega/fundamentals/model/FundamentalEndpoint.java
 package com.vega.fundamentals.model;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.vega.fundamentals.dto.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -824,18 +862,18 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 public enum FundamentalEndpoint {
-    PROFILE("profile", "profile.jsonl", CompanyProfileDto.class),
-    BALANCE_SHEET("balanceSheet", "balanceSheet.jsonl", BalanceSheetContainer.class),
-    CASH_FLOW("cashFlow", "cashFlow.jsonl", CashFlowContainer.class),
-    INCOME_STATEMENT("incomeStatement", "incomeStatement.jsonl", IncomeStatementContainer.class),
-    SHARE_HOLDINGS("shareHoldings", "shareHoldings.jsonl", List.class),
-    KEY_RATIOS("keyRatios", "keyRatios.jsonl", List.class),
-    CORPORATE_ACTIONS("corporateActions", "corporateActions.jsonl", List.class),
-    COMPETITORS("competitors", "competitors.jsonl", List.class);
+    PROFILE("profile", "profile.jsonl", new TypeReference<CompanyProfileDto>() {}),
+    BALANCE_SHEET("balanceSheet", "balanceSheet.jsonl", new TypeReference<BalanceSheetContainer>() {}),
+    CASH_FLOW("cashFlow", "cashFlow.jsonl", new TypeReference<CashFlowContainer>() {}),
+    INCOME_STATEMENT("incomeStatement", "incomeStatement.jsonl", new TypeReference<IncomeStatementContainer>() {}),
+    SHARE_HOLDINGS("shareHoldings", "shareHoldings.jsonl", new TypeReference<List<ShareHoldingDto>>() {}),
+    KEY_RATIOS("keyRatios", "keyRatios.jsonl", new TypeReference<List<KeyRatioDto>>() {}),
+    CORPORATE_ACTIONS("corporateActions", "corporateActions.jsonl", new TypeReference<List<CorporateActionDto>>() {}),
+    COMPETITORS("competitors", "competitors.jsonl", new TypeReference<List<CompetitorDto>>() {});
 
     private final String key;
     private final String filename;
-    private final Class<?> dataType;
+    private final TypeReference<?> typeReference;
 
     public static FundamentalEndpoint fromKey(String key) {
         for (FundamentalEndpoint endpoint : values()) {
@@ -1070,8 +1108,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -1083,7 +1119,6 @@ public class FundamentalCacheService {
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
     private final FundamentalHistoryService historyService;
-    private static final Duration TTL = Duration.ofHours(24);
 
     public FundamentalCacheService(ObjectMapper objectMapper,
                                  InstrumentService instrumentService,
@@ -1102,29 +1137,12 @@ public class FundamentalCacheService {
         
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
-            if (isFresh(snapshot.getGeneratedTs())) {
-                log.info("History hit and fresh for ISIN: {}", isin);
-                snapshot.setAnalysis(analyzer.analyze(snapshot));
-                return Optional.of(snapshot);
-            } else {
-                log.info("History hit but expired for ISIN: {}", isin);
-            }
+            log.info("History hit for ISIN: {}", isin);
+            snapshot.setAnalysis(analyzer.analyze(snapshot));
+            return Optional.of(snapshot);
         }
 
         return Optional.empty();
-    }
-
-    /**
-     * Legacy put removed. Persistence happens exclusively via FundamentalHistoryService
-     * during the aggregation phase.
-     */
-    public void put(String isin, FundamentalSnapshot snapshot) {
-        // No-op: Stage 3 eliminates redundant legacy JSON cache writes
-    }
-
-    private boolean isFresh(Instant ts) {
-        if (ts == null) return false;
-        return Duration.between(ts, Instant.now()).compareTo(TTL) < 0;
     }
 }
 ```
@@ -1232,7 +1250,8 @@ public class FundamentalHistoryService {
         try {
             JsonNode dataNode = objectMapper.valueToTree(section.getData());
             JsonNode normalizedNode = normalize(dataNode);
-            String currentHash = generateHash(normalizedNode);
+            JsonNode canonicalNode = canonicalize(normalizedNode, endpoint);
+            String currentHash = generateHash(canonicalNode);
 
             IsinMetadata.EndpointMetadata lastEntry = metadata.getEndpoints().get(endpoint.getKey());
 
@@ -1274,13 +1293,19 @@ public class FundamentalHistoryService {
         Path isinDir = Path.of(historyPath, isin);
         File metadataFile = isinDir.resolve("metadata.json").toFile();
 
-        IsinMetadata metadata;
+        IsinMetadata metadata = null;
         if (metadataFile.exists()) {
-            metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
-            metadata.setSymbol(snapshot.getSymbol());
-            metadata.setCompanyName(snapshot.getCompanyName());
-            metadata.setExchange(snapshot.getExchange());
-        } else {
+            try {
+                metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+                metadata.setSymbol(snapshot.getSymbol());
+                metadata.setCompanyName(snapshot.getCompanyName());
+                metadata.setExchange(snapshot.getExchange());
+            } catch (Exception e) {
+                log.warn("metadata.json corrupted for ISIN: {}. Rebuilding...", isin);
+            }
+        }
+
+        if (metadata == null) {
             log.info("metadata.json missing or new ISIN: {}. Initializing...", isin);
             Instant now = Instant.now();
             metadata = IsinMetadata.builder()
@@ -1346,6 +1371,26 @@ public class FundamentalHistoryService {
         return normalized;
     }
 
+    private JsonNode canonicalize(JsonNode node, FundamentalEndpoint endpoint) {
+        if (node == null || !node.isArray()) return node;
+
+        com.fasterxml.jackson.databind.node.ArrayNode array = (com.fasterxml.jackson.databind.node.ArrayNode) node;
+        java.util.List<JsonNode> elements = new java.util.ArrayList<>();
+        array.forEach(elements::add);
+
+        switch (endpoint) {
+            case COMPETITORS -> elements.sort(java.util.Comparator.comparing(n -> n.path("instrument_key").asText("")));
+            case SHARE_HOLDINGS -> elements.sort(java.util.Comparator.comparing(n -> n.path("category").asText("")));
+            case KEY_RATIOS -> elements.sort(java.util.Comparator.comparing(n -> n.path("name").asText("")));
+            case CORPORATE_ACTIONS -> elements.sort(java.util.Comparator.comparing((JsonNode n) -> n.path("name").asText(""))
+                    .thenComparing(n -> n.path("expiry_date").asText("")));
+        }
+
+        com.fasterxml.jackson.databind.node.ArrayNode sortedArray = objectMapper.createArrayNode();
+        elements.forEach(sortedArray::add);
+        return sortedArray;
+    }
+
     private String generateHash(JsonNode node) throws NoSuchAlgorithmException, JsonProcessingException {
         String canonicalJson = objectMapper.writeValueAsString(node);
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -1371,28 +1416,35 @@ public class FundamentalHistoryService {
     }
 
     public Optional<FundamentalSnapshot> reconstructSnapshot(String isin) {
+        return reconstructSnapshot(isin, null);
+    }
+
+    public Optional<FundamentalSnapshot> reconstructSnapshot(String isin, Instant asOf) {
         Path isinDir = Path.of(historyPath, isin);
         if (!Files.exists(isinDir)) return Optional.empty();
 
         File metadataFile = isinDir.resolve("metadata.json").toFile();
-        if (!metadataFile.exists()) return Optional.empty();
+        if (!metadataFile.exists() && asOf == null) return Optional.empty();
 
         try {
-            IsinMetadata metadata = objectMapper.readValue(metadataFile, IsinMetadata.class);
+            IsinMetadata metadata = metadataFile.exists() ? objectMapper.readValue(metadataFile, IsinMetadata.class) : null;
 
             FundamentalSnapshot.FundamentalSnapshotBuilder builder = FundamentalSnapshot.builder()
                     .schemaVersion("2.0")
                     .status("success")
                     .source("HISTORY")
                     .isin(isin)
-                    .symbol(metadata.getSymbol())
-                    .companyName(metadata.getCompanyName())
-                    .exchange(metadata.getExchange())
-                    .generatedTs(metadata.getLastUpdatedTs())
                     .cacheHit(true);
 
+            if (metadata != null) {
+                builder.symbol(metadata.getSymbol())
+                        .companyName(metadata.getCompanyName())
+                        .exchange(metadata.getExchange())
+                        .generatedTs(metadata.getLastUpdatedTs());
+            }
+
             for (FundamentalEndpoint endpoint : FundamentalEndpoint.values()) {
-                setReconstructedSection(builder, isin, endpoint, metadata);
+                setReconstructedSection(builder, isin, endpoint, metadata, asOf);
             }
 
             FundamentalSnapshot snapshot = builder.build();
@@ -1405,8 +1457,8 @@ public class FundamentalHistoryService {
     }
 
     @SuppressWarnings("unchecked")
-    private void setReconstructedSection(FundamentalSnapshot.FundamentalSnapshotBuilder builder, String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
-        SectionResponse<?> section = reconstructSection(isin, endpoint, metadata);
+    private void setReconstructedSection(FundamentalSnapshot.FundamentalSnapshotBuilder builder, String isin, FundamentalEndpoint endpoint, IsinMetadata metadata, Instant asOf) {
+        SectionResponse<?> section = reconstructSection(isin, endpoint, metadata, asOf);
         switch (endpoint) {
             case PROFILE -> builder.profile((SectionResponse<CompanyProfileDto>) section);
             case BALANCE_SHEET -> builder.balanceSheet((SectionResponse<BalanceSheetContainer>) section);
@@ -1420,14 +1472,24 @@ public class FundamentalHistoryService {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint, IsinMetadata metadata) {
-        IsinMetadata.EndpointMetadata endpointMeta = metadata.getEndpoints().get(endpoint.getKey());
+    private <T> SectionResponse<T> reconstructSection(String isin, FundamentalEndpoint endpoint, IsinMetadata metadata, Instant asOf) {
+        HistoryRecord record = null;
 
-        HistoryRecord record;
-        if (endpointMeta != null && endpointMeta.getOffset() >= 0) {
-            record = readRecordAtOffset(isin, endpoint, endpointMeta.getOffset());
-        } else {
-            record = readLatestRecord(isin, endpoint);
+        if (asOf == null && metadata != null) {
+            IsinMetadata.EndpointMetadata endpointMeta = metadata.getEndpoints().get(endpoint.getKey());
+            if (endpointMeta != null && endpointMeta.getOffset() >= 0) {
+                record = readRecordAtOffset(isin, endpoint, endpointMeta.getOffset());
+                // Integrity check: verify hash matches metadata
+                if (record != null && !record.getHash().equals(endpointMeta.getHash())) {
+                    log.warn("Hash mismatch for {} (ISIN: {}) at offset {}. Expected: {}, Actual: {}. Falling back to latest scan.",
+                            endpoint.getKey(), isin, endpointMeta.getOffset(), endpointMeta.getHash(), record.getHash());
+                    record = null;
+                }
+            }
+        }
+
+        if (record == null) {
+            record = (asOf == null) ? readLatestRecord(isin, endpoint) : readRecordAtTimestamp(isin, endpoint, asOf);
         }
 
         if (record == null) {
@@ -1439,7 +1501,7 @@ public class FundamentalHistoryService {
         }
 
         try {
-            T data = (T) objectMapper.convertValue(record.getData(), endpoint.getDataType());
+            T data = (T) objectMapper.convertValue(record.getData(), endpoint.getTypeReference());
             return SectionResponseFactory.cached(data, record.getTs());
         } catch (Exception e) {
             log.error("Failed to deserialize {} for ISIN {}: {}", endpoint.getKey(), isin, e.getMessage());
@@ -1469,6 +1531,40 @@ public class FundamentalHistoryService {
             }
         } catch (IOException e) {
             log.error("Failed to read record at offset {} for {} (ISIN: {}): {}", offset, endpoint.getKey(), isin, e.getMessage());
+        }
+        return null;
+    }
+
+    private HistoryRecord readRecordAtTimestamp(String isin, FundamentalEndpoint endpoint, Instant timestamp) {
+        Path historyFile = Path.of(historyPath, isin, endpoint.getFilename());
+        if (!Files.exists(historyFile)) return null;
+
+        try (RandomAccessFile raf = new RandomAccessFile(historyFile.toFile(), "r")) {
+            long length = raf.length();
+            if (length <= 0) return null;
+
+            // Simple reverse scan for small files. For large files, we'd want an index.
+            long pos = length - 1;
+            while (pos >= 0) {
+                raf.seek(pos);
+                if (pos == 0 || raf.readByte() == '\n') {
+                    long offset = (pos == 0) ? 0 : pos + 1;
+                    raf.seek(offset);
+                    String line = raf.readLine();
+                    if (line != null && !line.trim().isEmpty()) {
+                        HistoryRecord record = objectMapper.readValue(line, HistoryRecord.class);
+                        if (!record.getTs().isAfter(timestamp)) {
+                            return record;
+                        }
+                    }
+                    if (pos == 0) break;
+                    pos = offset - 2; // Move before the newline we just found
+                } else {
+                    pos--;
+                }
+            }
+        } catch (IOException e) {
+            log.error("Failed to read record at timestamp for {} (ISIN: {}): {}", endpoint.getKey(), isin, e.getMessage());
         }
         return null;
     }

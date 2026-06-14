@@ -12,8 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +23,6 @@ public class FundamentalCacheService {
     private final InstrumentService instrumentService;
     private final FundamentalAnalyzer analyzer;
     private final FundamentalHistoryService historyService;
-    private static final Duration TTL = Duration.ofHours(24);
 
     public FundamentalCacheService(ObjectMapper objectMapper,
                                  InstrumentService instrumentService,
@@ -44,28 +41,11 @@ public class FundamentalCacheService {
         
         if (historical.isPresent()) {
             FundamentalSnapshot snapshot = historical.get();
-            if (isFresh(snapshot.getGeneratedTs())) {
-                log.info("History hit and fresh for ISIN: {}", isin);
-                snapshot.setAnalysis(analyzer.analyze(snapshot));
-                return Optional.of(snapshot);
-            } else {
-                log.info("History hit but expired for ISIN: {}", isin);
-            }
+            log.info("History hit for ISIN: {}", isin);
+            snapshot.setAnalysis(analyzer.analyze(snapshot));
+            return Optional.of(snapshot);
         }
 
         return Optional.empty();
-    }
-
-    /**
-     * Legacy put removed. Persistence happens exclusively via FundamentalHistoryService
-     * during the aggregation phase.
-     */
-    public void put(String isin, FundamentalSnapshot snapshot) {
-        // No-op: Stage 3 eliminates redundant legacy JSON cache writes
-    }
-
-    private boolean isFresh(Instant ts) {
-        if (ts == null) return false;
-        return Duration.between(ts, Instant.now()).compareTo(TTL) < 0;
     }
 }
